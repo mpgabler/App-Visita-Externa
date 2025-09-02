@@ -19,13 +19,13 @@
     justify-content: space-between;
     border: 1px solid #ccc;
     gap: 25px;
-
+    
 }
 
-.apresentacao__itens__seletor {
+.apresentacao__itens__checkbox {
     display: flex;
     flex-direction: column;
-    gap: 10px 10px;
+    gap: 5px;
 }
 
 .apresentacao__itens {
@@ -52,6 +52,26 @@ input {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+}
+
+select{
+    width: 100%;
+    padding: 1%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;  
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
 }
 
 .botao__enviar {
