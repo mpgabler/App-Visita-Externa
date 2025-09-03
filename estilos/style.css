@@ -25,8 +25,13 @@
 .apresentacao__itens__checkbox {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    gap: 5px;
+    gap: 1px;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
+    
 }
 
 .apresentacao__itens {
@@ -42,8 +47,6 @@
 }
 
 label {
-    
-    font-size: 16px;
     margin-bottom: 5px;
 }
 
@@ -65,16 +68,6 @@ select{
     font-size: 16px;  
 }
 
-.checkbox-container {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    max-height: 150px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 5px;
-    border-radius: 4px;
-}
 
 .botao__enviar {
     text-decoration: none;
