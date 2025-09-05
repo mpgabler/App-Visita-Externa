@@ -5,15 +5,17 @@
     console.log(Dexie);
 
     const db = new Dexie("visitasDB");
-    db.open().then(() => {
+   
+    db.version(1).stores({ 
+    cadastro: "++id, nome, sobrenome, cpf"
+    });
+
+     db.open().then(() => {
         console.log("Banco de dados aberto com sucesso");
     }).catch((error) => {
         console.error("Erro ao abrir o banco de dados:", error);
     });
 
-    db.version(1).stores({ 
-    cadastro: "++id, nome, sobrenome, cpf"
-    });
 
     export async function addCadastro(cadastro) {
         try {

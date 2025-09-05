@@ -1,4 +1,5 @@
 import { addCadastro, getCadastro } from "./database.js";
+import { renderCadastros } from "./ui.js";
 
 //adiciona ouvinte de evento ao formulário
 document.getElementById("formulario").addEventListener("submit", async (event) => {
@@ -35,11 +36,13 @@ document.getElementById("formulario").addEventListener("submit", async (event) =
     const sucesso = await addCadastro(cadastro);
     if (sucesso) {
         console.log("Cadastro adicionado com sucesso");
-
         // limpar o formulário
         event.target.reset();
+
+        await renderCadastros(); // Atualiza a lista de cadastros exibida
+        console.log("Cadastro salvo e tabela atualizada!");
     }else {
-        alert("Erro ao adicionar cadastro. Por favor, tente novamente.");
+        console.error("Erro ao salvar o cadastro");
     }
 
-
+});

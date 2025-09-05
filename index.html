@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App Visita Externa Versão 1.0.0-beta</title>
     <script type="module" src="js/lib/dexie.mjs"></script>
+    <script type="module" src="database.js"></script>
+    <script type="module" src="js/ui.js"></script> 
+    <script type="module" scr="js/main.js"></script> 
+    <script type="module" src="js/state.js"></script>
     <link rel="stylesheet" href="./estilos/style.css">
 </head>
 
@@ -115,8 +119,10 @@
             </div>
 
             <div class="apresentacao__itens">
-                <a class="botao_enviar" href="">Próximo</a>
+                <input type="submit" class="botao_enviar" value="Próximo">
             </div>
+
+            <ul class="cadastro-list" id="cadastro-list"></ul>
 
         </form>
 
