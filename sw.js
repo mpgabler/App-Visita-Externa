@@ -9,7 +9,12 @@ const urlsToCache = [
   '/js/ui.js',
   '/js/state.js',
   '/js/lib/dexie.mjs',
-  '/assets/icon.png'
+  '/assets/icon.png',
+  '/assets/icon-512.png',
+  '/assets/favicon-32x32.png',
+  '/assets/favicon-16x16.png',
+  '/assets/favicon.ico',
+  '/manifest.json'
 ];
 
 // Instalar o Service Worker e cachear recursos
