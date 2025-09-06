@@ -30,7 +30,7 @@
     }, {
       "src": "/assets/favicon.ico",
       "sizes": "48x48",
-      "type": "image/ico"
-    } 
+      "type": "image/x-icon"
+    }
   ]
 }
