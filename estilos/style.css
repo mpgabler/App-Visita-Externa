@@ -31,6 +31,34 @@
 
 }
 
+.apresentacao__itens__checkbox__defensivos {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: 5px;
+    border: #ccc solid 1px;
+
+}
+
+
+.apresentacao__itens__checkbox__defensivos label {
+    flex: none;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.apresentacao__itens__checkbox__defensivos input {
+    flex: none;
+    width: auto;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
 .apresentacao__itens__checkbox label {
     flex: none;
     display: flex;

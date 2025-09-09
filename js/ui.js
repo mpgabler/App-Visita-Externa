@@ -1,5 +1,22 @@
 import { getCadastro } from "./database.js";
 
+// Faz a lógica para mostrar/ocultar os checkboxes de defensivos agrícolas
+const simRadio = document.getElementById("Sim_defensivo");
+const naoRadio = document.getElementById("Nao_defensivo");
+const defensivosDiv = document.getElementById("apresentacao__itens__checkbox__defensivos");
+
+defensivosDiv.style.display = "none"; // Inicialmente escondido
+
+    simRadio.addEventListener("change", () => {
+    defensivosDiv.style.display = "block";
+    });
+
+    naoRadio.addEventListener("change", () => {
+    defensivosDiv.style.display = "none";
+    });
+           
+
+ // Função para renderizar os cadastros na lista   
 export async function renderCadastros(){
     const cadastros = await getCadastro();
     const list = document.getElementById("cadastro-list");
