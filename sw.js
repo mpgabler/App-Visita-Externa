@@ -5,6 +5,7 @@ const urlsToCache = [
   '/index.html',
   '/tela_cadastro.html',
   '/estilos/style.css',
+  '/estilos/style_tela_cadastro.css',
   '/js/main.js',
   '/js/database.js',
   '/js/ui.js',
