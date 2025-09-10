@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Visita Externa Versão 1.0.0-beta</title>
+    <script type="module" src="js/lib/dexie.mjs"></script>
+    <script type="module" src="js/database.js"></script>
+    <script type="module" src="js/tela_buscar.js"></script> 
+    <script type="module" src="js/main.js"></script> 
+    <script type="module" src="js/state.js"></script>
+    <link rel="stylesheet" href="./estilos/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="https://mpgabler.github.io/App-Visita-Externa/manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" sizes="48x48" href="assets/favicon.ico"> 
+</head> 
+
+<body>
+
+    <main class="">
+        <form class="form-container" id="formulario_de_busca">
+            <h1 class="form-container__titulo">Página de Busca</h1>
+
+            <!--botao buscar-->
+            <label for="busca">Buscar por Nome, Sobrenome, CPF:</label>
+            <input type="text" id="busca" name="busca" placeholder="Digite aqui...">
+            <button type="button" id="botaoBusca">Buscar</button>
+
+            <!--botao cadastrar (ocultado por padrão)-->
+            <button type="button" id="botaoCadastro" style="display:none">Cadastrar</button>
+
+            <div id="resultados">
+                <!-- Resultados da busca serão exibidos aqui -->
+            </div>
+
+        </form>
+
+    </main>
+
+    <!-- <script>
+    document.getElementById('botaoBusca').addEventListener('click', async () => {
+  const termo = document.getElementById('busca').value.trim().toLowerCase();
+  const resultadosDiv = document.getElementById('resultados');
+  const botaoCadastro = document.getElementById('botaoCadastro');
+
+  if (!termo) {
+    resultadosDiv.innerHTML = '<p>Por favor, digite um termo para buscar.</p>';
+    botaoCadastro.style.display = 'none';
+    botaoCadastro.setAttribute('aria-hidden', 'true');
+    return;
+  }
+
+  try {
+    const pessoas = await getAllPessoas();
+    const resultados = pessoas.filter(pessoa =>
+      pessoa.nome.toLowerCase().includes(termo) ||
+      pessoa.sobrenome.toLowerCase().includes(termo) ||
+      pessoa.cpf.includes(termo)
+    );
+
+    if (resultados.length > 0) {
+      resultadosDiv.innerHTML = resultados
+        .map(pessoa => `
+          <div class="resultado-item">
+            <p><strong>Nome:</strong> ${pessoa.nome} ${pessoa.sobrenome}</p>
+            <p><strong>CPF:</strong> ${pessoa.cpf}</p>
+          </div>
+        `)
+        .join('');
+      botaoCadastro.style.display = 'none';
+      botaoCadastro.setAttribute('aria-hidden', 'true');
+    } else {
+      resultadosDiv.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+      botaoCadastro.style.display = 'block';
+      botaoCadastro.setAttribute('aria-hidden', 'false');
+    }
+  } catch (error) {
+    console.error('Erro ao buscar pessoas:', error);
+    resultadosDiv.innerHTML = '<p>Erro ao realizar a busca. Tente novamente.</p>';
+    botaoCadastro.style.display = 'none';
+    botaoCadastro.setAttribute('aria-hidden', 'true');
+  }
+});
+
+document.getElementById('botaoCadastro').addEventListener('click', () => {
+  window.location.href = './index.html';
+});
+    </script> -->
+
+    <footer class="rodape">
+        <p>Desenvolvido por Ceasa Epírito Santo - 2025</p>
+    </footer>
+</body>
+
+</html>

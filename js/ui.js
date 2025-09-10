@@ -13,10 +13,10 @@ defensivosDiv.style.display = "none"; // Inicialmente escondido
 
     naoRadio.addEventListener("change", () => {
     defensivosDiv.style.display = "none";
-    });
+});
            
 
- // Função para renderizar os cadastros na lista   
+ // Função para renderizar os cadastros na lista na tela de cadastro (por enquanto)  
 export async function renderCadastros(){
     const cadastros = await getCadastro();
     const list = document.getElementById("cadastro-list");
@@ -36,3 +36,5 @@ export async function renderCadastros(){
 
     console.log("Tabela renderizada:", cadastros);
 }
+
+
