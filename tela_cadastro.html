@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Visita Externa Versão 1.0.0-beta</title>
+    <script type="module" src="js/lib/dexie.mjs"></script>
+    <script type="module" src="js/database.js"></script>
+    <script type="module" src="js/ui.js"></script> 
+    <script type="module" src="js/main.js"></script> 
+    <script type="module" src="js/state.js"></script>
+    <link rel="stylesheet" href="./estilos/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" sizes="48x48" href="assets/favicon.ico"> 
+</head> 
+
+<body>
+
+    <main class="">
+        <form class="form-container" id="formulario">
+            <h1 class="form-container__titulo">Formulário de Cadastro</h1>
+
+
+            <div class="apresentacao__itens">
+                <label>Nome: </label><input type="text" name="nome" id="nome" required>
+            </div>
+
+            <div class="apresentacao__itens">
+                <label>Sobrenome: </label><input type="text" name="sobrenome" id="sobrenome" required>
+            </div>
+
+            <div class="apresentacao__itens">
+                <label>CPF: </label><input type="text" name="cpf" id="cpf" required>
+            </div>
+
+            <div class="apresentacao__itens">
+                <label>CNPJ: </label><input type="text" name="cnpj" id="cnpj" required>
+            </div>
+
+            <div class="apresentacao__itens">
+                <label>Nome Fantasia: </label><input type="text" name="nome_fantasia" id="nome_fantasia" required>
+            </div>
+
+            <div class="apresentacao__itens">
+                <label>Endereço: </label><input type="text" name="endereco" id="endereco" required>
+            </div>
+
+            <div class="apresentacao__itens">
+                <label>Número: </label><input type="text" name="numero" id="numero" required>
+            </div>
+            <div class="apresentacao__itens">
+                <label>Bairro/Distrito: </label><input type="text" name="bairro" id="bairro" required>
+            </div>
+
+            <div class="apresentacao__itens">
+                <label>Cidade: </label><input type="text" name="cidade" id="cidade" required>
+            </div>
+
+            <div class="apresentacao__itens">
+                <label>Estado: </label><input type="text" name="estado" id="estado" required>
+            </div>
+
+            <div class="apresentacao__itens">
+                <label>Telefone: </label><input type="tel" name="telefone" id="telefone" required>
+            </div>
+
+
+            <div class="apresentacao__itens__checkbox">
+                <label>Produtos Comercializados:</label>
+
+                <label for="tomate"> <input type="checkbox" name="itens_produtos" value="tomate" id="tomate">Tomate</label>
+
+                <label for="alface"> <input type="checkbox" name="itens_produtos" value="alface" id="alface">Alface</label>
+
+                <label for="abobora"> <input type="checkbox" name="itens_produtos" value="abobora" id="abobora">Abóbora</label>
+
+                <label for="cenoura"> <input type="checkbox" name="itens_produtos" value="cenoura" id="cenoura">Cenoura</label>
+
+                <label for="outros"> <input type="checkbox" name="itens_produtos" value="outros" id="outros">Outros</label>
+            </div>
+
+
+
+            <div class="apresentacao__itens__radio">
+                <label>Usa defensivo agrícola? </label>
+
+                <label for="Sim_defensivo"><input type="radio" name="grupo_radio_defensivo" id="Sim_defensivo" value="Sim" required> Sim</label>
+
+                <label for="Nao_defensivo"><input type="radio" name="grupo_radio_defensivo" id="Nao_defensivo" value="Nao" required> Não</label>
+            </div>
+
+
+            <div class="apresentacao__itens__checkbox__defensivos" id="apresentacao__itens__checkbox__defensivos" display="none">
+                <label>Quais defensivos agrícolas?</label>
+
+                <label for="glifosato"><input type="checkbox" name="itens_defensivos" value="glifosato" id="glifosato">Glifosato e seus sais</label>
+
+                <label for="2,4-D"><input type="checkbox" name="itens_defensivos" value="2,4-D" id="2,4-D">2,4-D</label>
+
+                <label for="atrazina"><input type="checkbox" name="itens_defensivos" value="atrazina" id="atrazina">Atrazina</label>
+
+                <label for="mancozeb"><input type="checkbox" name="itens_defensivos" value="mancozeb" id="mancozeb">Mancozeb</label>
+
+                <label for="acefato"><input type="checkbox" name="itens_defensivos" value="acefato" id="acefato">Acefato</label>
+
+                <label for="outros_pesticidas"><input type="checkbox" name="itens_defensivos" value="outros_pesticidas" id="outros_pesticidas">Outros</label>
+
+            </div>
+            
+            <div class="apresentacao__itens__radio">
+                <label>Emite nota fiscal?</label>
+
+                <label for="Sim_nota"><input type="radio" name="grupo_radio_emissao_nota" id="Sim_nota" value="Sim" required> Sim</label>
+
+                <label for="Nao_nota"><input type="radio" name="grupo_radio_emissao_nota" id="Nao_nota" value="Nao" required> Não</label>
+
+            </div>
+
+            <div class="apresentacao__itens">
+                <input type="submit" class="botao_enviar" value="Próximo">
+            </div>
+
+            <ul class="cadastro-list" id="cadastro-list"></ul>
+
+        </form>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Desenvolvido por Ceasa Epírito Santo - 2025</p>
+    </footer>
+</body>
+
+</html>

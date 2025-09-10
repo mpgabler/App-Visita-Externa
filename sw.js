@@ -3,6 +3,7 @@ const CACHE_NAME = 'pwa-notes-v2';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/tela_cadastro.html',
   '/estilos/style.css',
   '/js/main.js',
   '/js/database.js',

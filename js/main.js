@@ -1,8 +1,8 @@
 import { addCadastro, getCadastro } from "./database.js";
 import { renderCadastros } from "./ui.js";
 
-//adiciona ouvinte de evento ao formulário
-document.getElementById("formulario").addEventListener("submit", async (event) => {
+    //adiciona ouvinte de evento ao formulário
+    document.getElementById("formulario").addEventListener("submit", async (event) => {
     // prevenir o recarregamento da página
     event.preventDefault();
 

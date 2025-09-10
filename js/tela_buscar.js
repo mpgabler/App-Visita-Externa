@@ -46,5 +46,5 @@ document.getElementById('botaoBusca').addEventListener('click', async () => {
 });
 
 document.getElementById('botaoCadastro').addEventListener('click', () => {
-  window.location.href = './index.html';
+  window.location.href = './tela_cadastro.html';
 });

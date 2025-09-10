@@ -5,6 +5,8 @@ const simRadio = document.getElementById("Sim_defensivo");
 const naoRadio = document.getElementById("Nao_defensivo");
 const defensivosDiv = document.getElementById("apresentacao__itens__checkbox__defensivos");
 
+if (defensivosDiv){
+    
 defensivosDiv.style.display = "none"; // Inicialmente escondido
 
     simRadio.addEventListener("change", () => {
@@ -13,7 +15,8 @@ defensivosDiv.style.display = "none"; // Inicialmente escondido
 
     naoRadio.addEventListener("change", () => {
     defensivosDiv.style.display = "none";
-});
+    });
+}
            
 
  // Função para renderizar os cadastros na lista na tela de cadastro (por enquanto)  
