@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+ 
+
 * {
     margin: 0;
     padding: 0;
@@ -17,26 +21,28 @@
     max-width: 400px;
     margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #6B4E31;
+    border-radius: 5px;
     gap: 25px;
+    background-color: #F5F5F5;
 
 }
 
 .apresentacao__itens__checkbox {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    gap: 5px;
-    border: #ccc solid 1px;
+    border: 1px solid #6B4E31;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #F5F5F5;
 
 }
 
 .apresentacao__itens__checkbox__defensivos {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    gap: 5px;
-    border: #ccc solid 1px;
+    border: 1px solid #6B4E31;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #F5F5F5;
 
 }
 
@@ -82,12 +88,11 @@
 }
 
 .apresentacao__itens__radio {
-    display: flex;
-    margin-top: 1px;
-    flex-direction: column;
-    align-items: stretch;
-    border: #ccc solid 1px;
-    box-sizing: border-box;
+    border: 1px solid #6B4E31;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #F5F5F5;
 
 }
 
@@ -122,28 +127,25 @@ input {
     font-size: 16px;
 }
 
-select {
-    width: 100%;
-    padding: 1%;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
 
 .botao_enviar {
+    cursor: pointer;
     text-decoration: none;
     display: flex;
+    margin-left: auto;
+    margin-right: auto;
     justify-content: center;
     gap: 20px;
-    padding: 3px;
+    padding: 5px;
     width: 100%;
-    font-size: 20px;
+    font-size: 19px;
     text-align: center;
     border-radius: 4px;
     border: 1px solid #ccc;
-    background-color: aqua;
+    background-color:#2F855A;
+    color: #F5F5F5;
+    font-family: 'roboto', sans-serif;
+    font-weight: 400;
 
 }
 
@@ -161,4 +163,7 @@ select {
     font-size: 1rem;
     padding: 20px;
     white-space: pre-wrap;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #6B4E31;
 }

@@ -1,0 +1,55 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Visita Externa Versão 1.0.0-beta</title>
+    <script type="module" src="js/lib/dexie.mjs"></script>
+    <script type="module" src="js/database.js"></script>
+    <script type="module" src="js/pagina_inicial.js"></script> 
+    <link rel="stylesheet" href="./estilos/style_pagina_inicial.css">
+    <!--<link rel="manifest" href="https://mpgabler.github.io/App-Visita-Externa/manifest.json">-->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" sizes="48x48" href="assets/favicon.ico"> 
+</head> 
+
+<body>    
+        <form class="form-container" id="formulario_de_busca">
+            <h1>Bem-vindo ao Gerenciador de Visitas Externas</h1>
+            <h3>Cadastre, busque e visualize relatórios de visitas de forma simples e offline.</h3>
+
+            <!--botao buscar-->
+            <div class="direcionamento_opcoes">
+                <h2>Buscar Cadastro</h2>
+                <p>Procure por nome, sobrenome ou CPF.</p>
+                <a href="/index.html">Ir para Buscar</a> <!--mudar o nome do arquivo .html-->
+            </div>
+
+            <!--botao cadastrar (ocultado por padrão)-->
+            <div class="direcionamento_opcoes">
+               <h2>Cadastrar Nova Visita</h2>
+               <p>Adicione novas visitas.</p>
+               <a href="/tela_cadastro.html">Ir para Cadastrar</a>
+           </div>
+
+           <!--Botao Relatorios-->
+           <div class="direcionamento_opcoes">
+              <h2>Visualizar Relatórios</h2>
+              <p>Veja estatísticas e listas de visitas.</p>
+              <a href="/tela_relatorios.html">Ir para Relatórios</a>
+           </div>
+
+        </form>
+
+      <!-- Rodapé -->
+    <footer class="rodape">
+        <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
+    </footer>
+</body>
+
+</html>
