@@ -43,6 +43,15 @@ h1 {
     font-weight: 700; 
 }
 
+h2 {
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #6B4E31;
+    
+
+}
+
 h3 {
     text-align: center;
     margin-bottom: 30px;
@@ -52,14 +61,6 @@ h3 {
     color: #6B4E31;
 }
 
-h2 {
-    margin-bottom: 10px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    color: #6B4E31;
-    
-
-}
 
 p {
     text-align: center;
