@@ -21,11 +21,20 @@
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #6B4E31;
-    background-color: #F5F5F5;
     border-radius: 5px;
     gap: 25px;
+    background-color: #F5F5F5;
 
 }
+
+.direcionamento_opcoes {
+    border: 1px solid #6B4E31;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #F5F5F5;
+}
+
 h1 {
     text-align: center;
     margin-bottom: 10px;
@@ -34,8 +43,34 @@ h1 {
     font-weight: 700; 
 }
 
-label {
+h2 {
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #6B4E31;
+    
+
+}
+
+h3 {
     text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-weight: normal;
+    color: #6B4E31;
+}
+
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #6B4E31;
+}
+
+label {
     margin-bottom: 5px;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
@@ -43,19 +78,8 @@ label {
 
 }
 
-input {
-    text-align: center;
-    width: 100%;
-    padding: 1%;
-    box-sizing: border-box;
-    border: 1px solid #6B4E31;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #6B4E31;
-}
-
-button {
-   cursor: pointer;
+a {
+    cursor: pointer;
     text-decoration: none;
     display: flex;
     margin-left: auto;
@@ -69,10 +93,9 @@ button {
     border-radius: 4px;
     border: 1px solid #ccc;
     background-color:#2F855A;
-    color: #F5F5F5; 
+    color: #F5F5F5;
     font-family: 'roboto', sans-serif;
     font-weight: 400;
-
 }
 
 .rodape {

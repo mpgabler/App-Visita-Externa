@@ -1,15 +1,21 @@
 // service-worker.js
-const CACHE_NAME = 'pwa-notes-v3';
+const CACHE_NAME = 'pwa-notes-v4';
 const urlsToCache = [
   '/',
   '/index.html',
   '/tela_cadastro.html',
-  '/estilos/style.css',
+  '/tela_busca.html',
+  '/tela_relatorios.html',
+  '/estilos/style_tela_index.css',
   '/estilos/style_tela_cadastro.css',
+  '/estilos/style_tela_buscar.css',
+  '/estilos/style_tela_relatorios.css',
+  '/js/tela_index.js',
   '/js/main.js',
   '/js/database.js',
-  '/js/ui.js',
-  '/js/state.js',
+  '/js/tela_buscar.js',
+  '/js/tela_cadastro.js',
+  '/js/tela_relatorios.js',
   '/js/lib/dexie.mjs',
   '/assets/icon.png',
   '/assets/icon-512.png',

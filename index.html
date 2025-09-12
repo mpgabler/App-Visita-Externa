@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,7 +7,7 @@
     <title>App Visita Externa Versão 1.0.0-beta</title>
     <script type="module" src="js/lib/dexie.mjs"></script>
     <script type="module" src="js/database.js"></script>
-    <script type="module" src="js/tela_buscar.js"></script> 
+    <script type="module" src="js/tela_index.js"></script> 
     <link rel="stylesheet" href="./estilos/style_tela_index.css">
     <!--<link rel="manifest" href="https://mpgabler.github.io/App-Visita-Externa/manifest.json">-->
     <link rel="manifest" href="/manifest.json">
@@ -18,31 +18,37 @@
     <link rel="icon" type="image/x-icon" sizes="48x48" href="assets/favicon.ico"> 
 </head> 
 
-<body>
-
-    <main class="">
+<body>    
         <form class="form-container" id="formulario_de_busca">
-            <h1 class="form-container__titulo">Página de Busca</h1>
+            <h1>Bem-vindo ao Gerenciador de Visitas Externas</h1>
+            <h3>Cadastre, busque e visualize relatórios de visitas de forma simples e offline.</h3>
 
             <!--botao buscar-->
-            <label for="busca">Buscar por Nome, Sobrenome, CPF:</label>
-            <input type="text" id="busca" name="busca" placeholder="Digite aqui...">
-            <button type="button" id="botaoBusca">Buscar</button>
+            <div class="direcionamento_opcoes">
+                <h2>Buscar Cadastro</h2>
+                <p>Procure por nome, sobrenome ou CPF.</p>
+                <a href="/tela_busca.html">Ir para Buscar</a> <!--mudar o nome do arquivo .html-->
+            </div>
 
             <!--botao cadastrar (ocultado por padrão)-->
-            <button type="button" id="botaoCadastro" style="display:none">Cadastrar</button>
+            <div class="direcionamento_opcoes">
+               <h2>Cadastrar Nova Visita</h2>
+               <p>Adicione novas visitas.</p>
+               <a href="/tela_cadastro.html">Ir para Cadastrar</a>
+           </div>
 
-            <div id="resultados">
-                <!-- Resultados da busca serão exibidos aqui -->
-            </div>
+           <!--Botao Relatorios-->
+           <div class="direcionamento_opcoes">
+              <h2>Visualizar Relatórios</h2>
+              <p>Veja estatísticas e listas de visitas.</p>
+              <a href="/tela_relatorios.html">Ir para Relatórios</a>
+           </div>
 
         </form>
 
-    </main>
-
       <!-- Rodapé -->
     <footer class="rodape">
-        <p>Desenvolvido por Ceasa Epírito Santo - 2025</p>
+        <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
     </footer>
 </body>
 
