@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'app-visita-externa-cache-v4';
+const CACHE_NAME = 'pwa-notes-v5';
 const urlsToCache = [
   '/App-Visita-Externa/',
   '/App-Visita-Externa/index.html',
