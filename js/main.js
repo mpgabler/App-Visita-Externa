@@ -6,7 +6,7 @@ import { renderCadastros } from "./tela_cadastro.js";
     // prevenir o recarregamento da página
     event.preventDefault();
 
-    //capturar os valores dos inputs
+    //capturar os valores dos inputs na tela_cadastro.html
     const cadastro = {
         nome: document.getElementById("nome").value,
         sobrenome: document.getElementById("sobrenome").value,
