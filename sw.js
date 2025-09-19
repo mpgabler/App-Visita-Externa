@@ -42,9 +42,20 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-// Ativar o Service Worker
+// Ativar o Service Worker e limpar caches antigos
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
 });
 
 // Interceptar requisições
