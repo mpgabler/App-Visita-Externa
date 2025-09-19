@@ -1,4 +1,4 @@
-import { getCadastro } from "database.js";
+import { getCadastro } from "./database.js";
 
 // Faz a lógica para mostrar/ocultar os checkboxes de defensivos agrícolas
 const simRadio = document.getElementById("Sim_defensivo");

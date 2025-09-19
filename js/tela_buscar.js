@@ -1,4 +1,4 @@
- import { getCadastro } from 'database.js';
+ import { getCadastro } from './database.js';
 
 // Função para buscar pessoas por nome, sobrenome ou CPF na tela de busca
 document.getElementById('botaoBusca').addEventListener('click', async () => {
@@ -46,5 +46,5 @@ document.getElementById('botaoBusca').addEventListener('click', async () => {
 });
 
 document.getElementById('botaoCadastro').addEventListener('click', () => {
-  window.location.href = 'tela_cadastro.html';
+  window.location.href = './tela_cadastro.html';
 });

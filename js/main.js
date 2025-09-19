@@ -1,5 +1,5 @@
-import { addCadastro, getCadastro } from "database.js";
-import { renderCadastros } from "tela_cadastro.js";
+import { addCadastro, getCadastro } from "./database.js";
+import { renderCadastros } from "./tela_cadastro.js";
 
     //adiciona ouvinte de evento ao formulário
     document.getElementById("formulario").addEventListener("submit", async (event) => {
