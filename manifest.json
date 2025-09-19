@@ -4,7 +4,7 @@
   "description": "Gerencie visitas externas com facilidade, mesmo offline, com este aplicativo rápido e seguro.",
   "lang": "pt-BR",
   "start_url": "https://mpgabler.github.io/App-Visita-Externa/index.html",
-  "scope": "https://mpgabler.github.io/App-Visita-Externa/",
+  "scope": "https://mpgabler.github.io/App-Visita-Externa",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#008000",
