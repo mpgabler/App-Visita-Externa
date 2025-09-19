@@ -58,6 +58,12 @@ self.addEventListener('activate', (event) => {
   );
 });
 
+caches.open(CACHE_NAME).then((cache) => {
+  return cache.addAll(urlsToCache).catch((error) => {
+    console.error('Erro ao adicionar ao cache:', error);
+  });
+});
+
 // Interceptar requisições
 self.addEventListener('fetch', (event) => {
   event.respondWith(
