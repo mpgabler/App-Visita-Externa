@@ -1,5 +1,5 @@
     // version 4.2.0
-    import { Dexie } from './lib/dexie.mjs';
+    import { Dexie } from 'lib/dexie.mjs';
 
     //teste de importação
     console.log(Dexie);
