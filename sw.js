@@ -30,6 +30,7 @@ const urlsToCache = [
   './assets/favicon-32x32.png',
   './assets/favicon-16x16.png',
   './assets/favicon.ico',
+  './assets/gato.png',
   './manifest.json'
 ];
 
