@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'pwa-notes-v8';
+const CACHE_NAME = 'pwa-notes-v9';
 
 // Lista de arquivos para cache estático
 const urlsToCache = [
