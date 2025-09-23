@@ -22,7 +22,8 @@ import { renderCadastros } from "./tela_cadastro.js";
         itens_produtos: Array.from(document.querySelectorAll('input[name="itens_produtos"]:checked')).map(input => input.value),
         grupo_radio_defensivo: document.querySelector('input[name="grupo_radio_defensivo"]:checked')?.value || 'Nao',
         itens_defensivos: Array.from(document.querySelectorAll('input[name="itens_defensivos"]:checked')).map(input => input.value),
-        grupo_radio_emissao_nota: document.querySelector('input[name="grupo_radio_emissao_nota"]:checked')?.value || 'Nao'
+        grupo_radio_emissao_nota: document.querySelector('input[name="grupo_radio_emissao_nota"]:checked')?.value || 'Nao',
+        data_cadastro: new Date().toISOString()
 
     };
 
