@@ -3,6 +3,8 @@ import db from './database.js';
 console.log("Banco importado:", db);
 
 // Função para exportar dados dos produtores para Excel
+
+
 document.getElementById('botao_exportar').addEventListener('click', async () => {
     const produtores = await db.cadastro.toArray();
     console.log("Produtores para exportar:", produtores);
