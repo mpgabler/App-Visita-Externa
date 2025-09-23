@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'pwa-notes-v9';
+const CACHE_NAME = 'pwa-notes-v10'; // Atualize a versão para forçar atualização do cache
 
 // Lista de arquivos para cache estático
 const urlsToCache = [
@@ -25,6 +25,7 @@ const urlsToCache = [
   './js/tela_cadastro.js',
   './js/tela_relatorios.js',
   './js/lib/dexie.mjs',
+  './js/lib/xlsx.full.min.js',
   './assets/icon.png',
   './assets/icon-512.png',
   './assets/favicon-32x32.png',

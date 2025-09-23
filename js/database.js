@@ -16,6 +16,8 @@
         console.error("Erro ao abrir o banco de dados:", error);
     });
 
+    export default db;
+
 
     export async function addCadastro(cadastro) {
         try {
