@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'pwa-notes-v10'; // Atualize a versão para forçar atualização do cache
+const CACHE_NAME = 'pwa-notes-v11'; // Atualize a versão para forçar atualização do cache
 
 // Lista de arquivos para cache estático
 const urlsToCache = [
