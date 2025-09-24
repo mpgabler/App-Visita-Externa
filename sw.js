@@ -1,19 +1,8 @@
 // service-worker.js
-const CACHE_NAME = 'pwa-notes-v11'; // Atualize a versão para forçar atualização do cache
+const CACHE_NAME = 'pwa-notes-v12';
 
-// Lista de arquivos para cache estático
+// Lista de assets estáticos (não inclui HTML)
 const urlsToCache = [
-  './',
-  './index.html',
-  './tela_cadastro.html',
-  './tela_busca.html',
-  './tela_relatorios.html',
-  './tela_relatorio_produtor.html',
-  './tela_relatorio_visita.html',
-  './tela_relatorio_producao.html',
-  './tela_relatorio_economico.html',
-  './tela_relatorio_geografico.html',
-  './tela_relatorio_gerencial.html',
   './estilos/style_tela_index.css',
   './estilos/style_tela_cadastro.css',
   './estilos/style_tela_buscar.css',
@@ -35,57 +24,59 @@ const urlsToCache = [
   './manifest.json'
 ];
 
-// Instalar o Service Worker e cachear os arquivos estáticos
+// Instalar
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    }).catch((err) => {
-      console.error('Falha ao cachear durante instalação:', err);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
   );
   self.skipWaiting();
 });
 
-// Ativar e limpar caches antigos
+// Ativar
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
+    caches.keys().then((keys) =>
+      Promise.all(keys.map((key) => {
+        if (key !== CACHE_NAME) return caches.delete(key);
+      }))
+    ).then(() => self.clients.claim())
   );
 });
 
-// Interceptar requisições (Cache First + Fallback)
+// Interceptar requisições
 self.addEventListener('fetch', (event) => {
+  const request = event.request;
+
+  // HTML → Network First
+  if (request.mode === 'navigate' || request.destination === 'document') {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          const resClone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, resClone));
+          return response;
+        })
+        .catch(() => caches.match(request).then((resp) => resp || caches.match('./index.html')))
+    );
+    return;
+  }
+
+  // JS/CSS/Imagens → Stale-While-Revalidate
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      // Se já existe no cache → retorna
-      if (response) return response;
+    caches.match(request).then((cachedResponse) => {
+      const fetchPromise = fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(request, networkResponse.clone());
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => null);
 
-      // Se não, busca online e armazena no cache dinâmico
-      return fetch(event.request).then((res) => {
-        if (!res || res.status !== 200 || res.type !== 'basic') {
-          return res;
-        }
-
-        const resClone = res.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, resClone);
-        });
-
-        return res;
-      });
-    }).catch(() => {
-      // Fallback se offline e recurso não existe no cache
-      return caches.match('./index.html');
+      // retorna cache imediatamente, mas atualiza em paralelo
+      return cachedResponse || fetchPromise;
     })
   );
 });
-// Fim do service-worker.js
