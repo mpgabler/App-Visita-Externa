@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'pwa-notes-v12';
+const CACHE_NAME = 'pwa-notes-v13';
 
 // Lista de assets estáticos (não inclui HTML)
 const urlsToCache = [
@@ -47,19 +47,24 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const request = event.request;
 
-  // HTML → Network First
-  if (request.mode === 'navigate' || request.destination === 'document') {
-    event.respondWith(
-      fetch(request)
-        .then((response) => {
-          const resClone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, resClone));
-          return response;
-        })
-        .catch(() => caches.match(request).then((resp) => resp || caches.match('./index.html')))
-    );
-    return;
-  }
+// HTML → Network First
+if (request.mode === 'navigate' || request.destination === 'document') {
+  event.respondWith(
+    fetch(request)
+      .then((response) => {
+        // Clona antes de usar
+        const resClone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(request, resClone);
+        });
+        return response; // retorna o original
+      })
+      .catch(() =>
+        caches.match(request).then((resp) => resp || caches.match('./index.html'))
+      )
+  );
+  return;
+}
 
   // JS/CSS/Imagens → Stale-While-Revalidate
   event.respondWith(
