@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Visita Externa Versão 1.0.0-beta</title>
+    <script type="module" src="js/lib/dexie.mjs"></script>
+    <script type="module" src="js/database.js"></script>
+    <script type="module" src="js/tela_cadastro.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/state.js"></script>
+    <link rel="stylesheet" href="estilos/style_tela_cadastro_teste.css" />
+    <link rel="manifest" href="manifest.json" />
+    <!--<link rel="manifest" href="https://mpgabler.github.io/App-Visita-Externa/manifest.json">-->
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/icon-512.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="48x48"
+      href="assets/favicon.ico"
+    />
+  </head>
+
+  <body>
+    <main class="">
+      <form id="formulario" class="form-container">
+        <h2>Visita Técnica da Comissão de Rastreabilidade</h2>
+        <h3>Relatório Técnico</h3>
+
+        <!-- Identificação -->
+        <fieldset>
+          <legend>Identificação da Propriedade</legend>
+          <label>Propriedade:</label>
+          <input type="text" name="propriedade" required />
+
+          <label>Produtor Rural:</label>
+          <input type="text" name="produtor" required />
+
+          <label>Local (Município):</label>
+          <input type="text" name="local" required />
+
+          <label>Data da Visita:</label>
+          <input type="date" name="data_visita" required />
+
+          <label>Inscrição Estadual (opcional):</label>
+          <input type="text" name="inscricao_estadual" />
+        </fieldset>
+
+        <!-- Área -->
+        <fieldset>
+          <legend>Características da Área</legend>
+          <label>Área Total (ha):</label>
+          <input type="number" step="0.01" name="area_total" />
+
+          <label>Área Produtiva (ha):</label>
+          <input type="number" step="0.01" name="area_produtiva" />
+
+          <div class="apresentacao__itens__radio">
+            <label>Possui Reserva Legal?</label>
+            <label><input type="radio" name="reserva" value="sim" /> Sim</label>
+            <label><input type="radio" name="reserva" value="nao" /> Não</label>
+          </div>
+        
+
+          <div class="apresentacao__itens__radio">
+            <label>Cadastro Ambiental Rural (CAR):</label>
+            <label><input type="radio" name="car" value="sim" /> Sim</label>
+            <label><input type="radio" name="car" value="nao" /> Não</label>
+          </div>
+          <input type="text" name="obs_car" placeholder="Observações" />
+        </fieldset>
+
+        <!-- Comerciais -->
+        <fieldset>
+          <legend>Aspectos Comerciais</legend>
+          <label>Emite Nota Fiscal?</label>
+          <div class="apresentacao__itens__radio">
+            <label><input type="radio" name="nota_fiscal" value="sim" /> Sim</label>
+            <label><input type="radio" name="nota_fiscal" value="nao" /> Não</label>
+          </div>
+
+          
+          <div class="apresentacao__itens__radio">
+            <label>Utiliza Etiqueta de Rastreabilidade?</label>
+            <label><input type="radio" name="rastreabilidade" value="sim"/>Sim</label>
+            <label><input type="radio" name="rastreabilidade" value="nao"/>Não</label>
+          </div>
+
+          
+          <div class="apresentacao__itens__radio">
+            <label>Afiliado a Cooperativa?</label>
+            <label><input type="radio" name="cooperativa" value="sim" /> Sim</label>
+            <label><input type="radio" name="cooperativa" value="nao" /> Não</label>
+          </div>
+          <input type="text" name="qual_coop" placeholder="Qual?" />
+        </fieldset>
+
+        <!-- Produção -->
+        <fieldset>
+          <legend>Produção e Manejo</legend>
+            
+          <div class="apresentacao__itens">
+            <label>Principais Produtos:</label>
+            <textarea name="producao" rows="3"></textarea>
+          </div>
+
+          <div class="apresentacao__itens">
+            <label>Irrigação (tipo):</label>
+            <input type="text" name="irrigacao"/>
+          </div>
+
+          <div class="apresentacao__itens">
+            <label>Defensivos Agrícolas:</label>
+            <textarea name="defensivos" rows="2"></textarea>
+          </div>
+
+          <div class="apresentacao__itens">
+            <label>Maquinário Agrícola:</label>
+            <textarea name="maquinario" rows="2"></textarea>
+          </div>
+ 
+          <div class="apresentacao__itens">
+            <label>Beneficiamento (ex.: geleia, polpa, farinha):</label>
+            <textarea name="beneficiamento" rows="2"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Políticas Públicas -->
+        <fieldset>
+          <legend>Políticas Públicas</legend>
+          <label
+            ><input type="checkbox" name="pnae" value="sim" /> PNAE (Merenda
+            Escolar)</label
+          >
+          <label
+            ><input type="checkbox" name="paa" value="sim" /> PAA (Aquisição de
+            Alimentos)</label
+          >
+        </fieldset>
+
+        <!-- Observações -->
+        <fieldset>
+          <legend>Observações Gerais</legend>
+          <textarea name="obs" rows="4"></textarea>
+        </fieldset>
+
+        <button type="submit" class="botao_salvar">Salvar</button>
+      </form>
+    </main>
+
+    <footer class="rodape">
+      <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
+    </footer>
+  </body>
+</html>
