@@ -107,10 +107,10 @@
           
           <div class="apresentacao__itens__radio">
             <label>Afiliado a Cooperativa?</label>
-            <label><input type="radio" name="cooperativa" value="sim" /> Sim</label>
-            <label><input type="radio" name="cooperativa" value="nao" /> Não</label>
+            <label><input type="radio" id="sim_afiliado" name="cooperativa" value="sim" /> Sim</label>
+            <label><input type="radio" id="nao_afiliado" name="cooperativa" value="nao" /> Não</label>
           </div>
-          <input type="text" name="qual_coop" placeholder="Qual?" />
+          <input type="text" class="textarea_afiliado" id="textarea_afiliado" name="qual_coop" placeholder="Qual?" style="display: none"/>
         </fieldset>
 
         <!-- Produção -->
@@ -145,21 +145,17 @@
 
         <!-- Políticas Públicas -->
         <fieldset>
-          <legend>Políticas Públicas</legend>
-          <label
-            ><input type="checkbox" name="pnae" value="sim" /> PNAE (Merenda
-            Escolar)</label
-          >
-          <label
-            ><input type="checkbox" name="paa" value="sim" /> PAA (Aquisição de
-            Alimentos)</label
-          >
+            <legend>Políticas Públicas</legend>
+            <div class="apresentacao__itens__checkbox">
+                <label><input type="checkbox" name="pnae" value="sim"/> PNAE (Merenda Escolar)</label>
+                <label><input type="checkbox" name="paa" value="sim"/> PAA (Aquisição de Alimentos)</label>
+            </div>
         </fieldset>
 
         <!-- Observações -->
         <fieldset>
           <legend>Observações Gerais</legend>
-          <textarea name="obs" rows="4"></textarea>
+          <textarea name="obs" rows="4" cols="48"></textarea>
         </fieldset>
 
         <button type="submit" class="botao_salvar">Salvar</button>

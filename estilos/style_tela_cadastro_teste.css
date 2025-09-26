@@ -72,7 +72,7 @@ legend {
 }
 
 .apresentacao__itens__checkbox {
-    border: 1px solid #6B4E31;
+    border: none;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -81,7 +81,7 @@ legend {
 }
 
 .apresentacao__itens__checkbox__defensivos {
-    border: 1px solid #6B4E31;
+    border: none;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -107,6 +107,15 @@ legend {
     margin-left: 10px;
 }
 
+.apresentação_itens__checkbox legend {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #F5F5F5;
+
+}
+
 
 .apresentacao__itens__checkbox label {
     flex: none;
@@ -123,6 +132,7 @@ legend {
     width: auto;
     margin-right: 10px;
     margin-left: 10px;
+    margin-top: 15px;
 }
 
 .apresentacao__itens {

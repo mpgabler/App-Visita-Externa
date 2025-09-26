@@ -17,6 +17,25 @@ defensivosDiv.style.display = "none"; // Inicialmente escondido
     defensivosDiv.style.display = "none";
     });
 }
+
+
+// Faz a lógica para mostrar/ocultar textearea após selecionar "Sim" em Afiliado a cooperativa?
+const sim_afiliado = document.getElementById("sim_afiliado");
+const nao_afiliado = document.getElementById("nao_afiliado");
+const textearea_afiliado = document.getElementById("textarea_afiliado");
+
+if (textearea_afiliado){
+    
+textearea_afiliado.style.display = "none"; // Inicialmente escondido
+
+    sim_afiliado.addEventListener("change", () => {
+    textearea_afiliado.style.display = "block";
+    });
+
+    nao_afiliado.addEventListener("change", () => {
+    textearea_afiliado.style.display = "none";
+    });
+}
            
 
  // Função para renderizar os cadastros na lista na tela de cadastro (por enquanto)  
