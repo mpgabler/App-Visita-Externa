@@ -1,3 +1,4 @@
+/* estilos/style_tela_index.css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
@@ -6,51 +7,36 @@
     box-sizing: border-box;
 }
 
-/* Ajustes específicos para telas menores */
-@media (max-width: 600px) {
-    .form-container {
-        padding: 15px;
-        margin: 10px;
-    }
-
-    a {
-        width: 100%; /* botão ocupa largura total */
-        font-size: 1rem;
-    }
-
-    h1, h2, h3, p, label {
-        font-size: 0.95rem; /* texto menor no mobile */
-    }
-
-    .direcionamento_opcoes {
-        flex-direction: column; /* organiza botões em coluna */
-        gap: 10px;
-    }
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F5;
 }
 
 .form-container {
     display: flex;
     flex-direction: column;
-    width: 100%; /* ocupa toda largura disponível */
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
+    width: 90%; /* Mais fluido, adapta-se melhor a diferentes telas */
+    max-width: 500px; /* Aumentado para melhor legibilidade */
+    margin: 2rem auto;
+    padding: 1.5rem;
     border: 1px solid #6B4E31;
-    border-radius: 5px;
-    gap: 25px;
-    background-color: #F5F5F5;
+    border-radius: 8px;
+    gap: 2rem;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
 }
 
 .direcionamento_opcoes {
     border: 1px solid #6B4E31;
-    padding: 15px;
-    border-radius: 5px;
+    padding: 1rem;
+    border-radius: 8px;
     text-align: center;
     background-color: #F5F5F5;
-
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-direction: column; /* Padronizado como coluna para melhor controle */
+    gap: 1.5rem;
     justify-content: center;
 }
 
@@ -61,60 +47,116 @@ h1, h2, h3, p, label {
 
 h1 {
     text-align: center;
-    margin-bottom: 10px;
+    font-size: 1.8rem; /* Maior para destaque */
     font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 h2 {
-    margin-bottom: 10px;
+    font-size: 1.4rem;
     font-weight: 500;
+    margin-bottom: 0.5rem;
 }
 
 h3 {
     text-align: center;
-    margin-bottom: 30px;
+    font-size: 1.2rem;
     font-weight: normal;
+    margin-bottom: 1.5rem;
 }
 
 p {
     text-align: center;
-    margin-bottom: 20px;
+    font-size: 1rem;
     font-weight: 400;
+    margin-bottom: 1rem;
 }
 
 label {
-    margin-bottom: 5px;
+    font-size: 1rem;
     font-weight: 700;
+    margin-bottom: 0.5rem;
 }
 
 a {
+    display: inline-block;
     cursor: pointer;
     text-decoration: none;
-    padding: 10px 20px;
-    min-width: 180px;
+    padding: 0.8rem 1.5rem;
+    width: 100%; /* Ocupa toda a largura do container */
+    max-width: 300px; /* Limite para evitar botões largos demais */
     text-align: center;
-
-    border-radius: 4px;
+    border-radius: 6px;
     border: 1px solid #ccc;
-    background-color:#2F855A;
+    background-color: #2F855A;
     color: #F5F5F5;
     font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
     font-weight: 500;
     transition: background 0.2s;
 }
 
 a:hover {
-    background-color:#276749;
+    background-color: #276749;
 }
 
 .rodape {
     justify-content: center;
     text-align: center;
-    display: flex;
-    font-size: 1rem;
-    padding: 20px;
-    white-space: pre-wrap;
+    font-size: 0.9rem;
+    padding: 1rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     color: #6B4E31;
+    margin-top: auto; /* Garante que o rodapé fique no final da página */
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 600px) {
+    .form-container {
+        width: 95%; /* Mais espaço nas bordas */
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Tamanho menor, mas ainda legível */
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h3, p, label {
+        font-size: 1rem; /* Mínimo para legibilidade */
+    }
+
+    a {
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+    }
+
+    .direcionamento_opcoes {
+        gap: 1rem;
+    }
+}
+
+/* Ajustes para telas muito pequenas (ex.: smartphones antigos) */
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    h3, p, label {
+        font-size: 0.9rem;
+    }
+
+    a {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
 }
