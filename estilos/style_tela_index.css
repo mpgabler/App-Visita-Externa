@@ -162,6 +162,8 @@ a:hover {
     a {
         font-size: 0.9rem;
         padding: 0.6rem 0.8rem;
+        width: fit-content; /* Ajusta ao conteúdo */
+        max-width: 100%; /* Evita que ultrapasse o container */
         touch-action: manipulation; /* Melhora resposta ao toque */
         line-height: 1.5; /* Mais espaço interno */
     }
