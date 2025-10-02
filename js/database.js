@@ -6,8 +6,8 @@
 
     const db = new Dexie("visitasDB");
    
-    db.version(1).stores({ 
-    cadastro: "++id, nome, sobrenome, cpf"
+    db.version(2).stores({ // Definindo a versão do banco de dados e as tabelas 
+    cadastro: "++id, propriedade, produtor, telefone_principal, inscricao_estadual" // Índices para busca
     });
 
      db.open().then(() => {

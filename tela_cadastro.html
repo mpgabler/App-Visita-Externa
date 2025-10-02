@@ -1,140 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App Visita Externa Versão 1.0.0-beta</title>
     <script type="module" src="js/lib/dexie.mjs"></script>
     <script type="module" src="js/database.js"></script>
-    <script type="module" src="js/tela_cadastro.js"></script> 
-    <script type="module" src="js/main.js"></script> 
+    <script type="module" src="js/tela_cadastro.js"></script>
+    <script type="module" src="js/main.js"></script>
     <script type="module" src="js/state.js"></script>
-    <link rel="stylesheet" href="estilos/style_tela_cadastro.css">
-    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="estilos/style_tela_cadastro_teste.css" />
+    <link rel="manifest" href="manifest.json" />
     <!--<link rel="manifest" href="https://mpgabler.github.io/App-Visita-Externa/manifest.json">-->
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" sizes="48x48" href="assets/favicon.ico"> 
-</head> 
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/icon-512.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="48x48"
+      href="assets/favicon.ico"
+    />
+  </head>
 
-<body>
-
+  <body>
     <main class="">
-        <form class="form-container" id="formulario">
-            <h1 class="form-container__titulo">Formulário de Cadastro</h1>
+      <form id="formulario" class="form-container">
+        <h2>Visita Técnica da Comissão de Rastreabilidade</h2>
+        <h3>Relatório Técnico</h3>
 
+        <!-- Identificação -->
+        <fieldset>
+          <legend>Identificação da Propriedade</legend>
+          <label>Propriedade:</label>
+          <input type="text" name="propriedade" id="propriedade" required />
 
-            <div class="apresentacao__itens">
-                <label>Nome: </label><input type="text" name="nome" id="nome" required>
-            </div>
+          <label>Produtor Rural:</label>
+          <input type="text" name="produtor" id="produtor" required />
 
-            <div class="apresentacao__itens">
-                <label>Sobrenome: </label><input type="text" name="sobrenome" id="sobrenome" required>
-            </div>
+          <label>Local (Município):</label> 
+          <input type="text" name="local" id="municipio" required />
 
-            <div class="apresentacao__itens">
-                <label>CPF: </label><input type="text" name="cpf" id="cpf" required>
-            </div>
+          <label>Telefone Principal:</label>
+          <input type="text" name="telefone" id="telefone_principal" required />
 
-            <div class="apresentacao__itens">
-                <label>CNPJ: </label><input type="text" name="cnpj" id="cnpj" required>
-            </div>
+          <label>Telefone Contato (opcional):</label>
+          <input type="text" name="telefone_contato" id="telefone_contato" />
 
-            <div class="apresentacao__itens">
-                <label>Nome Fantasia: </label><input type="text" name="nome_fantasia" id="nome_fantasia" required>
-            </div>
+          <label>Inscrição Estadual (opcional):</label>
+          <input type="text" name="inscricao_estadual" id="inscricao_estadual"/>
+        </fieldset>
 
-            <div class="apresentacao__itens">
-                <label>Endereço: </label><input type="text" name="endereco" id="endereco" required>
-            </div>
+        <!-- Área -->
+        <fieldset>
+          <legend>Características da Área</legend>
+          <label>Área Total (ha):</label>
+          <input type="number" step="0.01" name="area_total" id="area_total"/>
 
-            <div class="apresentacao__itens">
-                <label>Número: </label><input type="text" name="numero" id="numero" required>
-            </div>
-            <div class="apresentacao__itens">
-                <label>Bairro/Distrito: </label><input type="text" name="bairro" id="bairro" required>
-            </div>
+          <label>Área Produtiva (ha):</label>
+          <input type="number" step="0.01" name="area_produtiva" id="area_produtiva"/>
 
-            <div class="apresentacao__itens">
-                <label>Cidade: </label><input type="text" name="cidade" id="cidade" required>
-            </div>
+          <div class="apresentacao__itens__radio">
+            <label>Possui Reserva Legal?</label>
+            <label><input type="radio" name="reserva" value="sim" id="reserva_legal_sim"/> Sim</label>
+            <label><input type="radio" name="reserva" value="nao" id="reserva_legal_nao"/> Não</label>
+          </div>
+        
 
-            <div class="apresentacao__itens">
-                <label>Estado: </label><input type="text" name="estado" id="estado" required>
-            </div>
+          <div class="apresentacao__itens__radio">
+            <label>Cadastro Ambiental Rural (CAR):</label>
+            <label><input type="radio" name="car" value="sim" id="car_sim"/> Sim</label>
+            <label><input type="radio" name="car" value="nao" id="car_nao"/> Não</label>
+          </div>
+          
+        </fieldset>
 
-            <div class="apresentacao__itens">
-                <label>Telefone: </label><input type="tel" name="telefone" id="telefone" required>
-            </div>
+        <!-- Comerciais -->
+        <fieldset>
+          <legend>Aspectos Comerciais</legend>
+          <label>Emite Nota Fiscal?</label>
+          <div class="apresentacao__itens__radio">
+            <label><input type="radio" name="nota_fiscal" value="sim" id="nota_fiscal_sim"/> Sim</label>
+            <label><input type="radio" name="nota_fiscal" value="nao" id="nota_fiscal_nao"/> Não</label>
+          </div>
 
+          
+          <div class="apresentacao__itens__radio">
+            <label>Utiliza Etiqueta de Rastreabilidade?</label>
+            <label><input type="radio" name="rastreabilidade" value="sim" id="etiqueta_sim"/>Sim</label>
+            <label><input type="radio" name="rastreabilidade" value="nao" id="etiqueta_nao"/>Não</label>
+          </div>
 
-            <div class="apresentacao__itens__checkbox">
-                <label>Produtos Comercializados:</label>
+          
+          <div class="apresentacao__itens__radio">
+            <label>Afiliado a Cooperativa?</label>
+            <label><input type="radio" id="sim_afiliado" name="cooperativa" value="sim" /> Sim</label>
+            <label><input type="radio" id="nao_afiliado" name="cooperativa" value="nao" /> Não</label>
+          </div>
+          <input type="text" class="textarea_afiliado" id="textarea_afiliado" name="qual_coop" placeholder="Qual?" style="display: none"/>
+        </fieldset>
 
-                <label for="tomate"> <input type="checkbox" name="itens_produtos" value="tomate" id="tomate">Tomate</label>
-
-                <label for="alface"> <input type="checkbox" name="itens_produtos" value="alface" id="alface">Alface</label>
-
-                <label for="abobora"> <input type="checkbox" name="itens_produtos" value="abobora" id="abobora">Abóbora</label>
-
-                <label for="cenoura"> <input type="checkbox" name="itens_produtos" value="cenoura" id="cenoura">Cenoura</label>
-
-                <label for="outros"> <input type="checkbox" name="itens_produtos" value="outros" id="outros">Outros</label>
-            </div>
-
-
-
-            <div class="apresentacao__itens__radio">
-                <label>Usa defensivo agrícola? </label>
-
-                <label for="Sim_defensivo"><input type="radio" name="grupo_radio_defensivo" id="Sim_defensivo" value="Sim" required> Sim</label>
-
-                <label for="Nao_defensivo"><input type="radio" name="grupo_radio_defensivo" id="Nao_defensivo" value="Nao" required> Não</label>
-            </div>
-
-
-            <div class="apresentacao__itens__checkbox__defensivos" id="apresentacao__itens__checkbox__defensivos" display="none">
-                <label>Quais defensivos agrícolas?</label>
-
-                <label for="glifosato"><input type="checkbox" name="itens_defensivos" value="glifosato" id="glifosato">Glifosato e seus sais</label>
-
-                <label for="2,4-D"><input type="checkbox" name="itens_defensivos" value="2,4-D" id="2,4-D">2,4-D</label>
-
-                <label for="atrazina"><input type="checkbox" name="itens_defensivos" value="atrazina" id="atrazina">Atrazina</label>
-
-                <label for="mancozeb"><input type="checkbox" name="itens_defensivos" value="mancozeb" id="mancozeb">Mancozeb</label>
-
-                <label for="acefato"><input type="checkbox" name="itens_defensivos" value="acefato" id="acefato">Acefato</label>
-
-                <label for="outros_pesticidas"><input type="checkbox" name="itens_defensivos" value="outros_pesticidas" id="outros_pesticidas">Outros</label>
-
-            </div>
+        <!-- Produção -->
+        <fieldset>
+          <legend>Produção e Manejo</legend>
             
-            <div class="apresentacao__itens__radio">
-                <label>Emite nota fiscal?</label>
-
-                <label for="Sim_nota"><input type="radio" name="grupo_radio_emissao_nota" id="Sim_nota" value="Sim" required> Sim</label>
-
-                <label for="Nao_nota"><input type="radio" name="grupo_radio_emissao_nota" id="Nao_nota" value="Nao" required> Não</label>
-
+          
+          <div class="tag-container" id="tagContainerCulturas">
+            <label>Principais Produtos:</label>
+            <input type="text" id="inputProducao" placeholder="Digite e selecione..."/>
             </div>
+          <div class = "suggestions" id="suggestionsProducao"></div>
 
-            <div class="apresentacao__itens">
-                <input type="submit" class="botao_enviar" value="Próximo">
-            </div>
+          <div class="tag-container" id="tagContainerIrrigacao" >
+            <label>Irrigação (tipo):</label>
+            <input type="text" id= "inputIrrigacao" name="irrigacao" placeholder="Digite e selecione..." />
+          </div>
+          <div class = "suggestions" id="suggestionsIrrigacao"></div>
 
-            <ul class="cadastro-list" id="cadastro-list"></ul>
+          <div class="tag-container" id="tagContainerDefensivo" >
+            <label>Defensivos Agrícolas:</label>
+            <input type="text" id = "inputDefensivo" name="defensivo" placeholder="Digite e selecione..."/>
+          </div>
+          <div class = "suggestions" id="suggestionsDefensivo"></div>
 
-        </form>
+          <div class="tag-container" id="tagContainerMaquinario">
+            <label>Maquinário Agrícola:</label>
+            <input type="text" id = "inputMaquinario" name="maquinario" placeholder="Digite e selecione..."/>
+          </div>
+          <div class = "suggestions" id="suggestionsMaquinario"></div>
 
+          <div class="tag-container" id="tagContainerBeneficiamento">
+            <label>Beneficiamento (ex.: geleia, polpa, farinha):</label>
+            <input type="text" id= "inputBeneficiamento" name="beneficiamento" placeholder="Digite e selecione..."/>
+          </div>
+          <div class = "suggestions" id="suggestionsBeneficiamento"></div>
+
+        </fieldset>
+
+        <!-- Políticas Públicas -->
+        <fieldset>
+            <legend>Políticas Públicas</legend>
+            <div class="apresentacao__itens__checkbox">
+                <label><input type="checkbox" name="pnae" value="sim" id="politica_pnae"/> PNAE (Merenda Escolar)</label>
+                <label><input type="checkbox" name="paa" value="sim" id="politica_paa"/> PAA (Aquisição de Alimentos)</label>
+                <label><input type="checkbox" id= "outras_politicas" name="outras_politicas" value="sim"/> Outras Políticas Públicas</label>
+                <input type="text" class="textarea_politicas" id="textarea_politicas" name="qual_politica" placeholder="Qual?" style="display: none" />
+              </div>
+        </fieldset>
+
+        <!-- Observações -->
+        <fieldset>
+          <legend>Observações Gerais</legend>
+          <textarea id="textAreaObservacoes" name="obs" rows="4" cols="48"></textarea>
+        </fieldset>
+
+        <button type="submit" class="botao_salvar">Salvar</button>
+      </form>
     </main>
 
     <footer class="rodape">
-        <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
+      <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
     </footer>
-</body>
-
+  </body>
 </html>
