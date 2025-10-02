@@ -134,6 +134,8 @@ a:hover {
     a {
         font-size: 1rem;
         padding: 0.7rem 1rem;
+        width: fit-content; /* Ajusta ao conteúdo */
+        max-width: 100%; /* Evita que ultrapasse o container */
         touch-action: manipulation; /* Melhora resposta ao toque */
         line-height: 1.5; /* Mais espaço interno */
     }
