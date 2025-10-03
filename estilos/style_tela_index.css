@@ -111,25 +111,27 @@ a:hover {
     margin-top: auto; /* Garante que o rodapé fique no final da página */
 }
 
-/* Ajustes para telas menores */
+/* Ajustes para telas */
 @media (max-width: 10000px) {
 
-    * {
+    html, body {
+        
+        display: flexbox;  
+        width: auto;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-    }
-
-    .body {
-        padding: 1rem; /* Espaçamento interno para telas pequenas */
-        display: flexbox;     
+        height: 100%;
+        
     }
 
     .form-container {
         width: 100%; /* Mais espaço nas bordas */
-        padding: 1rem;
-        margin: 1rem auto;
-    }
+        height: 100%;
+        max-width: 100%; /* Remove limite de largura */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
 
     h1 {
         font-size: 1.5rem; /* Tamanho menor, mas ainda legível */
