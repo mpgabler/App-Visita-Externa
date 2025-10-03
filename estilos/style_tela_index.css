@@ -12,7 +12,10 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #F5F5F5;
-    
+    margin: 0%;
+    padding: 0%;
+
+
 }
 
 .form-container {
@@ -119,20 +122,22 @@ a:hover {
         
         display: flexbox;  
         width: auto;
-        margin: 0px 0px;
-        padding: 0px 0px;
-        height: auto;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
         
     }
 
     .form-container {
         width: 100%; /* Mais espaço nas bordas */
+        max-width: none;
         height: 100%; /* Ajusta a altura ao conteúdo */
         display: contents;
         flex-direction: column;
         justify-content: center;
         margin: 0px 0px; /* Centraliza o container */
-        padding: 0px 0px; /* Espaçamento interno reduzido */
+        padding: 20px; /* Espaçamento interno reduzido */
+        box-sizing: border-box;
         
 
     h1 {
