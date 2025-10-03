@@ -113,6 +113,11 @@ a:hover {
 
 /* Ajustes para telas menores */
 @media (max-width: 600px) {
+
+    .body {
+        padding: 1rem; /* Espaçamento interno para telas pequenas */
+    }
+
     .form-container {
         width: 100%; /* Mais espaço nas bordas */
         padding: 1rem;
