@@ -130,8 +130,8 @@ a:hover {
         display: flexbox;
         flex-direction: column;
         justify-content: center;
-        margin: 0px 0px /* Centraliza o container */
-        padding: 1rem; /* Espaçamento interno reduzido */
+        margin: 0px 0px; /* Centraliza o container */
+        padding: 0px 0px; /* Espaçamento interno reduzido */
         
 
     h1 {
