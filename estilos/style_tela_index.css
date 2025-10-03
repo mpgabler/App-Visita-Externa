@@ -147,6 +147,11 @@ a:hover {
 
 /* Ajustes para telas muito pequenas (ex.: smartphones antigos) */
 @media (max-width: 400px) {
+    .form-container {
+        padding: 0.8rem;
+        margin: 0.5rem auto;
+    }
+
     h1 {
         font-size: 1.3rem;
     }
