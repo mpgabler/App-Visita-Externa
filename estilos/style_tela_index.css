@@ -146,19 +146,20 @@ a:hover {
         
 
     h1 {
-        font-size: 1.5rem; /* Tamanho menor, mas ainda legível */
+        font-size: 5rem; /* Tamanho menor, mas ainda legível */
     }
 
     h2 {
-        font-size: 1.2rem;
+        font-size: 4rem;
     }
 
     h3, p, label {
-        font-size: 1rem; /* Mínimo para legibilidade */
+        font-size: 4rem; /* Mínimo para legibilidade */
     }
 
+
     a {
-        font-size: 1rem;
+        font-size: 4rem;
         padding: 0.7rem 1.2rem;
         width: auto; /* Ajusta ao conteúdo */
         max-width: 100%; /* Evita que ultrapasse o container */
@@ -172,7 +173,7 @@ a:hover {
     }
 
     .rodape {
-        font-size: 0.8rem;
+        font-size: 4rem;
         padding: 0%;
         margin: 0%;
         
