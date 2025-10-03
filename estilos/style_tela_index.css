@@ -126,10 +126,11 @@ a:hover {
 
     .form-container {
         width: auto; /* Mais espaço nas bordas */
-        height: auto; /* Ajusta altura automaticamente */
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin: 0% ; /* Centraliza o container */
+        padding: 1rem; /* Espaçamento interno reduzido */
         
 
     h1 {
