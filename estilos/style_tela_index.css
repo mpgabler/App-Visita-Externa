@@ -127,7 +127,7 @@ a:hover {
 
     .form-container {
         width: 100%; /* Mais espaço nas bordas */
-        height: fit-content; /* Ajusta a altura ao conteúdo */
+        height: 100%; /* Ajusta a altura ao conteúdo */
         display: contents;
         flex-direction: column;
         justify-content: center;
