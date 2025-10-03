@@ -125,8 +125,8 @@ a:hover {
     }
 
     .form-container {
-        width: 100%; /* Mais espaço nas bordas */
-        height: 100%;
+        width: auto; /* Mais espaço nas bordas */
+        height: auto; /* Ajusta altura automaticamente */
         max-width: 100%; /* Remove limite de largura */
         display: flex;
         flex-direction: column;
