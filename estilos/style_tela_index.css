@@ -112,7 +112,13 @@ a:hover {
 }
 
 /* Ajustes para telas menores */
-@media (max-width: 600px) {
+@media (max-width: 2000px) {
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
     .body {
         padding: 1rem; /* Espaçamento interno para telas pequenas */
@@ -138,7 +144,7 @@ a:hover {
 
     a {
         font-size: 1rem;
-        padding: 0.9rem 0.1rem;
+        padding: 0.7rem 1.2rem;
         width: auto; /* Ajusta ao conteúdo */
         max-width: 100%; /* Evita que ultrapasse o container */
         touch-action: manipulation; /* Melhora resposta ao toque */
@@ -152,6 +158,11 @@ a:hover {
 
 /* Ajustes para telas muito pequenas (ex.: smartphones antigos) */
 @media (max-width: 400px) {
+
+    .body {
+        padding: 0.5rem; /* Espaçamento interno reduzido */
+    }
+
     .form-container {
         padding: 0.8rem;
         margin: 0.5rem auto;
@@ -183,3 +194,4 @@ a:hover {
         gap: 1rem;
     }
 }
+
