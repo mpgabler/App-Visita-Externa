@@ -118,18 +118,19 @@ a:hover {
         
         display: flexbox;  
         width: auto;
-        margin: 0;
-        padding: 0;
+        margin: 0px 0px;
+        padding: 0px 0px;
+        min-width: auto;
         height: 100%;
         
     }
 
     .form-container {
         width: 100%; /* Mais espaço nas bordas */
-        display: flex;
+        display: flexbox;
         flex-direction: column;
         justify-content: center;
-        margin: 0% ; /* Centraliza o container */
+        margin: 0px 0px /* Centraliza o container */
         padding: 1rem; /* Espaçamento interno reduzido */
         
 
