@@ -125,7 +125,7 @@ a:hover {
     }
 
     .form-container {
-        width: auto; /* Mais espaço nas bordas */
+        width: 100%; /* Mais espaço nas bordas */
         display: flex;
         flex-direction: column;
         justify-content: center;
