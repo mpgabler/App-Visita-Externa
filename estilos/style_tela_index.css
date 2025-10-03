@@ -120,8 +120,7 @@ a:hover {
         width: auto;
         margin: 0px 0px;
         padding: 0px 0px;
-        min-width: auto;
-        height: 100%;
+        height: auto;
         
     }
 
@@ -156,8 +155,17 @@ a:hover {
         line-height: 1.5; /* Mais espaço interno */
     }
 
+
     .direcionamento_opcoes {
         gap: 1rem;
+    }
+
+    .rodape {
+        font-size: 0.8rem;
+        padding: 0%;
+        margin: 0%;
+        
+
     }
 }
 
