@@ -112,7 +112,7 @@ a:hover {
 }
 
 /* Ajustes para telas menores */
-@media (max-width: 3000px) {
+@media (max-width: 4000px) {
 
     * {
         margin: 0;
