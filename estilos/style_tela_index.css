@@ -143,6 +143,7 @@ a:hover {
         margin: 0px 0px; /* Centraliza o container */
         padding: 20px; /* Espaçamento interno reduzido */
         box-sizing: border-box;
+    }
         
 
     h1 {
@@ -219,5 +220,16 @@ a:hover {
     .direcionamento_opcoes {
         gap: 1rem;
     }
-}
 
+    .rodape {
+        font-size: 0.7rem;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+    }
+
+    p {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+
+} 
