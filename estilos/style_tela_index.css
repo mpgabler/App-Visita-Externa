@@ -172,13 +172,14 @@ a:hover {
         gap: 1rem;
     }
 
-    .rodape {
+    .rodape{
         font-size: 4rem;
         padding: 0%;
         margin: 0%;
         
-
     }
+
+
 }
 
 /* Ajustes para telas muito pequenas (ex.: smartphones antigos) */
