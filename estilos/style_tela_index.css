@@ -174,7 +174,7 @@ a:hover {
     }
 
     .rodape {
-        font-size: 4rem;
+        font-size: 1rem;
         padding: 0%;
         margin: 0%;
         
@@ -220,7 +220,7 @@ a:hover {
         gap: 1rem;
     }
 
-    .rodape {
+    .rodape{
         font-size: 0.7rem;
         padding: 0.5rem;
         margin: 0.5rem 0;
