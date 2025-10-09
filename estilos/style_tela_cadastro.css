@@ -331,15 +331,65 @@ textarea {
         
 
     h1 {
-        font-size: 5rem; /* Tamanho menor, mas ainda legível */
+        font-size: 6rem; /* Tamanho menor, mas ainda legível */
     }
 
     h2 {
         font-size: 4rem;
     }
 
-    h3, p, label {
-        font-size: 4rem; /* Mínimo para legibilidade */
+    h3 {
+        font-size: 5rem; /* Mínimo para legibilidade */
+    }
+
+    p {
+        font-size: 2rem; /* Mínimo para legibilidade */
+    }
+
+    
+    label {
+        font-size: 2rem; /* Mínimo para legibilidade */
+    }
+
+    .apresentacao__itens__radio label {
+        font-size: 2rem; /* Mínimo para legibilidade */
+    }
+
+    .apresentacao__itens__checkbox label {
+        font-size: 2rem; /* Mínimo para legibilidade */
+    }
+
+   
+    .suggestions {
+        max-width: 100%;
+        width: 93%;
+    }
+
+    .suggestion-item {
+        font-size: 2rem;  
+        padding: 1rem;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .suggestion-item label {
+        font-size: 2rem; 
+        padding: 1rem;
+        max-width: 100%;
+        width: 100%; 
+    }
+
+    .tag {
+       font-size: 2rem; 
+    }
+
+    .botao_salvar {
+        font-size: 4rem;
+        padding: 0.7rem 1.2rem;
+        width: 100%; /* Ajusta ao conteúdo */
+        max-width: 100%; /* Evita que ultrapasse o container */
+        touch-action: manipulation; /* Melhora resposta ao toque */
+        line-height: 1.5; /* Mais espaço interno */
     }
 
 
@@ -362,6 +412,15 @@ textarea {
         padding: 0%;
         margin: 0%;
         
+    }
+
+    fieldset legend{
+        font-size: 2rem;
+    }
+
+    input {
+        padding: 2%;
+        font-size: 2rem;
     }
 
 
@@ -415,5 +474,14 @@ textarea {
         margin-bottom: 0.5rem;
         font-size: 1rem;
     }
+
+    fieldset legend{
+        font-size: 1rem;
+    }
+
+    input [type="text"], input[type="email"], input[type="password"], textarea {
+        padding: 4%;
+    }
+
 
 } 
