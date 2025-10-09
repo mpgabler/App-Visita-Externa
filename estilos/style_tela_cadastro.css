@@ -28,7 +28,7 @@
 
 }
 
-h1 {
+h1, h2, h3 {
     text-align: center;
     margin-bottom: 10px;
     font-family: 'Roboto', sans-serif;
@@ -37,7 +37,7 @@ h1 {
 }
 
 label {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     color: #6B4E31;
@@ -45,6 +45,7 @@ label {
 }
 
 input {
+    margin-bottom: 15px;
     text-align: center;
     width: 100%;
     padding: 1%;
@@ -55,8 +56,23 @@ input {
     color: #6B4E31;
 }
 
-.apresentacao__itens__checkbox {
+fieldset {
     border: 1px solid #6B4E31;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #F5F5F5;
+    margin-bottom: 15px;
+}
+
+legend {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #6B4E31;
+    padding: 0 10px;
+}
+
+.apresentacao__itens__checkbox {
+    border: none;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -65,7 +81,7 @@ input {
 }
 
 .apresentacao__itens__checkbox__defensivos {
-    border: 1px solid #6B4E31;
+    border: none;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -91,6 +107,15 @@ input {
     margin-left: 10px;
 }
 
+.apresentação_itens__checkbox legend {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #F5F5F5;
+
+}
+
 
 .apresentacao__itens__checkbox label {
     flex: none;
@@ -103,10 +128,17 @@ input {
 }
 
 .apresentacao__itens__checkbox input {
-    flex: none;
+    display: flex;
     width: auto;
     margin-right: 10px;
     margin-left: 10px;
+    margin-top: 15px;
+}
+
+.apresentacao__itens__checkbox input[type="text"] {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .apresentacao__itens {
@@ -115,7 +147,7 @@ input {
 }
 
 .apresentacao__itens__radio {
-    border: 1px solid #6B4E31;
+    border: none;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -141,7 +173,7 @@ input {
 }
 
 
-.botao_enviar {
+.botao_salvar {
     cursor: pointer;
     text-decoration: none;
     display: flex;
@@ -169,6 +201,95 @@ input {
     border-radius: 4px;
 }
 
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: .5rem;
+  padding: .5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-height: 50px;
+  cursor: text;
+}
+
+.tag-container label {
+  
+  flex-basis: 100%;
+  margin-bottom: .3rem;
+  font-weight: 700;
+  color: #6B4E31;
+}
+
+.tag {
+  border: 1px solid #6B4E31;
+  border-radius: 8px;
+  background: #e0f7fa;
+  color: #00796b;
+  padding: .3rem .7rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+}
+
+.tag button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #00796b;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.suggestions {
+  border: 1px solid #6B4E31;
+  border-radius: 8px;
+  margin-top: -4px;
+  max-height: 150px;
+  overflow-y: auto;
+  display: none;
+  position: absolute;
+  background: white;
+  width: 66%;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  color: #6B4E31;
+  font-size: 14px;  
+  padding: .5rem;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #f1f1f1;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #6B4E31;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #6B4E31;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+
 .rodape {
     justify-content: center;
     text-align: center;
@@ -180,3 +301,119 @@ input {
     font-weight: 400;
     color: #6B4E31;
 }
+
+
+/* Ajustes para telas */
+@media (max-width: 10000px) {
+
+    html, body {
+        
+        display: flexbox;  
+        width: auto;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        justify-content: space-evenly;
+        
+    }
+
+    .form-container {
+        width: 100%; /* Mais espaço nas bordas */
+        max-width: none;
+        height: 100%; /* Ajusta a altura ao conteúdo */
+        display: contents;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0px 0px; /* Centraliza o container */
+        padding: 20px; /* Espaçamento interno reduzido */
+        box-sizing: border-box;
+    }
+        
+
+    h1 {
+        font-size: 5rem; /* Tamanho menor, mas ainda legível */
+    }
+
+    h2 {
+        font-size: 4rem;
+    }
+
+    h3, p, label {
+        font-size: 4rem; /* Mínimo para legibilidade */
+    }
+
+
+    a {
+        font-size: 4rem;
+        padding: 0.7rem 1.2rem;
+        width: auto; /* Ajusta ao conteúdo */
+        max-width: 100%; /* Evita que ultrapasse o container */
+        touch-action: manipulation; /* Melhora resposta ao toque */
+        line-height: 1.5; /* Mais espaço interno */
+    }
+
+
+    .direcionamento_opcoes {
+        gap: 1rem;
+    }
+
+    .rodape {
+        font-size: 1rem;
+        padding: 0%;
+        margin: 0%;
+        
+    }
+
+
+}
+
+/* Ajustes para telas muito pequenas (ex.: smartphones antigos) */
+@media (max-width: 400px) {
+
+    .body {
+        padding: 0.5rem; /* Espaçamento interno reduzido */
+    }
+
+    .form-container {
+        padding: 0.8rem;
+        margin: 0.5rem auto;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    h3, p, label {
+        font-size: 0.9rem;
+    }
+
+    a {
+        font-size: 0.9rem;
+        
+        padding: 0.6rem 0.9rem;
+        width: fit-content; /* Ajusta ao conteúdo */
+        max-width: 100%; /* Evita que ultrapasse o container */
+        touch-action: manipulation; /* Melhora resposta ao toque */
+        line-height: 1.5; /* Mais espaço interno */
+    }
+
+    .direcionamento_opcoes {
+        gap: 1rem;
+    }
+
+    .rodape{
+        font-size: 0.7rem;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+    }
+
+    p {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+
+} 
