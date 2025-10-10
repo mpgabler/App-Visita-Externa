@@ -380,14 +380,16 @@ textarea {
 
     .apresentacao__itens__checkbox input {
         margin: 10px;
-        transform: scale(2);
+        transform: scale(4);
         margin-right: 50px;
     }
 
    
     .suggestions {
         max-width: 100%;
-        width: 93%;
+        width: 96%;
+        height: 100%;
+        max-height: 60%;
     }
 
     .suggestion-item {
