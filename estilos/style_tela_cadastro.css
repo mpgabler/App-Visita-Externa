@@ -356,6 +356,11 @@ textarea {
     
     }
 
+    textarea {
+        font-size: 3rem;
+        height: 170px;
+    }
+
     .apresentacao__itens__radio {
         margin-top: 25px;
     }
