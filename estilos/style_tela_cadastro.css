@@ -373,9 +373,8 @@ textarea {
 
     .apresentacao__itens__radio label {
         font-size: 4rem; /* Mínimo para legibilidade */
-        margin-top: 25px;
-        text-align: left;
-        
+        margin-top: 50px;
+        text-align: left;        
     }
 
     .apresentacao__itens__checkbox label {
