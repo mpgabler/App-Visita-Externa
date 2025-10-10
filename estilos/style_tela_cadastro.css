@@ -357,7 +357,8 @@ textarea {
     }
 
     textarea {
-        font-size: 3rem;
+        font-size: 4rem;
+        font-weight: 400;
         height: 170px;
     }
 
@@ -427,7 +428,8 @@ textarea {
     }
 
     .botao_salvar {
-        font-size: 4rem;
+        font-size: 6rem;
+        font-weight: 600;
         padding: 0.7rem 1.2rem;
         width: 100%; /* Ajusta ao conteúdo */
         max-width: 100%; /* Evita que ultrapasse o container */
