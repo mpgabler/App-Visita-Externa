@@ -328,6 +328,10 @@ textarea {
         padding: 20px; /* Espaçamento interno reduzido */
         box-sizing: border-box;
     }
+
+    .form-container label {
+        margin-top: 50px;
+    }
         
 
     h1 {
@@ -349,10 +353,18 @@ textarea {
     
     label {
         font-size: 4rem; /* Mínimo para legibilidade */
+    
+    }
+
+    .apresentacao__itens__radio {
+        margin-top: 25px;
     }
 
     .apresentacao__itens__radio label {
         font-size: 4rem; /* Mínimo para legibilidade */
+        margin-top: 25px;
+        text-align: left;
+        
     }
 
     .apresentacao__itens__checkbox label {
@@ -379,6 +391,10 @@ textarea {
         width: 100%; 
     }
 
+    .tag-container {
+        margin-bottom: 70px;
+    }
+
     .tag {
        font-size: 4rem; 
     }
@@ -390,6 +406,7 @@ textarea {
         max-width: 100%; /* Evita que ultrapasse o container */
         touch-action: manipulation; /* Melhora resposta ao toque */
         line-height: 1.5; /* Mais espaço interno */
+        margin-top: 70px;
     }
 
 
@@ -410,8 +427,12 @@ textarea {
     .rodape {
         font-size: 2rem;
         padding: 0%;
-        margin-top: 40px;
+        margin-top: 70px;
         
+    }
+
+    fieldset {
+        margin-top: 100px;
     }
 
     fieldset legend{
@@ -421,6 +442,7 @@ textarea {
     input {
         padding: 2%;
         font-size: 4rem;
+        margin-bottom: 70px;
     }
 
 
