@@ -360,6 +360,11 @@ textarea {
         margin-top: 25px;
     }
 
+    .apresentacao__itens__radio input {
+        transform: scale(3);
+        margin-right: 50px;
+    }
+
     .apresentacao__itens__radio label {
         font-size: 4rem; /* Mínimo para legibilidade */
         margin-top: 25px;
@@ -369,6 +374,14 @@ textarea {
 
     .apresentacao__itens__checkbox label {
         font-size: 4rem; /* Mínimo para legibilidade */
+        text-align: left;
+        
+    }
+
+    .apresentacao__itens__checkbox input {
+        margin: 10px;
+        transform: scale(2);
+        margin-right: 50px;
     }
 
    
