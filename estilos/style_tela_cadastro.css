@@ -343,20 +343,20 @@ textarea {
     }
 
     p {
-        font-size: 2rem; /* Mínimo para legibilidade */
+        font-size: 4rem; /* Mínimo para legibilidade */
     }
 
     
     label {
-        font-size: 2rem; /* Mínimo para legibilidade */
+        font-size: 4rem; /* Mínimo para legibilidade */
     }
 
     .apresentacao__itens__radio label {
-        font-size: 2rem; /* Mínimo para legibilidade */
+        font-size: 4rem; /* Mínimo para legibilidade */
     }
 
     .apresentacao__itens__checkbox label {
-        font-size: 2rem; /* Mínimo para legibilidade */
+        font-size: 4rem; /* Mínimo para legibilidade */
     }
 
    
@@ -366,21 +366,21 @@ textarea {
     }
 
     .suggestion-item {
-        font-size: 2rem;  
+        font-size: 4rem;  
         padding: 1rem;
         max-width: 100%;
         width: 100%;
     }
 
     .suggestion-item label {
-        font-size: 2rem; 
+        font-size: 4rem; 
         padding: 1rem;
         max-width: 100%;
         width: 100%; 
     }
 
     .tag {
-       font-size: 2rem; 
+       font-size: 4rem; 
     }
 
     .botao_salvar {
@@ -408,19 +408,19 @@ textarea {
     }
 
     .rodape {
-        font-size: 1rem;
+        font-size: 2rem;
         padding: 0%;
-        margin: 0%;
+        margin-top: 40px;
         
     }
 
     fieldset legend{
-        font-size: 2rem;
+        font-size: 4rem;
     }
 
     input {
         padding: 2%;
-        font-size: 2rem;
+        font-size: 4rem;
     }
 
 
