@@ -378,10 +378,16 @@ textarea {
         
     }
 
-    .apresentacao__itens__checkbox input {
+    .apresentacao__itens__checkbox [type="checkbox"] {
         margin: 10px;
         transform: scale(4);
         margin-right: 50px;
+    }
+
+    .apresentacao__itens__checkbox [type="text"] {
+        max-width: 100%;
+        margin-top: 30px;
+        margin-left: 0%;
     }
 
    
