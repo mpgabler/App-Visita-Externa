@@ -411,7 +411,8 @@ textarea {
     }
 
     .tag {
-       font-size: 4rem; 
+       font-size: 4rem;
+       width: 100%; 
     }
 
     .botao_salvar {
