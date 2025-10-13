@@ -388,7 +388,7 @@ textarea {
         margin: 10px;
         transform: scale(4);
         margin-right: 50px;
-        accent-color: #4CAF50;
+        accent-color: #2F855A;
     }
 
     .apresentacao__itens__checkbox [type="text"] {
@@ -441,7 +441,7 @@ textarea {
         font-weight: 600;
         padding: 0.7rem 1.2rem;
         width: 100%; /* Ajusta ao conteúdo */
-        max-width: 100%; /* Evita que ultrapasse o container */
+        max-width: 95%; /* Evita que ultrapasse o container */
         touch-action: manipulation; /* Melhora resposta ao toque */
         line-height: 1.5; /* Mais espaço interno */
         margin-top: 70px;
@@ -484,7 +484,7 @@ textarea {
     }
 
     input[type="radio"]{
-        accent-color: #4CAF50;
+        accent-color: #2F855A;
     }
 
 
