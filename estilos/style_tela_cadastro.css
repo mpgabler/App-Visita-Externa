@@ -402,9 +402,8 @@ textarea {
         max-width: 100%;
         width: 96%;
         height: 100%;
-        max-height: 40%;
-        min-height: 40%;
-        margin-top: -72%;
+        max-height: 30%;
+        margin-top: -58%;
     }
 
     .suggestion-item {
