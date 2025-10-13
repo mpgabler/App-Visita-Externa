@@ -463,6 +463,9 @@ textarea {
   }
 
   .alerta {
+    font-family: "Roboto", sans-serif;
+    font-size: 40px;
+    font-weight: 500;
     display: none; /* começa oculto */
     position: fixed;
     top: 50%;
@@ -470,9 +473,8 @@ textarea {
     transform: translate(-50%, -50%);
     background-color: #4caf50; /* verde */
     color: white;
-    padding: 20px 40px;
+    padding: 100px 50px;
     border-radius: 10px;
-    font-size: 18px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     opacity: 0;
