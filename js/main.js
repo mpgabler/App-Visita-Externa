@@ -69,6 +69,13 @@ document
       event.target.reset();
 
       console.log("Cadastro salvo!");
+
+      // Mostra a mensagem
+      alert("Cadastro Realizado!")
+
+      // Redireciona para a tela inicial
+      window.location.href = "index.html";
+
     } else {
       console.error("Erro ao salvar o cadastro");
     }
