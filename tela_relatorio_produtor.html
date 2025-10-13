@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App Visita Externa Versão 1.0.0-beta</title>
     <script type="module" src="js/lib/dexie.mjs"></script>
     <!-- exportador para planilhas --xlsx.full.min.js from version 0.20.3 -->
-    <script type="text/javascript" src="js/lib/xlsx.full.min.js"></script
-    <script type="module" src="js/database.js"></script>
-    <script type="module" src="js/tela_relatorios.js"></script> 
-    <link rel="stylesheet" href="estilos/style_tela_relatorios.css">
+    <script type="text/javascript" src="js/lib/xlsx.full.min.js">
+      </script
+          <script type="module" src="js/database.js">
+    </script>
+    <script type="module" src="js/tela_relatorios.js"></script>
+    <link rel="stylesheet" href="estilos/style_tela_relatorios.css" />
     <!--<link rel="manifest" href="https://mpgabler.github.io/App-Visita-Externa/manifest.json">-->
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" sizes="48x48" href="assets/favicon.ico"> 
-</head> 
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/icon-512.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="48x48"
+      href="assets/favicon.ico"
+    />
+  </head>
 
-<body>
-
+  <body>
     <main class="">
-        <form class="form-container" id="formulario_de_busca">
-            <h1>Página de Relatórios de Produtores</h1>
+      <form class="form-container" id="formulario_de_busca">
+        <h1>Página de Relatórios de Produtores</h1>
 
-            <!--botao exportar para .xlsx-->
-            <div class="direcionamento_opcoes">
-                <h2>Exportar tabela de produtores</h2>
-                <p>Exporte para Excel todos os produtores cadastrados.</p>
-                <button type="button" id="botao_exportar">Exportar</button> 
-            </div>
-
-        </form>
-
+        <!--botao exportar para .xlsx-->
+        <div class="direcionamento_opcoes">
+          <h2>Exportar tabela de produtores</h2>
+          <p>Exporte para Excel todos os produtores cadastrados.</p>
+          <button type="button" id="botao_exportar">Exportar</button>
+        </div>
+      </form>
     </main>
-
-      <!-- Rodapé -->
+    <!-- Rodapé -->
     <footer class="rodape">
-        <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
+      <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
     </footer>
-</body>
-
+  </body>
 </html>
