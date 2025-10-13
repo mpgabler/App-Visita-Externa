@@ -363,12 +363,13 @@ textarea {
     }
 
     .apresentacao__itens__radio {
-        margin-top: 25px;
+        margin-top: 25px;        
     }
 
     .apresentacao__itens__radio input {
         transform: scale(5);
         margin-right: 50px;
+        background-color: #00796b;
     }
 
     .apresentacao__itens__radio label {
@@ -400,7 +401,9 @@ textarea {
         max-width: 100%;
         width: 96%;
         height: 100%;
-        max-height: 60%;
+        max-height: 40%;
+        min-height: 40%;
+        margin-top: -55%;
     }
 
     .suggestion-item {
