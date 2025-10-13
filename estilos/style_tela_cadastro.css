@@ -388,6 +388,7 @@ textarea {
         margin: 10px;
         transform: scale(4);
         margin-right: 50px;
+        accent-color: #4CAF50;
     }
 
     .apresentacao__itens__checkbox [type="text"] {
@@ -481,6 +482,10 @@ textarea {
         padding: 2%;
         font-size: 4rem;
         margin-bottom: 70px;
+    }
+
+    input[type="radio"]{
+        accent-color: #4CAF50;
     }
 
 
