@@ -16,7 +16,7 @@ document.getElementById("botaoBusca").addEventListener("click", async () => {
   try {
     const cadastro = await getCadastro();
     const resultados = cadastro.filter((pessoa) =>
-      (pessoa.cadastro || "").toLowerCase().includes(termo)
+      (pessoa.produtor || "").toLowerCase().includes(termo)
     );
 
     if (resultados.length > 0) {
