@@ -86,9 +86,10 @@ button {
 @media (max-width: 10000px) {
   html,
   body {
-    display: flexbox;
+    display: flex;
+    flex-direction: column;
     width: auto;
-    margin: 0;
+    margin: auto;
     padding: 0;
     min-height: 100vh;
     justify-content: space-evenly;
@@ -238,7 +239,6 @@ button {
   .rodape {
     font-size: 2rem;
     padding: 0%;
-    margin-top: 70px;
   }
 
   fieldset {
