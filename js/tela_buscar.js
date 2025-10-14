@@ -20,18 +20,25 @@ document.getElementById("botaoBusca").addEventListener("click", async () => {
     );
 
     if (resultados.length > 0) {
+      resultadosDiv.style.display = "block";
+
       resultadosDiv.innerHTML = resultados
         .map(
           (pessoa) => `
-          <div class="resultado-item">
-            <p><strong>Nome:</strong> ${pessoa.produtor}</p>
+          <div class="resultado-item" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee;">
+              <p style="margin: 0; font-family: "Roboto", sans-serif; color: #6b4e31; font-weight: bold;">${pessoa.produtor}</p>
+               <button onclick="visualizarCadastro('${pessoa.id}')" 
+              style="background: #2f855a; font-size: 2.5rem; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 5px;">
+              🔍 Visualizar
+             </button>
           </div>
-        `
-        )
+        `)
         .join("");
       botaoCadastro.style.display = "none";
       botaoCadastro.setAttribute("aria-hidden", "true");
     } else {
+      resultadosDiv.style.display = "block";
+
       resultadosDiv.innerHTML = "<p>Nenhum resultado encontrado.</p>";
       botaoCadastro.style.display = "block";
       botaoCadastro.setAttribute("aria-hidden", "false");

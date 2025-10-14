@@ -124,6 +124,8 @@ button {
 
   p {
     font-size: 4rem; /* Mínimo para legibilidade */
+    color: #6b4e31;
+    font-family: "Roboto", sans-serif;
   }
 
   label {
@@ -302,5 +304,12 @@ button {
     max-width: 95%; /* Evita que ultrapasse o container */
     touch-action: manipulation; /* Melhora resposta ao toque */
     line-height: 1.5; /* Mais espaço interno */
+  }
+
+  .resultados{
+    border: solid 3px #00796b;
+    border-radius: 6px;
+    margin: 30px;
+    padding: 20px;
   }
 }
