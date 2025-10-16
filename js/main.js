@@ -1,5 +1,14 @@
 import { addCadastro, getCadastro } from "./database.js";
 
+// Limpa erros ao focar (adicione uma vez no script, após DOM load)
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM carregado!"); // Para teste
+
+  document.querySelectorAll("input, textarea, select").forEach((el) => {
+    el.addEventListener("focus", () => el.classList.remove("error"));
+  });
+});
+
 //adiciona ouvinte de evento ao formulário
 document
   .getElementById("formulario")
@@ -72,14 +81,191 @@ document
       data_cadastro: new Date().toISOString(),
     };
 
-    // Validação simples dos campos obrigatórios (refatorar conforme necessário)
+    /*     // Validação simples dos campos obrigatórios (refatorar conforme necessário)
     if (
       !cadastro.produtor ||
       !cadastro.propriedade ||
       !cadastro.municipio ||
-      !cadastro.telefone_principal
+      !cadastro.telefone_principal ||
+      !cadastro.area_total ||
+      !cadastro.area_produtiva ||
+      !cadastro.producao.length ||
+      !cadastro.irrigacao.length ||
+      !cadastro.defensivos.length ||
+      !cadastro.beneficiamento.length ||
+      !cadastro.maquinario.length ||
+      !cadastro.nota_fiscal ||
+      !cadastro.reserva_legal ||
+      !cadastro.car ||
+      !cadastro.rastreabilidade ||
+      !cadastro.cooperativa ||
+      (cadastro.cooperativa === "sim" && !cadastro.qual_coop != "")
     ) {
       alert("Por favor, preencha os campos obrigatórios: ");
+      return;
+    } */
+
+    // Função auxiliar para sinalizar erro (com log)
+    function sinalizarErro(elemento, nomeCampo) {
+      console.log(`Tentando sinalizar ${nomeCampo}:`, elemento); // Debug: vê se elemento é null
+      if (elemento) {
+        elemento.classList.add("error");
+        console.log(`Classe 'error' adicionada a ${nomeCampo}`); // Confirma adição
+      } else {
+        console.error(`Elemento NULL para ${nomeCampo}! Verifique ID no HTML.`);
+      }
+    }
+
+    // Validação com sinalização e debug
+    let temErro = false;
+
+    // Produtor
+    if (!cadastro.produtor) {
+      sinalizarErro(document.getElementById("produtor"), "Produtor");
+      temErro = true;
+    }
+
+    // Propriedade
+    if (!cadastro.propriedade) {
+      sinalizarErro(document.getElementById("propriedade"), "Propriedade");
+      temErro = true;
+    }
+
+    // Município
+    if (!cadastro.municipio) {
+      sinalizarErro(document.getElementById("municipio"), "Município");
+      temErro = true;
+    }
+
+    // Telefone Principal
+    if (!cadastro.telefone_principal) {
+      sinalizarErro(
+        document.getElementById("telefone_principal"),
+        "Telefone Principal"
+      );
+      temErro = true;
+    }
+
+    // Área Total
+    if (!cadastro.area_total) {
+      sinalizarErro(document.getElementById("area_total"), "Área Total");
+      temErro = true;
+    }
+
+    // Área Produtiva
+    if (!cadastro.area_produtiva) {
+      sinalizarErro(
+        document.getElementById("area_produtiva"),
+        "Área Produtiva"
+      );
+      temErro = true;
+    }
+
+    // Produção (verifica container se vazio)
+    if (!cadastro.producao.length) {
+      sinalizarErro(
+        document.getElementById("tagContainerCulturas"),
+        "Produção"
+      );
+      temErro = true;
+    }
+
+    // Irrigação
+    if (!cadastro.irrigacao.length) {
+      sinalizarErro(
+        document.getElementById("tagContainerIrrigacao"),
+        "Irrigação"
+      );
+      temErro = true;
+    }
+
+    // Defensivos
+    if (!cadastro.defensivos.length) {
+      sinalizarErro(
+        document.getElementById("tagContainerDefensivo"),
+        "Defensivos"
+      );
+      temErro = true;
+    }
+
+    // Beneficiamento
+    if (!cadastro.beneficiamento.length) {
+      sinalizarErro(
+        document.getElementById("tagContainerBeneficiamento"),
+        "Beneficiamento"
+      );
+      temErro = true;
+    }
+
+    // Maquinário
+    if (!cadastro.maquinario.length) {
+      sinalizarErro(
+        document.getElementById("tagContainerMaquinario"),
+        "Maquinário"
+      );
+      temErro = true;
+    }
+
+    // Nota Fiscal (radio)
+    if (!document.querySelector('input[name="nota_fiscal"]')) {
+      const container = document.querySelector(".apresentacao__itens__radio");
+      sinalizarErro(container, "Nota Fiscal");
+      temErro = true;
+    }
+
+    // Reserva Legal (radio)
+    if (!document.querySelector('input[name="reserva"]')) {
+      const container = document.querySelector(".apresentacao__itens__radio");
+      sinalizarErro(container, "Reserva Legal");
+      temErro = true;
+    }
+
+    // CAR (radio)
+    if (!document.querySelector('input[name="car"]:checked')) {
+      const container = document.querySelector(".apresentacao__itens__radio");
+      sinalizarErro(container, "Cadastro Ambiental Rural");
+      temErro = true;
+    }
+
+    // Rastreabilidade (radio)
+    if (!document.querySelector('input[name=""]:checked')) {
+      const container = document.querySelector(".apresentacao__itens__radio");
+      sinalizarErro(container, "Nota Fiscal");
+      temErro = true;
+    }
+
+    // Políticas Públicas (se nenhum checkbox marcado)
+    if (
+      !cadastro.politicas_publicas.pnae &&
+      !cadastro.politicas_publicas.paa &&
+      !cadastro.politicas_publicas.outras
+    ) {
+      sinalizarErro(
+        document.getElementById("politica_pnae"),
+        "Políticas Públicas"
+      ); // Ajuste ID se necessário
+      temErro = true;
+    }
+
+    // Cooperativa (radio)
+    if (!document.querySelector('input[name="cooperativa"]:checked')) {
+      const container = document.querySelector(".apresentacao__itens__radio");
+      sinalizarErro(container, "Cooperativa");
+      temErro = true;
+    }
+
+    // Qual Coop (condicional: se "sim", deve ser preenchido)
+    if (cadastro.cooperativa === "sim" && !cadastro.qual_coop) {
+      sinalizarErro(document.getElementById("textarea_afiliado"), "Qual Coop");
+      temErro = true;
+    }
+
+    console.log("Tem erros totais?", temErro); // Debug final
+
+    if (temErro) {
+      alert(
+        "Por favor, preencha os campos obrigatórios sinalizados em laranja."
+      );
       return;
     }
 

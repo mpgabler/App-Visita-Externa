@@ -239,7 +239,7 @@ button {
   .rodape {
     font-size: 2rem;
     padding: 0%;
-    margin-top: 600px;
+    margin-top: 800px;
   }
 
   fieldset {
@@ -307,10 +307,11 @@ button {
     line-height: 1.5; /* Mais espaço interno */
   }
 
-  .resultados{
+  .resultados {
     border: solid 3px #00796b;
     border-radius: 6px;
     margin: 30px;
     padding: 20px;
   }
+
 }
