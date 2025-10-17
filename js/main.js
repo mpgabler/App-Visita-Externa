@@ -277,8 +277,8 @@ document
     if (
       !pnaeCheckbox.checked &&
       !paaCheckbox.checked &&
-      !outrasCheckbox.checked
-    ) {
+      !outrasCheckbox.checked 
+      
       const container = document.querySelector(
         ".apresentacao__itens__checkbox"
       );
