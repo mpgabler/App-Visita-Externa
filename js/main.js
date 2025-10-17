@@ -206,57 +206,83 @@ document
       temErro = true;
     }
 
-    // Nota Fiscal (radio)
-    if (!document.querySelector('input[name="nota_fiscal"]')) {
-      const container = document.querySelector(".apresentacao__itens__radio");
-      sinalizarErro(container, "Nota Fiscal");
+    // Reserva Legal (radio)
+    const reservaContainer = document
+      .querySelector('input[name="reserva"]')
+      .closest(".apresentacao__itens__radio");
+    if (
+      !reservaContainer ||
+      !document.querySelector('input[name="reserva"]:checked')
+    ) {
+      sinalizarErro(reservaContainer, "Reserva Legal");
       temErro = true;
     }
 
-    // Reserva Legal (radio)
-    if (!document.querySelector('input[name="reserva"]')) {
-      const container = document.querySelector(".apresentacao__itens__radio");
-      sinalizarErro(container, "Reserva Legal");
+    // Nota Fiscal (radio)
+    const notaFiscalContainer = document
+      .querySelector('input[name="nota_fiscal"]')
+      .closest(".apresentacao__itens__radio");
+    if (
+      !notaFiscalContainer ||
+      !document.querySelector('input[name="nota_fiscal"]:checked')
+    ) {
+      sinalizarErro(notaFiscalContainer, "Nota Fiscal");
       temErro = true;
     }
 
     // CAR (radio)
-    if (!document.querySelector('input[name="car"]:checked')) {
-      const container = document.querySelector(".apresentacao__itens__radio");
-      sinalizarErro(container, "Cadastro Ambiental Rural");
+    const carContainer = document
+      .querySelector('input[name="car"]')
+      .closest(".apresentacao__itens__radio");
+    if (!carContainer || !document.querySelector('input[name="car"]:checked')) {
+      sinalizarErro(carContainer, "Cadastro Ambiental Rural");
       temErro = true;
     }
 
     // Rastreabilidade (radio)
-    if (!document.querySelector('input[name=""]:checked')) {
-      const container = document.querySelector(".apresentacao__itens__radio");
-      sinalizarErro(container, "Nota Fiscal");
-      temErro = true;
-    }
-
-    // Políticas Públicas (se nenhum checkbox marcado)
+    const rastreabilidadeContainer = document
+      .querySelector('input[name="rastreabilidade"]')
+      .closest(".apresentacao__itens__radio");
     if (
-      !cadastro.politicas_publicas.pnae &&
-      !cadastro.politicas_publicas.paa &&
-      !cadastro.politicas_publicas.outras
+      !rastreabilidadeContainer ||
+      !document.querySelector('input[name="rastreabilidade"]:checked')
     ) {
-      sinalizarErro(
-        document.getElementById("politica_pnae"),
-        "Políticas Públicas"
-      ); // Ajuste ID se necessário
+      sinalizarErro(rastreabilidadeContainer, "Rastreabilidade");
       temErro = true;
     }
 
     // Cooperativa (radio)
-    if (!document.querySelector('input[name="cooperativa"]:checked')) {
-      const container = document.querySelector(".apresentacao__itens__radio");
-      sinalizarErro(container, "Cooperativa");
+    const cooperativaContainer = document
+      .querySelector('input[name="cooperativa"]')
+      .closest(".apresentacao__itens__radio");
+    if (
+      !cooperativaContainer ||
+      !document.querySelector('input[name="cooperativa"]:checked')
+    ) {
+      sinalizarErro(cooperativaContainer, "Cooperativa");
       temErro = true;
     }
 
     // Qual Coop (condicional: se "sim", deve ser preenchido)
     if (cadastro.cooperativa === "sim" && !cadastro.qual_coop) {
       sinalizarErro(document.getElementById("textarea_afiliado"), "Qual Coop");
+      temErro = true;
+    }
+
+    // Políticas Públicas (se nenhum checkbox marcado)
+    const pnaeCheckbox = document.getElementById("politica_pnae");
+    const paaCheckbox = document.getElementById("politica_paa");
+    const outrasCheckbox = document.getElementById("outras_politicas");
+
+    if (
+      !pnaeCheckbox.checked &&
+      !paaCheckbox.checked &&
+      !outrasCheckbox.checked
+    ) {
+      const container = document.querySelector(
+        ".apresentacao__itens__checkbox"
+      );
+      sinalizarErro(container, "Políticas Públicas");
       temErro = true;
     }
 

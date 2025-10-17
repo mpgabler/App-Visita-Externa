@@ -49,16 +49,16 @@
         <fieldset>
           <legend>Identificação da Propriedade</legend>
           <label>Propriedade:</label>
-          <input type="text" name="propriedade" id="propriedade" required />
+          <input type="text" name="propriedade" id="propriedade" />
 
           <label>Produtor Rural:</label>
-          <input type="text" name="produtor" id="produtor" required />
+          <input type="text" name="produtor" id="produtor"/>
 
           <label>Local (Município):</label> 
-          <input type="text" name="local" id="municipio" required />
+          <input type="text" name="local" id="municipio"/>
 
           <label>Telefone Principal:</label>
-          <input type="text" name="telefone" id="telefone_principal" required />
+          <input type="text" name="telefone" id="telefone_principal"/>
 
           <label>Telefone Contato (opcional):</label>
           <input type="text" name="telefone_contato" id="telefone_contato" />
@@ -94,8 +94,9 @@
         <!-- Comerciais -->
         <fieldset>
           <legend>Aspectos Comerciais</legend>
-          <label>Emite Nota Fiscal?</label>
+          
           <div class="apresentacao__itens__radio">
+            <label>Emite Nota Fiscal?</label>
             <label><input type="radio" name="nota_fiscal" value="sim" id="nota_fiscal_sim"/> Sim</label>
             <label><input type="radio" name="nota_fiscal" value="nao" id="nota_fiscal_nao"/> Não</label>
           </div>

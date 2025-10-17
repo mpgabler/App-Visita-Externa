@@ -489,24 +489,9 @@ textarea {
   }
 
   .error {
-    border: 2px solid #FFA500 !important; /* Borda vermelha */
+    border: 3px solid #FFA500 !important; /* Borda vermelha */
     background-color: #fff5f5; /* Fundo rosado sutil */
     box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); /* Sombra vermelha */
-  }
-
-  .error::after {
-    content: "Campo obrigatório!"; /* Tooltip simples */
-    position: absolute;
-    top: -70px;
-    left: 500%;
-    transform: translateX(-50%);
-    background: #FFA500;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    z-index: 10;
   }
 
   .error:focus {
