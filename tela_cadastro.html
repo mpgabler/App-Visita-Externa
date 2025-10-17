@@ -42,7 +42,6 @@
   <body>
     <main class="">
       <form id="formulario" class="form-container">
-
         <h3>Relatório Técnico</h3>
 
         <!-- Identificação -->
@@ -52,135 +51,284 @@
           <input type="text" name="propriedade" id="propriedade" />
 
           <label>Produtor Rural:</label>
-          <input type="text" name="produtor" id="produtor"/>
+          <input type="text" name="produtor" id="produtor" />
 
-          <label>Local (Município):</label> 
-          <input type="text" name="local" id="municipio"/>
+          <label>Local (Município):</label>
+          <input type="text" name="local" id="municipio" />
 
           <label>Telefone Principal:</label>
-          <input type="text" name="telefone" id="telefone_principal"/>
+          <input type="text" name="telefone" id="telefone_principal" />
 
           <label>Telefone Contato (opcional):</label>
           <input type="text" name="telefone_contato" id="telefone_contato" />
 
           <label>Inscrição Estadual (opcional):</label>
-          <input type="text" name="inscricao_estadual" id="inscricao_estadual"/>
+          <input
+            type="text"
+            name="inscricao_estadual"
+            id="inscricao_estadual"
+          />
         </fieldset>
 
         <!-- Área -->
         <fieldset>
           <legend>Características da Área</legend>
           <label>Área Total (ha):</label>
-          <input type="number" step="0.01" name="area_total" id="area_total"/>
+          <input type="number" step="0.01" name="area_total" id="area_total" />
 
           <label>Área Produtiva (ha):</label>
-          <input type="number" step="0.01" name="area_produtiva" id="area_produtiva"/>
+          <input
+            type="number"
+            step="0.01"
+            name="area_produtiva"
+            id="area_produtiva"
+          />
 
           <div class="apresentacao__itens__radio">
             <label>Possui Reserva Legal?</label>
-            <label><input type="radio" name="reserva" value="sim" id="reserva_legal_sim"/> Sim</label>
-            <label><input type="radio" name="reserva" value="nao" id="reserva_legal_nao"/> Não</label>
+            <label
+              ><input
+                type="radio"
+                name="reserva"
+                value="sim"
+                id="reserva_legal_sim"
+              />
+              Sim</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="reserva"
+                value="nao"
+                id="reserva_legal_nao"
+              />
+              Não</label
+            >
           </div>
-        
 
           <div class="apresentacao__itens__radio">
             <label>Cadastro Ambiental Rural (CAR):</label>
-            <label><input type="radio" name="car" value="sim" id="car_sim"/> Sim</label>
-            <label><input type="radio" name="car" value="nao" id="car_nao"/> Não</label>
+            <label
+              ><input type="radio" name="car" value="sim" id="car_sim" />
+              Sim</label
+            >
+            <label
+              ><input type="radio" name="car" value="nao" id="car_nao" />
+              Não</label
+            >
           </div>
-          
         </fieldset>
 
         <!-- Comerciais -->
         <fieldset>
           <legend>Aspectos Comerciais</legend>
-          
+
           <div class="apresentacao__itens__radio">
             <label>Emite Nota Fiscal?</label>
-            <label><input type="radio" name="nota_fiscal" value="sim" id="nota_fiscal_sim"/> Sim</label>
-            <label><input type="radio" name="nota_fiscal" value="nao" id="nota_fiscal_nao"/> Não</label>
+            <label
+              ><input
+                type="radio"
+                name="nota_fiscal"
+                value="sim"
+                id="nota_fiscal_sim"
+              />
+              Sim</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="nota_fiscal"
+                value="nao"
+                id="nota_fiscal_nao"
+              />
+              Não</label
+            >
           </div>
 
-          
           <div class="apresentacao__itens__radio">
             <label>Utiliza Etiqueta de Rastreabilidade?</label>
-            <label><input type="radio" name="rastreabilidade" value="sim" id="etiqueta_sim"/>Sim</label>
-            <label><input type="radio" name="rastreabilidade" value="nao" id="etiqueta_nao"/>Não</label>
+            <label
+              ><input
+                type="radio"
+                name="rastreabilidade"
+                value="sim"
+                id="etiqueta_sim"
+              />Sim</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="rastreabilidade"
+                value="nao"
+                id="etiqueta_nao"
+              />Não</label
+            >
           </div>
 
-          
           <div class="apresentacao__itens__radio">
             <label>Afiliado a Cooperativa?</label>
-            <label><input type="radio" id="sim_afiliado" name="cooperativa" value="sim" /> Sim</label>
-            <label><input type="radio" id="nao_afiliado" name="cooperativa" value="nao" /> Não</label>
+            <label
+              ><input
+                type="radio"
+                id="sim_afiliado"
+                name="cooperativa"
+                value="sim"
+              />
+              Sim</label
+            >
+            <label
+              ><input
+                type="radio"
+                id="nao_afiliado"
+                name="cooperativa"
+                value="nao"
+              />
+              Não</label
+            >
           </div>
-          <input type="text" class="textarea_afiliado" id="textarea_afiliado" name="qual_coop" placeholder="Qual?" style="display: none"/>
+          <input
+            type="text"
+            class="textarea_afiliado"
+            id="textarea_afiliado"
+            name="qual_coop"
+            placeholder="Qual?"
+            style="display: none"
+          />
         </fieldset>
 
         <!-- Produção -->
         <fieldset>
           <legend>Produção e Manejo</legend>
-            
-          <div class = "suggestions" id="suggestionsProducao"></div>
+
+          <div class="suggestions" id="suggestionsProducao"></div>
           <div class="tag-container" id="tagContainerCulturas">
             <label>Principais Produtos:</label>
-            <input type="text" id="inputProducao" placeholder="Digite e selecione..."/>
-            </div>
-          
-          <div class = "suggestions" id="suggestionsIrrigacao"></div>  
-          <div class="tag-container" id="tagContainerIrrigacao" >
+            <input
+              type="text"
+              id="inputProducao"
+              placeholder="Digite e selecione..."
+            />
+          </div>
+
+          <div class="suggestions" id="suggestionsIrrigacao"></div>
+          <div class="tag-container" id="tagContainerIrrigacao">
             <label>Irrigação (tipo):</label>
-            <input type="text" id= "inputIrrigacao" name="irrigacao" placeholder="Digite e selecione..." />
+            <input
+              type="text"
+              id="inputIrrigacao"
+              name="irrigacao"
+              placeholder="Digite e selecione..."
+            />
           </div>
-          
-          <div class = "suggestions" id="suggestionsDefensivo"></div>
-          <div class="tag-container" id="tagContainerDefensivo" >
+
+          <div class="suggestions" id="suggestionsDefensivo"></div>
+          <div class="tag-container" id="tagContainerDefensivo">
             <label>Defensivos Agrícolas:</label>
-            <input type="text" id = "inputDefensivo" name="defensivo" placeholder="Digite e selecione..."/>
+            <input
+              type="text"
+              id="inputDefensivo"
+              name="defensivo"
+              placeholder="Digite e selecione..."
+            />
           </div>
-          
-          <div class = "suggestions" id="suggestionsMaquinario"></div>
+
+          <div class="suggestions" id="suggestionsMaquinario"></div>
           <div class="tag-container" id="tagContainerMaquinario">
             <label>Maquinário Agrícola:</label>
-            <input type="text" id = "inputMaquinario" name="maquinario" placeholder="Digite e selecione..."/>
+            <input
+              type="text"
+              id="inputMaquinario"
+              name="maquinario"
+              placeholder="Digite e selecione..."
+            />
           </div>
-          
-          <div class = "suggestions" id="suggestionsBeneficiamento"></div>
+
+          <div class="suggestions" id="suggestionsBeneficiamento"></div>
           <div class="tag-container" id="tagContainerBeneficiamento">
             <label>Beneficiamento (ex.: geleia, polpa, farinha):</label>
-            <input type="text" id= "inputBeneficiamento" name="beneficiamento" placeholder="Digite e selecione..."/>
+            <input
+              type="text"
+              id="inputBeneficiamento"
+              name="beneficiamento"
+              placeholder="Digite e selecione..."
+            />
           </div>
-          
-
         </fieldset>
 
         <!-- Políticas Públicas -->
         <fieldset>
-            <legend>Políticas Públicas</legend>
-            <div class="apresentacao__itens__checkbox">
-                <label><input type="checkbox" name="pnae" value="sim" id="politica_pnae"/> PNAE (Merenda Escolar)</label>
-                <label><input type="checkbox" name="paa" value="sim" id="politica_paa"/> PAA (Aquisição de Alimentos)</label>
-                <label><input type="checkbox" id= "outras_politicas" name="outras_politicas" value="sim"/> Outras Políticas Públicas</label>
-                <input type="text" class="textarea_politicas" id="textarea_politicas" name="qual_politica" placeholder="Qual?" style="display: none" />
-              </div>
+          <legend>Políticas Públicas</legend>
+          <div class="apresentacao__itens__checkbox">
+            <label
+              ><input
+                type="checkbox"
+                name="pnae"
+                value="sim"
+                id="politica_pnae"
+              />
+              PNAE (Merenda Escolar)</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="paa"
+                value="sim"
+                id="politica_paa"
+              />
+              PAA (Aquisição de Alimentos)</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                id="outras_politicas"
+                name="outras_politicas"
+                value="sim"
+              />
+              Outras Políticas Públicas</label
+            >
+            <input
+              type="text"
+              class="textarea_politicas"
+              id="textarea_politicas"
+              name="qual_politica"
+              placeholder="Qual?"
+              style="display: none"
+            />
+          </div>
         </fieldset>
 
         <!-- Observações -->
         <fieldset>
           <legend>Observações Gerais</legend>
-          <textarea id="textAreaObservacoes" name="obs" rows="4" cols="48"></textarea>
+          <textarea
+            id="textAreaObservacoes"
+            name="obs"
+            rows="4"
+            cols="48"
+          ></textarea>
         </fieldset>
 
         <button type="submit" class="botao_salvar">Salvar</button>
 
-      <!-- 🔔 Alerta customizado -->
-      <div id="alerta" class="alerta">Cadastro Realizado com Sucesso!</div>
+        <!-- 🔔 Alerta customizado -->
+        <div id="alerta" class="alerta">Cadastro Realizado com Sucesso!</div>
       </form>
-
     </main>
 
     <footer class="rodape">
       <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
     </footer>
+
+    <div id="modalErro" class="modal" style="display: none">
+      <div class="modal-conteudo">
+        <span class="fechar">&times;</span>
+        <h3>Erro na Validação</h3>
+        <p id="mensagemModal">
+          Por favor, preencha os campos obrigatórios sinalizados em laranja.
+        </p>
+        <button id="btnFecharModal">OK</button>
+      </div>
+    </div>
+    
   </body>
 </html>

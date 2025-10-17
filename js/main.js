@@ -289,9 +289,23 @@ document
     console.log("Tem erros totais?", temErro); // Debug final
 
     if (temErro) {
-      alert(
-        "Por favor, preencha os campos obrigatórios sinalizados em laranja."
-      );
+      const modal = document.getElementById("modalErro");
+      const mensagem = document.getElementById("mensagemModal");
+      mensagem.textContent =
+        "Por favor, preencha os campos obrigatórios sinalizados em laranja.";
+      modal.style.display = "flex";
+
+      // Fechar modal ao clicar no X ou no botão
+      document.querySelector(".fechar").onclick = () =>
+        (modal.style.display = "none");
+      document.getElementById("btnFecharModal").onclick = () =>
+        (modal.style.display = "none");
+
+      // Fechar ao clicar fora do modal
+      window.onclick = (event) => {
+        if (event.target === modal) modal.style.display = "none";
+      };
+
       return;
     }
 
