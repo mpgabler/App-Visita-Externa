@@ -1,5 +1,70 @@
 import { getCadastro } from "./database.js";
 
+// Função reutilizável pra formatar telefone
+// JS com debug e DOM ready
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM carregado! Iniciando formatação.");
+
+  // Função corrigida (testada)
+  function formatPhone(value) {
+    let digits = value.replace(/\D/g, ""); // Só dígitos
+    if (digits.length > 11) digits = digits.slice(0, 11); // Limita
+
+    let formatted = "";
+    if (digits.length >= 2) {
+      formatted = `(${digits.slice(0, 2)}) `; // (DD)
+      let rest = digits.slice(2);
+
+      if (rest.length > 0 && rest[0] === "9") {
+        // Móvel: 9 XXXX-XXXX
+        formatted += "9 ";
+        rest = rest.slice(1);
+        if (rest.length >= 4) {
+          formatted += rest.slice(0, 4) + "-" + rest.slice(4); 
+        } else {
+          formatted += rest;
+        }
+      } else {
+        // Fixo: XXXX-XXXX
+        if (rest.length >= 4) {
+          formatted += rest.slice(0, 4) + "-" + rest.slice(4);
+        } else {
+          formatted += rest;
+        }
+      }
+    } else {
+      formatted = digits;
+    }
+
+    console.log("Dígitos:", digits, "→ Formato:", formatted); // DEBUG: Veja no console
+    return formatted;
+  }
+
+  // Input principal
+  const inputPrincipal = document.getElementById("telefone_principal");
+  if (inputPrincipal) {
+    console.log("Input principal encontrado!");
+    inputPrincipal.addEventListener("input", (e) => {
+      console.log("Input no principal:", e.target.value); // DEBUG
+      e.target.value = formatPhone(e.target.value);
+    });
+  } else {
+    console.error("ERRO: Input #telefone_principal não encontrado!");
+  }
+
+  // Input contato
+  const inputContato = document.getElementById("telefone_contato");
+  if (inputContato) {
+    console.log("Input contato encontrado!");
+    inputContato.addEventListener("input", (e) => {
+      console.log("Input no contato:", e.target.value); // DEBUG
+      e.target.value = formatPhone(e.target.value);
+    });
+  } else {
+    console.error("ERRO: Input #telefone_contato não encontrado!");
+  }
+});
+
 // Faz a lógica para mostrar/ocultar os checkboxes de defensivos agrícolas
 const simRadio = document.getElementById("Sim_defensivo");
 const naoRadio = document.getElementById("Nao_defensivo");
@@ -358,30 +423,30 @@ function initAutoComplete(inputId, containerId, suggestionsId, dataList) {
 
   let selecionados = [];
 
-function renderTags() {
-  [...tagContainer.querySelectorAll(".tag")].forEach((tag) => tag.remove());
+  function renderTags() {
+    [...tagContainer.querySelectorAll(".tag")].forEach((tag) => tag.remove());
 
-  selecionados.forEach((item) => {
-    const tagEl = document.createElement("div");
-    tagEl.classList.add("tag");
+    selecionados.forEach((item) => {
+      const tagEl = document.createElement("div");
+      tagEl.classList.add("tag");
 
-    // texto separado do botão
-    const span = document.createElement("span");
-    span.textContent = item;
+      // texto separado do botão
+      const span = document.createElement("span");
+      span.textContent = item;
 
-    const btn = document.createElement("button");
-    btn.classList.add("remove");
-    btn.textContent = "❌";
-    btn.onclick = () => {
-      selecionados = selecionados.filter((i) => i !== item);
-      renderTags();
-    };
+      const btn = document.createElement("button");
+      btn.classList.add("remove");
+      btn.textContent = "❌";
+      btn.onclick = () => {
+        selecionados = selecionados.filter((i) => i !== item);
+        renderTags();
+      };
 
-    tagEl.appendChild(span);
-    tagEl.appendChild(btn);
-    tagContainer.appendChild(tagEl);
-  });
-}
+      tagEl.appendChild(span);
+      tagEl.appendChild(btn);
+      tagContainer.appendChild(tagEl);
+    });
+  }
 
   function showSuggestions(value) {
     suggestionsBox.innerHTML = "";
@@ -416,7 +481,7 @@ function renderTags() {
       div.classList.add("suggestion-item", "new-item");
       div.textContent = `➕ Cadastrar "${input.value}"`;
       div.onclick = () => {
-        const novoItem = input.value.trim(); 
+        const novoItem = input.value.trim();
         if (novoItem && !selecionados.includes(novoItem)) {
           culturas.push(novoItem); // adiciona à lista principal
           selecionados.push(novoItem); // já marca como selecionado
@@ -425,7 +490,7 @@ function renderTags() {
         input.value = "";
         suggestionsBox.style.display = "none";
       };
-      suggestionsBox.appendChild(div); 
+      suggestionsBox.appendChild(div);
     }
   }
 
@@ -494,7 +559,6 @@ if (textearea_afiliado) {
 }
 // ---------- FIM DA LOGICA DO TEXTAREA DE AFILIADO A COOPERATIVA ----------
 
-
 // ---------- INÍCIO DA LOGICA DO FIELDSET DE POLÍTICAS PÚBLICAS ----------
 // Faz a lógica para mostrar/ocultar textearea após selecionar checkbox "Outras políticas públicas"
 const outras_politicas = document.getElementById("outras_politicas");
@@ -504,39 +568,13 @@ if (textarea_politicas && outras_politicas) {
   textarea_politicas.style.display = "none"; // Inicialmente escondido
 
   outras_politicas.addEventListener("change", () => {
-    if(outras_politicas.checked) { // se já estiver marcado ao carregar a página, mostra o textarea
-      textarea_politicas.style.display = "block"; 
-  } else {
-    textarea_politicas.style.display = "none"; 
-    textarea_politicas.value = ""; // limpa o valor do textarea se estiver escondido
-  }
-
+    if (outras_politicas.checked) {
+      // se já estiver marcado ao carregar a página, mostra o textarea
+      textarea_politicas.style.display = "block";
+    } else {
+      textarea_politicas.style.display = "none";
+      textarea_politicas.value = ""; // limpa o valor do textarea se estiver escondido
+    }
   });
 }
 // ---------- FIM DA LOGICA DO TEXTAREA DE AFILIADO A COOPERATIVA ----------
-
-
-
-/* Função para renderizar os cadastros na lista na tela de cadastro (por enquanto)
-export async function renderCadastros() {
-  const cadastros = await getCadastro();
-  const list = document.getElementById("cadastro-list");
-  list.innerHTML = "";
-  cadastros.forEach((c) => {
-    const li = document.createElement("li");
-    //li.textContent = Object.values(c).join(" - ");
-    li.textContent = `ID: ${c.id} | Nome: ${c.nome} | Sobrenome: ${c.sobrenome} 
-        | CPF: ${c.cpf} | CNPJ: ${c.cnpj} | Nome Fantasia: ${c.nome_fantasia} 
-        | Endereço: ${c.endereco}, Nº: ${c.numero}, Bairro: ${c.bairro}, 
-        Cidade: ${c.cidade}, Estado: ${c.estado} | Telefone: ${c.telefone} 
-        | Itens/Produtos: ${c.itens_produtos.join(", ")} 
-        | Usa defensivos?: ${
-          c.grupo_radio_defensivo
-        } - ${c.itens_defensivos.join(", ")}
-        | Emite Nota Fiscal?: ${c.grupo_radio_emissao_nota}`;
-    list.appendChild(li);
-  });
-
-  console.log("Tabela renderizada:", cadastros);
-}
-*/

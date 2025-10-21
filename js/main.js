@@ -81,30 +81,6 @@ document
       data_cadastro: new Date().toISOString(),
     };
 
-    /*     // Validação simples dos campos obrigatórios (refatorar conforme necessário)
-    if (
-      !cadastro.produtor ||
-      !cadastro.propriedade ||
-      !cadastro.municipio ||
-      !cadastro.telefone_principal ||
-      !cadastro.area_total ||
-      !cadastro.area_produtiva ||
-      !cadastro.producao.length ||
-      !cadastro.irrigacao.length ||
-      !cadastro.defensivos.length ||
-      !cadastro.beneficiamento.length ||
-      !cadastro.maquinario.length ||
-      !cadastro.nota_fiscal ||
-      !cadastro.reserva_legal ||
-      !cadastro.car ||
-      !cadastro.rastreabilidade ||
-      !cadastro.cooperativa ||
-      (cadastro.cooperativa === "sim" && !cadastro.qual_coop != "")
-    ) {
-      alert("Por favor, preencha os campos obrigatórios: ");
-      return;
-    } */
-
     // Função auxiliar para sinalizar erro (com log)
     function sinalizarErro(elemento, nomeCampo) {
       console.log(`Tentando sinalizar ${nomeCampo}:`, elemento); // Debug: vê se elemento é null
@@ -277,8 +253,8 @@ document
     if (
       !pnaeCheckbox.checked &&
       !paaCheckbox.checked &&
-      !outrasCheckbox.checked 
-      
+      !outrasCheckbox.checked
+    ) {
       const container = document.querySelector(
         ".apresentacao__itens__checkbox"
       );
