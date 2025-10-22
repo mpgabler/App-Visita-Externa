@@ -1,49 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App Visita Externa Versão 1.0.0-beta</title>
     <script type="module" src="js/lib/dexie.mjs"></script>
     <script type="module" src="js/database.js"></script>
-    <script type="module" src="js/tela_buscar.js"></script> 
-    <link rel="stylesheet" href="estilos/style_tela_buscar.css">
+    <script type="module" src="js/tela_buscar.js"></script>
+    <script type="module" src="js/tela_cadastro.js"></script>
+    <link rel="stylesheet" href="estilos/style_tela_buscar.css" />
     <!--<link rel="manifest" href="https://mpgabler.github.io/App-Visita-Externa/manifest.json">-->
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" sizes="48x48" href="assets/favicon.ico"> 
-</head> 
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/icon-512.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="48x48"
+      href="assets/favicon.ico"
+    />
+  </head>
 
-<body>
-
+  <body>
     <main class="">
-        <form class="form-container" id="formulario_de_busca">
-            <h1 class="form-container__titulo">Página de Busca</h1>
+      <form class="form-container" id="formulario_de_busca">
+        <h1 class="form-container__titulo">Página de Busca</h1>
 
-            <!--botao buscar-->
-            <label for="busca">Buscar por Nome e/ou Sobrenome</label>
-            <input type="text" id="busca" name="busca" placeholder="Digite aqui...">
-            <button type="button" id="botaoBusca">Buscar</button>
+        <!--botao buscar-->
+        <label for="busca">Buscar por Nome e/ou Sobrenome</label>
+        <input
+          type="text"
+          id="busca"
+          name="busca"
+          placeholder="Digite aqui..."
+        />
+        <button type="button" id="botaoBusca">Buscar</button>
 
-            <!--botao cadastrar (ocultado por padrão)-->
-            <button type="button" id="botaoCadastro" style="display:none">Cadastrar</button>
+        <!--botao cadastrar (ocultado por padrão)-->
+        <button type="button" id="botaoCadastro" style="display: none">
+          Cadastrar
+        </button>
 
-            <div class="resultados" id="resultados" style="display:none">
-                <!-- Resultados da busca serão exibidos aqui -->
-            </div>
-
-        </form>
-
+        <div class="resultados" id="resultados" style="display: none">
+          <!-- Resultados da busca serão exibidos aqui -->
+        </div>
+      </form>
     </main>
 
-      <!-- Rodapé -->
+    <!-- Rodapé -->
     <footer class="rodape">
-        <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
+      <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
     </footer>
-</body>
-
+  </body>
 </html>

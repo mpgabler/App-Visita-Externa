@@ -1,7 +1,239 @@
 import { getCadastro } from "./database.js";
 
+// Função auxiliar pra setar radio baseado em valor salvo
+function setRadioChecked(name, savedValue) {
+  const radios = document.querySelectorAll(`input[name="${name}"]`);
+  radios.forEach((radio) => {
+    radio.checked = radio.value === savedValue;
+  });
+}
+
+// Função auxiliar para preencher tags (definida globalmente)
+function preencherTags(containerId, tagsArray) {
+  try {
+    const container = document.querySelector(containerId);
+    if (!container) {
+      console.warn("Container não encontrado:", containerId);
+      return;
+    }
+    container.innerHTML = ""; // Limpa container
+    (tagsArray || []).forEach((tagText) => {
+      const tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = tagText.trim();
+      // Opcional: Adicione botão remover se precisar
+      // const removerBtn = document.createElement('button');
+      // removerBtn.textContent = '×';
+      // removerBtn.onclick = () => tag.remove();
+      // tag.appendChild(removerBtn);
+      container.appendChild(tag);
+    });
+    console.log(`Tags preenchidas em ${containerId}:`, tagsArray.length);
+  } catch (tagError) {
+    console.error("Erro ao preencher tags:", tagError, containerId);
+  }
+}
+
+// Função auxiliar: Aplica modo view
+function aplicarModoView() {
+  const campos = [
+    "propriedade",
+    "produtor",
+    "municipio",
+    "telefone_principal",
+    "telefone_contato",
+    "inscricao_estadual",
+    "area_total",
+    "area_produtiva",
+    "textarea_afiliado",
+    "textarea_politicas",
+    "textAreaObservacoes",
+  ];
+  campos.forEach((id) => {
+    const campo = document.getElementById(id);
+    if (campo) {
+      campo.readOnly = true;
+      campo.style.backgroundColor = "#f5f5f5"; // Visual bloqueado
+    }
+  });
+  // Checkboxes usam disabled
+  ["politica_pnae", "politica_paa", "outras_politicas"].forEach((id) => {
+    const cb = document.getElementById(id);
+    if (cb) cb.disabled = true;
+  });
+}
+
+// Remove modo view
+function removerModoView() {
+  const campos = [
+    "propriedade",
+    "produtor",
+    "municipio",
+    "telefone_principal",
+    "telefone_contato",
+    "inscricao_estadual",
+    "area_total",
+    "area_produtiva",
+    "textarea_afiliado",
+    "textarea_politicas",
+    "textAreaObservacoes",
+  ];
+  campos.forEach((id) => {
+    const campo = document.getElementById(id);
+    if (campo) {
+      campo.readOnly = false;
+      campo.style.backgroundColor = "";
+    }
+  });
+  // Checkboxes voltam ao normal
+  ["politica_pnae", "politica_paa", "outras_politicas"].forEach((id) => {
+    const cb = document.getElementById(id);
+    if (cb) cb.disabled = false;
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  console.log("Tela cadastro carregada!"); // Debug: Confirma load
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
+  const mode = urlParams.get("mode") || "edit";
+
+  console.log("ID buscado:", id, "Mode:", mode); // Debug
+
+  if (!id) {
+    console.log("Novo cadastro (sem ID)");
+    return;
+  }
+
+  try {
+    console.log("Buscando dados...");
+    const cadastro = await getCadastro();
+    console.log("Dados carregados:", cadastro.length, "itens");
+
+    const produtor = cadastro.find((p) => p.id == id); // == não estrito
+
+    document.getElementById("telefone_principal").value = formatDigits(
+      produtor.telefone_principal || ""
+    );
+    document.getElementById("telefone_contato").value = formatDigits(
+      produtor.telefone_contato || ""
+    );
+
+    if (!produtor) {
+      console.error(
+        "Produtor não encontrado! IDs disponíveis:",
+        cadastro.map((p) => p.id)
+      );
+      alert("Produtor não encontrado.");
+      window.history.back();
+      return;
+    }
+
+    console.log("Produtor achado:", produtor); // Debug: Veja os dados
+
+    // Preenche campos simples
+    document.getElementById("propriedade").value = produtor.propriedade || "";
+    document.getElementById("produtor").value = produtor.produtor || "";
+    document.getElementById("municipio").value = produtor.municipio || "";
+    document.getElementById("telefone_principal").value = formatDigits(
+      produtor.telefone_principal || ""
+    );
+    document.getElementById("telefone_contato").value = formatDigits(
+      produtor.telefone_contato || ""
+    );
+    document.getElementById("inscricao_estadual").value =
+      produtor.inscricao_estadual || "";
+    document.getElementById("area_total").value = produtor.area_total || "";
+    document.getElementById("area_produtiva").value =
+      produtor.area_produtiva || "";
+    document.getElementById("textarea_afiliado").value =
+      produtor.qual_coop || "";
+
+    setRadioChecked("reserva", produtor.reserva_legal || "nao");
+    setRadioChecked("car", produtor.car || "nao");
+    setRadioChecked("nota_fiscal", produtor.nota_fiscal || "nao");
+    setRadioChecked("rastreabilidade", produtor.rastreabilidade || "nao");
+    setRadioChecked("cooperativa", produtor.cooperativa || "nao");
+
+    // Preenche tags
+    preencherTags("#tagContainerCulturas", produtor.producao || []);
+    preencherTags("#tagContainerIrrigacao", produtor.irrigacao || []);
+    preencherTags("#tagContainerDefensivo", produtor.defensivos || []);
+    preencherTags("#tagContainerMaquinario", produtor.maquinario || []);
+    preencherTags("#tagContainerBeneficiamento", produtor.beneficiamento || []);
+
+    // Preenche políticas e observações
+    document.getElementById("politica_pnae").checked =
+      produtor.politicas_publicas?.pnae || false;
+    document.getElementById("politica_paa").checked =
+      produtor.politicas_publicas?.paa || false;
+    document.getElementById("outras_politicas").checked =
+      produtor.politicas_publicas?.outras || false;
+    document.getElementById("textarea_politicas").value =
+      produtor.politicas_publicas?.qual_politica || "";
+    document.getElementById("textAreaObservacoes").value =
+      produtor.observacoes || "";
+
+    console.log("Preenchimento concluído!"); // Debug: Sucesso
+
+    if (mode === "view") {
+      aplicarModoView(); // Inicial: Bloqueia campos
+    }
+
+    // Botão alternar: Sempre configura (funciona em view ou edit)
+    const btnAlternar = document.getElementById("btnAlternar");
+    if (btnAlternar) {
+      // Função toggle reutilizável (chamada a cada clique)
+      const toggleHandler = (e) => {
+        e.preventDefault(); // Bloqueia qualquer submit acidental
+        e.stopPropagation(); // Evita bubbling
+
+        const currentMode = urlParams.get("mode") || "edit"; // Estado atual da URL
+
+        if (currentMode === "view") {
+          // De view pra edit
+          removerModoView(); // Libera campos
+          btnAlternar.textContent = "Cancelar Edição";
+          urlParams.set("mode", "edit");
+        } else {
+          // De edit pra view
+          aplicarModoView(); // Bloqueia campos
+          btnAlternar.textContent = "Editar";
+          urlParams.set("mode", "view");
+        }
+
+        // Atualiza URL sem reload
+        window.history.replaceState(
+          {},
+          "",
+          `${window.location.pathname}?${urlParams}`
+        );
+      };
+
+      // Define o handler (uma vez só – toggle roda sempre)
+      btnAlternar.onclick = toggleHandler;
+
+      // Config inicial baseada no mode
+      if (mode === "view") {
+        btnAlternar.textContent = "Editar";
+        btnAlternar.style.display = "block";
+      } else {
+        // Se carregar em edit (ex: direto na URL), mostra "Cancelar"
+        btnAlternar.textContent = "Cancelar Edição";
+        btnAlternar.style.display = "block";
+      }
+    }
+  } catch (error) {
+    console.error("Erro ao carregar dados:", error);
+    alert(`Erro ao carregar dados do produtor: ${error.message}`);
+  }
+});
+
 // Função só pra formatar dígitos em string (sem cursor)
-function formatDigits(digits) {
+function formatDigits(value) {
+  const digits = value.replace(/\D/g, ""); // Limpa sempre
+  if (digits.length === 0) return ""; // ← FIX: Apagou tudo? Limpa total, sem máscara
   if (digits.length > 11) digits = digits.slice(0, 11);
   let formatted = "";
   if (digits.length >= 2) {
@@ -34,8 +266,7 @@ inputPrincipal.addEventListener("input", (e) => {
   const currentValue = e.target.value; // Valor após tecla/apagar (misto)
   const cursorPos = e.target.selectionStart; // Posição no currentValue
 
-  const digits = currentValue.replace(/\D/g, ""); // Dígitos limpos
-  const formatted = formatDigits(digits); // Nova formatação
+  const formatted = formatDigits(currentValue); // ← Chama direto (função limpa internamente)
 
   e.target.value = formatted;
 
@@ -61,14 +292,13 @@ inputPrincipal.addEventListener("input", (e) => {
   e.target.setSelectionRange(newPos, newPos); // Reposiciona
 });
 
-// Mesmo pro contato (duplique o listener)
+// Mesmo pro contato
 const inputContato = document.getElementById("telefone_contato");
 inputContato.addEventListener("input", (e) => {
   const currentValue = e.target.value;
   const cursorPos = e.target.selectionStart;
 
-  const digits = currentValue.replace(/\D/g, "");
-  const formatted = formatDigits(digits);
+  const formatted = formatDigits(currentValue); // ← Chama direto (função limpa internamente)
 
   e.target.value = formatted;
 
