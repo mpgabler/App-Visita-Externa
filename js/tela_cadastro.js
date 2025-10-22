@@ -1,68 +1,95 @@
 import { getCadastro } from "./database.js";
 
-// Função reutilizável pra formatar telefone
-// JS com debug e DOM ready
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM carregado! Iniciando formatação.");
-
-  // Função corrigida (testada)
-  function formatPhone(value) {
-    let digits = value.replace(/\D/g, ""); // Só dígitos
-    if (digits.length > 11) digits = digits.slice(0, 11); // Limita
-
-    let formatted = "";
-    if (digits.length >= 2) {
-      formatted = `(${digits.slice(0, 2)}) `; // (DD)
-      let rest = digits.slice(2);
-
-      if (rest.length > 0 && rest[0] === "9") {
-        // Móvel: 9 XXXX-XXXX
-        formatted += "9 ";
-        rest = rest.slice(1);
-        if (rest.length >= 4) {
-          formatted += rest.slice(0, 4) + "-" + rest.slice(4); 
-        } else {
-          formatted += rest;
-        }
+// Função só pra formatar dígitos em string (sem cursor)
+function formatDigits(digits) {
+  if (digits.length > 11) digits = digits.slice(0, 11);
+  let formatted = "";
+  if (digits.length >= 2) {
+    formatted = `(${digits.slice(0, 2)}) `;
+    let rest = digits.slice(2);
+    if (rest.length > 0 && rest[0] === "9") {
+      formatted += "9 ";
+      rest = rest.slice(1);
+      if (rest.length >= 4) {
+        formatted += rest.slice(0, 4) + "-" + rest.slice(4);
       } else {
-        // Fixo: XXXX-XXXX
-        if (rest.length >= 4) {
-          formatted += rest.slice(0, 4) + "-" + rest.slice(4);
-        } else {
-          formatted += rest;
-        }
+        formatted += rest;
       }
     } else {
-      formatted = digits;
+      if (rest.length >= 4) {
+        formatted += rest.slice(0, 4) + "-" + rest.slice(4);
+      } else {
+        formatted += rest;
+      }
     }
-
-    console.log("Dígitos:", digits, "→ Formato:", formatted); // DEBUG: Veja no console
-    return formatted;
-  }
-
-  // Input principal
-  const inputPrincipal = document.getElementById("telefone_principal");
-  if (inputPrincipal) {
-    console.log("Input principal encontrado!");
-    inputPrincipal.addEventListener("input", (e) => {
-      console.log("Input no principal:", e.target.value); // DEBUG
-      e.target.value = formatPhone(e.target.value);
-    });
   } else {
-    console.error("ERRO: Input #telefone_principal não encontrado!");
+    formatted = digits;
+  }
+  return formatted;
+}
+
+// Listener pro principal (com fix de cursor)
+const inputPrincipal = document.getElementById("telefone_principal");
+inputPrincipal.addEventListener("input", (e) => {
+  const currentValue = e.target.value; // Valor após tecla/apagar (misto)
+  const cursorPos = e.target.selectionStart; // Posição no currentValue
+
+  const digits = currentValue.replace(/\D/g, ""); // Dígitos limpos
+  const formatted = formatDigits(digits); // Nova formatação
+
+  e.target.value = formatted;
+
+  // Conta dígitos antes do cursor no currentValue (ignora símbolos)
+  let digitsBefore = 0;
+  for (let i = 0; i < cursorPos; i++) {
+    if (/\d/.test(currentValue[i])) digitsBefore++;
   }
 
-  // Input contato
-  const inputContato = document.getElementById("telefone_contato");
-  if (inputContato) {
-    console.log("Input contato encontrado!");
-    inputContato.addEventListener("input", (e) => {
-      console.log("Input no contato:", e.target.value); // DEBUG
-      e.target.value = formatPhone(e.target.value);
-    });
-  } else {
-    console.error("ERRO: Input #telefone_contato não encontrado!");
+  // Encontra a posição no formatted após o digitsBefore-ésimo dígito
+  let newPos = formatted.length; // Default: final
+  let count = 0;
+  for (let i = 0; i < formatted.length; i++) {
+    if (/\d/.test(formatted[i])) {
+      count++;
+      if (count === digitsBefore) {
+        newPos = i + 1; // Após esse dígito
+        break;
+      }
+    }
   }
+
+  e.target.setSelectionRange(newPos, newPos); // Reposiciona
+});
+
+// Mesmo pro contato (duplique o listener)
+const inputContato = document.getElementById("telefone_contato");
+inputContato.addEventListener("input", (e) => {
+  const currentValue = e.target.value;
+  const cursorPos = e.target.selectionStart;
+
+  const digits = currentValue.replace(/\D/g, "");
+  const formatted = formatDigits(digits);
+
+  e.target.value = formatted;
+
+  let digitsBefore = 0;
+  for (let i = 0; i < cursorPos; i++) {
+    if (/\d/.test(currentValue[i])) digitsBefore++;
+  }
+
+  let newPos = formatted.length;
+  let count = 0;
+  for (let i = 0; i < formatted.length; i++) {
+    if (/\d/.test(formatted[i])) {
+      count++;
+      if (count === digitsBefore) {
+        newPos = i + 1;
+        break;
+      }
+    }
+  }
+
+  e.target.setSelectionRange(newPos, newPos);
 });
 
 // Faz a lógica para mostrar/ocultar os checkboxes de defensivos agrícolas
