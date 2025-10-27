@@ -489,53 +489,66 @@ textarea {
   }
 
   .error {
-    border: 3px solid #FFA500 !important; /* Borda vermelha */
+    border: 3px solid #ffa500 !important; /* Borda vermelha */
     background-color: #fff5f5; /* Fundo rosado sutil */
     box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); /* Sombra vermelha */
   }
 
   .error:focus {
-    outline: 2px solid #FFA500; /* Foco mais visível */
+    outline: 2px solid #ffa500; /* Foco mais visível */
   }
 
   /* Para radios/checkboxes, destaque o label ou container */
   .error label {
-    color: #FFA500;
+    color: #ffa500;
+  }
+
+  .modal {
+    font-family: "Roboto", sans-serif;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-conteudo {
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+  }
+  .fechar {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .fechar:hover {
+    color: black;
+  }
+
+  #btnAlternar{
+    font-size: 6rem;
+    font-weight: 600;
+    padding: 0.7rem 1.2rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%; /* Ajusta ao conteúdo */
+    max-width: 95%; /* Evita que ultrapasse o container */
+    touch-action: manipulation; /* Melhora resposta ao toque */
+    line-height: 1.5; /* Mais espaço interno */
+    margin-top: 70px;
   }
 }
-
-
-.modal {
-  font-family: 'Roboto', sans-serif;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.modal-conteudo {
-  font-family: 'Roboto', sans-serif;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  text-align: center;
-  max-width: 400px;
-}
-.fechar {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-.fechar:hover { color: black; }
-button { background: #ff6b35; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 50px;}
 
 /* Ajustes para telas muito pequenas (ex.: smartphones antigos) */
 @media (max-width: 400px) {
