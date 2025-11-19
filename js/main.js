@@ -1,3 +1,49 @@
+// if (!window.firebase) {
+//   console.error("Firebase ainda não carregou! Aguarde...");
+//   await new Promise((resolve) => {
+//     const check = () => (window.firebase ? resolve() : setTimeout(check, 50));
+//     check();
+//   });
+// }
+
+// const {
+//   fs,
+//   auth,
+//   collection,
+//   addDoc,
+//   getDocs,
+//   setDoc,
+//   doc,
+//   signInAnonymously,
+//   onAuthStateChanged,
+// } = window.firebase;
+
+// // Agora sim pode usar normalmente
+// console.log("Firebase pronto para uso");
+
+// // import "./firebase.js"; // inicializa o Firebase
+// import { garantirLoginAnonimo } from "./auth.js";
+// import { pushCadastros, pullCadastros } from "./sync.js";
+
+// // 1. Garante login ANTES de qualquer coisa
+// await garantirLoginAnonimo();
+
+// // 2. Agora sim pode iniciar o resto do app
+// onAuthStateChanged(auth, async (user) => {
+//   if (user) {
+//     await pullCadastros(); // primeiro baixa
+//     await pushCadastros(); // depois sobe os locais
+//   }
+// });
+
+// // 3. Depois do login, já pode puxar dados do Firebase (se existirem)
+// pullCadastros().catch(console.error);
+
+// // 4. Configura sincronização automática quando voltar online
+// window.addEventListener("online", () => {
+//   pushCadastros().catch(console.error);
+// });
+
 import { addCadastro, getCadastro } from "./database.js";
 
 // Limpa erros ao focar (adicione uma vez no script, após DOM load)

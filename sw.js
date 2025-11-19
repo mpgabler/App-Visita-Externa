@@ -1,31 +1,31 @@
 // service-worker.js
-const CACHE_NAME = 'pwa-notes-v14';
+const CACHE_NAME = "pwa-notes-v16";
 
 // Lista de assets estáticos (não inclui HTML)
 const urlsToCache = [
-  './estilos/style_tela_index.css',
-  './estilos/style_tela_cadastro.css',
-  './estilos/style_tela_buscar.css',
-  './estilos/style_tela_relatorios.css',
-  './js/tela_index.js',
-  './js/main.js',
-  './js/database.js',
-  './js/tela_buscar.js',
-  './js/tela_cadastro.js',
-  './js/tela_relatorios.js',
-  './js/lib/dexie.mjs',
-  './js/lib/xlsx.full.min.js',
-  './assets/icon.png',
-  './assets/icon-512.png',
-  './assets/favicon-32x32.png',
-  './assets/favicon-16x16.png',
-  './assets/favicon.ico',
-  './assets/gato.png',
-  './manifest.json'
+  "./estilos/style_tela_index.css",
+  "./estilos/style_tela_cadastro.css",
+  "./estilos/style_tela_buscar.css",
+  "./estilos/style_tela_relatorios.css",
+  "./js/tela_index.js",
+  "./js/main.js",
+  "./js/database.js",
+  "./js/tela_buscar.js",
+  "./js/tela_cadastro.js",
+  "./js/tela_relatorios.js",
+  "./js/lib/dexie.mjs",
+  "./js/lib/xlsx.full.min.js",
+  "./assets/icon.png",
+  "./assets/icon-512.png",
+  "./assets/favicon-32x32.png",
+  "./assets/favicon-16x16.png",
+  "./assets/favicon.ico",
+  "./assets/gato.png",
+  "./manifest.json",
 ];
 
 // Instalação
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
   );
@@ -33,24 +33,33 @@ self.addEventListener('install', (event) => {
 });
 
 // Ativação
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) return caches.delete(key);
-        })
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(
+          keys.map((key) => {
+            if (key !== CACHE_NAME) return caches.delete(key);
+          })
+        )
       )
-    ).then(() => self.clients.claim())
+      .then(() => self.clients.claim())
   );
 });
 
 // Interceptação de requisições
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", (event) => {
   const request = event.request;
 
+  // IGNORA POST, PUT, DELETE → evita erro do Firebase
+  if (request.method !== "GET") {
+    event.respondWith(fetch(request));
+    return;
+  }
+
   // HTML → Network First
-  if (request.mode === 'navigate' || request.destination === 'document') {
+  if (request.mode === "navigate" || request.destination === "document") {
     event.respondWith(
       fetch(request)
         .then((networkResponse) => {
@@ -63,7 +72,7 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(() => {
           return caches.match(request).then((cachedResponse) => {
-            return cachedResponse || caches.match('./index.html');
+            return cachedResponse || caches.match("./index.html");
           });
         })
     );

@@ -1,56 +1,189 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App Visita Externa Versão 1.0.0-beta</title>
     <script type="module" src="js/lib/dexie.mjs"></script>
     <script type="module" src="js/database.js"></script>
-    <script type="module" src="js/tela_index.js"></script> 
-    <link rel="stylesheet" href="estilos/style_tela_index.css">
+    <script type="module" src="js/tela_index.js"></script>
+    <link rel="stylesheet" href="estilos/style_tela_index.css" />
     <!--<link rel="manifest" href="https://mpgabler.github.io/App-Visita-Externa/manifest.json">-->
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/icon-512.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
-    <link rel="icon" type="image/x-icon" sizes="48x48" href="assets/favicon.ico">
-    <link rel="canonical" href="https://mpgabler.github.io/App-Visita-Externa/">
-</head> 
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/icon-512.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      sizes="48x48"
+      href="assets/favicon.ico"
+    />
+    <link
+      rel="canonical"
+      href="https://mpgabler.github.io/App-Visita-Externa/"
+    />
+  </head>
 
-<body>    
-        <form class="form-container" id="formulario_de_busca">
-            <h1>Bem-vindo ao Gerenciador de Visitas Externas</h1>
-            <h3>Cadastre, busque e visualize relatórios de visitas de forma simples e offline.</h3>
+  <body>
+    <form class="form-container" id="formulario_de_busca">
+      <h1>Bem-vindo ao Gerenciador de Visitas Externas</h1>
+      <h3>
+        Cadastre, busque e visualize relatórios de visitas de forma simples e
+        offline.
+      </h3>
 
-            <!--botao buscar-->
-            <div class="direcionamento_opcoes">
-                <h2>Buscar Cadastro</h2>
-                <p>Procure por nome, sobrenome ou CPF.</p>
-                <a href="/App-Visita-Externa/tela_busca.html">Ir para Buscar</a> 
-            </div>
+      <!--botao buscar-->
+      <div class="direcionamento_opcoes">
+        <h2>Buscar Cadastro</h2>
+        <p>Procure por nome, sobrenome ou CPF.</p>
+        <a href="/App-Visita-Externa/tela_busca.html">Ir para Buscar</a>
+      </div>
 
-            <!--botao cadastrar-->
-            <div class="direcionamento_opcoes">
-               <h2>Cadastrar Nova Visita</h2>
-               <p>Adicione novas visitas.</p>
-               <a href="/App-Visita-Externa/tela_cadastro.html">Ir para Cadastrar</a>
-           </div>
+      <!--botao cadastrar-->
+      <div class="direcionamento_opcoes">
+        <h2>Cadastrar Nova Visita</h2>
+        <p>Adicione novas visitas.</p>
+        <a href="/App-Visita-Externa/tela_cadastro.html">Ir para Cadastrar</a>
+      </div>
 
-           <!--Botao Relatorios-->
-           <div class="direcionamento_opcoes">
-              <h2>Visualizar Relatórios</h2>
-              <p>Veja estatísticas e listas de visitas.</p>
-              <a href="/App-Visita-Externa/tela_relatorios.html">Ir para Relatórios</a>
-           </div>
+      <!--Botao Relatorios-->
+      <div class="direcionamento_opcoes">
+        <h2>Visualizar Relatórios</h2>
+        <p>Veja estatísticas e listas de visitas.</p>
+        <a href="/App-Visita-Externa/tela_relatorios.html"
+          >Ir para Relatórios</a
+        >
+      </div>
+    </form>
 
-        </form>
-
-      <!-- Rodapé -->
+    <!-- Rodapé -->
     <footer class="rodape">
-        <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
+      <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
     </footer>
-</body>
 
+    <script type="module">
+      // 1. Primeiro importa o Dexie (só assim o "db" existe)
+      import db from "./js/database.js";
+
+      // 2. Carrega Firebase via CDN
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+      import {
+        getFirestore,
+        enableIndexedDbPersistence,
+        collection,
+        addDoc,
+        getDocs,
+        doc,
+      } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+      import {
+        getAuth,
+        signInAnonymously,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDOUIc3_1VujnV40HRU3HYEw6lt4aaZu1w",
+        authDomain: "app-visita-externa.firebaseapp.com",
+        projectId: "app-visita-externa",
+        storageBucket: "app-visita-externa.firebasestorage.app",
+        messagingSenderId: "120780076208",
+        appId: "1:120780076208:web:5043211212f17bee343775",
+        measurementId: "G-QK4DF2P52F",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const fs = getFirestore(app);
+      const auth = getAuth(app);
+
+      enableIndexedDbPersistence(fs).catch(() => {});
+
+      // 2. Função de login anônimo
+      async function loginAnonimo() {
+        if (!auth.currentUser) {
+          await signInAnonymously(auth);
+          console.log("Login anônimo feito:", auth.currentUser.uid);
+        }
+      }
+
+      // 3. Push e Pull (suas funções completas aqui dentro!)
+      async function pushCadastros() {
+        const naoSincronizados = await db.cadastro
+          .where("sincronizado")
+          .notEqual(1)
+          .toArray();
+        if (naoSincronizados.length === 0) return;
+
+        const col = collection(fs, "cadastros");
+        for (const c of naoSincronizados) {
+          const dados = {
+            ...c,
+            tecnicoId: auth.currentUser.uid,
+            sincronizadoEm: new Date().toISOString(),
+          };
+          const ref = await addDoc(col, dados);
+          await db.cadastro.update(c.id, { sincronizado: 1, idRemote: ref.id });
+        }
+      }
+
+      async function pullCadastros() {
+        const snap = await getDocs(collection(fs, "cadastros"));
+        await db.transaction("rw", db.cadastro, async () => {
+          for (const doc of snap.docs) {
+            const data = doc.data();
+            const existente = await db.cadastro
+              .where("idRemote")
+              .equals(doc.id)
+              .first();
+            if (!existente) {
+              await db.cadastro.add({
+                ...data,
+                idRemote: doc.id,
+                sincronizado: 1,
+              });
+            }
+          }
+        });
+      }
+
+      // 4. Quando o app carregar
+      document.addEventListener("DOMContentLoaded", async () => {
+        console.log("App iniciado");
+
+        // Garante login
+        await loginAnonimo();
+
+        // Pull primeiro, depois push
+        await pullCadastros();
+        await pushCadastros();
+
+        // Sincroniza quando voltar online
+        window.addEventListener("online", async () => {
+          console.log("Voltou online → sincronizando...");
+          await pushCadastros();
+        });
+
+        // Libera o resto da UI
+        // Libera a UI
+        document.getElementById("app")?.removeAttribute("hidden");
+        alert("App pronto! Você está online: " + navigator.onLine);
+      });
+    </script>
+  </body>
 </html>

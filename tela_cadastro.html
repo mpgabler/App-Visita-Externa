@@ -360,5 +360,138 @@
         <button id="btnFecharModal">OK</button>
       </div>
     </div>
+
+    <!-- Vinculando ao Firebase -->
+    <script type="module">
+      import db from "./js/database.js";
+
+      window.addEventListener("load", async () => {
+        try {
+          // Firebase carregado dinamicamente
+          const { initializeApp } = await import(
+            "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js"
+          );
+          const {
+            getFirestore,
+            collection,
+            addDoc,
+            enableIndexedDbPersistence,
+          } = await import(
+            "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js"
+          );
+          const { getAuth, signInAnonymously } = await import(
+            "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js"
+          );
+
+          const app = initializeApp({
+            apiKey: "AIzaSyDOUIc3_1VujnV40HRU3HYEw6lt4aaZu1w",
+            authDomain: "app-visita-externa.firebaseapp.com",
+            projectId: "app-visita-externa",
+            storageBucket: "app-visita-externa.firebasestorage.app",
+            messagingSenderId: "120780076208",
+            appId: "1:120780076208:web:5043211212f17bee343775",
+          });
+
+          const fs = getFirestore(app);
+          const auth = getAuth(app);
+
+          // Persistência offline do Firestore
+          enableIndexedDbPersistence(fs).catch(() => {});
+
+          // Login anônimo seguro
+          if (!auth.currentUser) {
+            try {
+              await signInAnonymously(auth);
+            } catch (e) {
+              console.error("Erro no login anônimo:", e);
+              return;
+            }
+          }
+
+          console.log("UID logado:", auth.currentUser?.uid);
+
+          //-------------------------------------------------------
+          // SYNC INTELIGENTE (CORRIGIDO)
+          //-------------------------------------------------------
+
+          let syncAgendado = false;
+
+          const agendarSync = () => {
+            if (syncAgendado) return;
+            syncAgendado = true;
+
+            setTimeout(async () => {
+              syncAgendado = false;
+              await syncAgora();
+            }, 1500);
+          };
+
+          const syncAgora = async () => {
+            if (!navigator.onLine) return;
+
+            // CORREÇÃO: busca registros sem sincronizado OU sincronizado != 1
+            const naoSync = await db.cadastro
+              .filter((c) => c.sincronizado !== 1)
+              .toArray();
+
+            if (naoSync.length === 0) return;
+
+            const col = collection(fs, "cadastros");
+            let contador = 0;
+
+            for (const c of naoSync) {
+              try {
+                const dados = {
+                  ...c,
+                  tecnicoId: auth.currentUser?.uid ?? "desconhecido",
+                  sincronizadoEm: new Date().toISOString(),
+                  ultima_alteracao: new Date().toISOString(),
+                };
+
+                const ref = await addDoc(col, dados);
+                await db.cadastro.update(c.id, {
+                  sincronizado: 1,
+                  idRemote: ref.id,
+                });
+
+                contador++;
+              } catch (e) {
+                console.warn("Falha ao enviar um cadastro", e);
+              }
+            }
+
+            if (contador > 0) {
+              const toast = document.createElement("div");
+              toast.textContent = `${contador} cadastro(s) enviados com sucesso!`;
+              toast.style.cssText =
+                "position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0f8;color:#000;padding:16px 32px;border-radius:12px;font-weight:bold;z-index:9999;box-shadow:0 4px 12px 30px rgba(0,0,0,0.4);";
+              document.body.appendChild(toast);
+              setTimeout(() => toast.remove(), 5000);
+            }
+          };
+
+          //-------------------------------------------------------
+          // GATILHOS
+          //-------------------------------------------------------
+
+          // 1. Tenta sincronizar imediatamente
+          syncAgora();
+
+          // 2. Sempre que voltar online
+          window.addEventListener("online", () => {
+            console.log("Internet voltou → sincronizando...");
+            syncAgora();
+          });
+
+          // 3. Hooks REALMENTE funcionais do Dexie
+          db.cadastro.hook("creating", agendarSync);
+          db.cadastro.hook("updating", agendarSync);
+
+          console.log("Sincronização automática ativada!");
+        } catch (err) {
+          console.error("Erro crítico no sync:", err);
+        }
+      });
+    </script>
   </body>
 </html>
