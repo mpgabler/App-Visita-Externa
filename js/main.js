@@ -290,36 +290,37 @@ document
     const sucesso = await addCadastro(cadastro);
     // No seu evento de submit, dentro do bloco "if (sucesso)"
     if (sucesso) {
-      console.log("Cadastro adicionado com sucesso");
+      console.log("Cadastro adicionado com sucesso localmente.");
 
-      // 1. Prepara os dados do cabeçalho
-      const dataCampo = document.getElementById("data-emissao");
-      const protocoloCampo = document.getElementById("protocolo-id");
-      if (dataCampo) dataCampo.textContent = new Date().toLocaleString("pt-BR");
-      if (protocoloCampo) protocoloCampo.textContent = "VIS-" + Date.now();
+      // 1. Prepara os dados do cabeçalho (Data e Protocolo)
+      prepararDadosImpressao(); // Use a função auxiliar que criamos
 
-      // 2. Exibe o alerta de sucesso ANTES da impressão
-      const alerta = document.getElementById("alerta");
-      alerta.classList.add("mostrar");
+      // 2. Muda o estado do botão para evitar cliques duplos e dar feedback
+      const btnSubmit = document.getElementById("form-visita-externa");
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.textContent = "Gerando PDF...";
+      }
 
-      // 3. Pequeno delay para o alerta aparecer e o DOM atualizar
+      // 3. Pequeno delay para garantir que o DOM renderizou o cabeçalho
       setTimeout(() => {
         // Dispara a impressão
         window.print();
 
-        // 4. A mágica para Mobile: Usamos o evento 'onafterprint' ou um timeout longo
-        // O evento onafterprint dispara quando a janela de impressão fecha
-        window.onafterprint = () => {
-          console.log("Impressão concluída ou cancelada. Redirecionando...");
-          window.location.href = "index.html";
-        };
+        // 4. EM VEZ DE REDIRECIONAR AUTOMATICAMENTE:
+        // Mostramos um modal ou alteramos o alerta para o usuário sair manualmente.
+        const alerta = document.getElementById("alerta");
+        alerta.innerHTML = `
+            <p>Cadastro Salvo!</p>
+            <p style="font-size: 0.8em;">O PDF foi gerado. Clique abaixo para voltar.</p>
+            <button onclick="window.location.href='index.html'" 
+                    style="margin-top:20px; padding:10px 20px; font-size:1.2rem; background:#fff; color:#2f855a; border:none; border-radius:5px;">
+                Voltar ao Início
+            </button>
+        `;
+        alerta.classList.add("mostrar");
 
-        // Fallback: Caso o onafterprint não dispare em algum browser mobile específico
-        setTimeout(() => {
-          if (window.location.pathname.includes("tela_cadastro.html")) {
-            window.location.href = "index.html";
-          }
-        }, 3000); // 3 segundos de segurança
-      }, 800);
+        // Removemos o window.location.href que estava aqui!
+      }, 1000);
     }
   });
