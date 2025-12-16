@@ -1,49 +1,3 @@
-// if (!window.firebase) {
-//   console.error("Firebase ainda não carregou! Aguarde...");
-//   await new Promise((resolve) => {
-//     const check = () => (window.firebase ? resolve() : setTimeout(check, 50));
-//     check();
-//   });
-// }
-
-// const {
-//   fs,
-//   auth,
-//   collection,
-//   addDoc,
-//   getDocs,
-//   setDoc,
-//   doc,
-//   signInAnonymously,
-//   onAuthStateChanged,
-// } = window.firebase;
-
-// // Agora sim pode usar normalmente
-// console.log("Firebase pronto para uso");
-
-// // import "./firebase.js"; // inicializa o Firebase
-// import { garantirLoginAnonimo } from "./auth.js";
-// import { pushCadastros, pullCadastros } from "./sync.js";
-
-// // 1. Garante login ANTES de qualquer coisa
-// await garantirLoginAnonimo();
-
-// // 2. Agora sim pode iniciar o resto do app
-// onAuthStateChanged(auth, async (user) => {
-//   if (user) {
-//     await pullCadastros(); // primeiro baixa
-//     await pushCadastros(); // depois sobe os locais
-//   }
-// });
-
-// // 3. Depois do login, já pode puxar dados do Firebase (se existirem)
-// pullCadastros().catch(console.error);
-
-// // 4. Configura sincronização automática quando voltar online
-// window.addEventListener("online", () => {
-//   pushCadastros().catch(console.error);
-// });
-
 import { addCadastro, getCadastro } from "./database.js";
 
 // Limpa erros ao focar (adicione uma vez no script, após DOM load)
@@ -210,14 +164,14 @@ document
       temErro = true;
     }
 
-    // Beneficiamento
-    if (!cadastro.beneficiamento.length) {
-      sinalizarErro(
-        document.getElementById("tagContainerBeneficiamento"),
-        "Beneficiamento"
-      );
-      temErro = true;
-    }
+    // // Beneficiamento
+    // if (!cadastro.beneficiamento.length) {
+    //   sinalizarErro(
+    //     document.getElementById("tagContainerBeneficiamento"),
+    //     "Beneficiamento"
+    //   );
+    //   temErro = true;
+    // }
 
     // Maquinário
     if (!cadastro.maquinario.length) {
@@ -291,22 +245,23 @@ document
       temErro = true;
     }
 
-    // Políticas Públicas (se nenhum checkbox marcado)
-    const pnaeCheckbox = document.getElementById("politica_pnae");
-    const paaCheckbox = document.getElementById("politica_paa");
-    const outrasCheckbox = document.getElementById("outras_politicas");
+    // Obrigatoriedade no preenchimento da seção 'Políticas Públicas'
+    // // Políticas Públicas (se nenhum checkbox marcado)
+    // const pnaeCheckbox = document.getElementById("politica_pnae");
+    // const paaCheckbox = document.getElementById("politica_paa");
+    // const outrasCheckbox = document.getElementById("outras_politicas");
 
-    if (
-      !pnaeCheckbox.checked &&
-      !paaCheckbox.checked &&
-      !outrasCheckbox.checked
-    ) {
-      const container = document.querySelector(
-        ".apresentacao__itens__checkbox"
-      );
-      sinalizarErro(container, "Políticas Públicas");
-      temErro = true;
-    }
+    // if (
+    //   !pnaeCheckbox.checked &&
+    //   !paaCheckbox.checked &&
+    //   !outrasCheckbox.checked
+    // ) {
+    //   const container = document.querySelector(
+    //     ".apresentacao__itens__checkbox"
+    //   );
+    //   sinalizarErro(container, "Políticas Públicas");
+    //   temErro = true;
+    // }
 
     console.log("Tem erros totais?", temErro); // Debug final
 
@@ -331,23 +286,43 @@ document
       return;
     }
 
-    // Salvar no banco de dados
+    // Salvar no banco de dados e impressão
     const sucesso = await addCadastro(cadastro);
     if (sucesso) {
       console.log("Cadastro adicionado com sucesso");
-      // limpar o formulário
-      event.target.reset();
 
-      console.log("Cadastro salvo!");
+      // --- INÍCIO DA LÓGICA DE IMPRESSÃO ---
 
-      // Exibe o alerta no meio da tela
-      alerta.classList.add("mostrar");
+      // 1. Preenche o cabeçalho invisível do PDF (conforme configuramos antes)
+      const dataCampo = document.getElementById("data-emissao");
+      const protocoloCampo = document.getElementById("protocolo-id");
+      if (dataCampo) dataCampo.textContent = new Date().toLocaleString("pt-BR");
+      if (protocoloCampo) protocoloCampo.textContent = "VIS-" + Date.now();
 
-      // Aguarda 2 segundos e redireciona
+      // 2. Dispara a impressão
+      // O timeout de 500ms é uma "boa prática" para garantir que o browser
+      // renderizou o cabeçalho e as tags antes de abrir a caixa de diálogo.
       setTimeout(() => {
-        alerta.classList.remove("mostrar");
-        window.location.href = "index.html";
-      }, 2000);
+        window.print();
+
+        // --- LÓGICA DE PÓS-IMPRESSÃO ---
+        console.log("Cadastro salvo e PDF gerado!");
+
+        // Exibe o alerta de sucesso
+        const alerta = document.getElementById("alerta"); // Certifique-se de que a var 'alerta' existe
+        alerta.classList.add("mostrar");
+
+        // Limpar o formulário
+        event.target.reset();
+
+        // Aguarda 2 segundos e redireciona
+        setTimeout(() => {
+          alerta.classList.remove("mostrar");
+          window.location.href = "index.html";
+        }, 2000);
+      }, 500);
+
+      // --- FIM DA LÓGICA DE IMPRESSÃO ---
     } else {
       console.error("Erro ao salvar o cadastro");
     }

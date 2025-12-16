@@ -3,12 +3,19 @@
 * {
   margin: 0;
   padding: 0;
+  .print-header {
+    display: none;
+  }
 }
 
 @media (max-width: 600px) {
   .form-container {
     max-width: 100%;
     padding: 10px;
+  }
+
+  .print-header {
+    display: none;
   }
 }
 
@@ -288,6 +295,10 @@ textarea {
   color: #6b4e31;
 }
 
+.print-header {
+  display: none;
+}
+
 /* Ajustes para telas */
 @media (max-width: 10000px) {
   html,
@@ -536,7 +547,7 @@ textarea {
     color: black;
   }
 
-  #btnAlternar{
+  #btnAlternar {
     font-size: 6rem;
     font-weight: 600;
     padding: 0.7rem 1.2rem;
@@ -547,6 +558,10 @@ textarea {
     touch-action: manipulation; /* Melhora resposta ao toque */
     line-height: 1.5; /* Mais espaço interno */
     margin-top: 70px;
+  }
+
+  .print-header {
+    display: none;
   }
 }
 
@@ -609,5 +624,165 @@ textarea {
   input[type="password"],
   textarea {
     padding: 4%;
+  }
+
+  .print-header {
+    display: none;
+  }
+}
+
+@media print {
+  /* 1. VISIBILIDADE DO CABEÇALHO - ESSENCIAL */
+  .print-header {
+    display: block !important; /* Isso garante que o elemento apareça */
+    width: 100% !important;
+    margin-bottom: 0% !important;
+    border-bottom: #2f855a 2px solid !important;
+    padding-bottom: 5px !important;
+  }
+
+  .print-header hr {
+    border: none;
+    border-top: 1px solid #00796b;
+    margin-top: 5px;
+  }
+
+  /* O container que realmente distribui os elementos */
+  .header-content {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding-bottom: 5px !important;
+  }
+
+  /* Bloco de texto à direita */
+  .header-info {
+    text-align: right !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+
+  .header-info p {
+    font-size: 1rem !important;
+    font-family: "Roboto", sans-serif !important;
+    color: #2f855a !important;
+    font-weight: 700 !important;
+    margin-top: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  .print-logo {
+    max-height: 80px !important;
+    width: auto !important;
+  }
+
+  /* 2. Estrutura Base */
+  html,
+  body {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* 3. Tipografia Geral */
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  h2 {
+    font-size: 1rem !important;
+  }
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Corrigindo seletores genéricos para não interferirem no cabeçalho se necessário */
+  p,
+  label,
+  .suggestion-item,
+  .tag,
+  fieldset legend {
+    font-size: 1rem !important;
+    font-family: "Roboto", sans-serif !important;
+  }
+
+  textarea {
+    font-size: 1rem !important;
+    height: 42px !important;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="number"] {
+    font-size: 1rem !important;
+    margin-bottom: 17px !important;
+    padding: 5px !important;
+  }
+
+  /* 4. Escala de Controles */
+  .apresentacao__itens__radio input {
+    transform: scale(1.25) !important;
+    margin-right: 12px !important;
+  }
+
+  .apresentacao__itens__checkbox [type="checkbox"] {
+    transform: scale(1) !important;
+    margin-right: 12px !important;
+  }
+
+  /* 5. Tags */
+  .tag-container {
+    margin-bottom: 17px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 5px !important;
+  }
+
+  .tag {
+    font-size: 1rem !important;
+    padding: 2px 8px !important;
+    border: 1px solid #ccc !important;
+    display: inline-block !important;
+  }
+
+  /* 6. Espaçamento de Seções */
+  fieldset {
+    page-break-inside: avoid;
+    margin-top: 25px !important;
+    padding: 8px !important;
+    border: 1px solid #eee !important;
+  }
+
+  /* 7. REMOÇÃO DE INTERFACE */
+  .botao_salvar,
+  #btnAlternar,
+  .alerta,
+  .modal,
+  .fechar,
+  .tag button,
+  a,
+  #inputProducao,
+  #inputIrrigacao,
+  #inputDefensivo,
+  #inputMaquinario,
+  #inputBeneficiamento {
+    display: none !important;
+  }
+
+  /* 8. Ajuste de Imagens Genéricas */
+  img:not(.print-logo) {
+    max-width: 30%;
+    height: auto;
+  }
+
+  @page {
+    margin: 1cm;
+    size: A4;
   }
 }

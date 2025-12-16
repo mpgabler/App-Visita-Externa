@@ -21,6 +21,7 @@ const urlsToCache = [
   "./assets/favicon-16x16.png",
   "./assets/favicon.ico",
   "./assets/gato.png",
+  "./assets/logo-ceasa.png",
   "./manifest.json",
 ];
 

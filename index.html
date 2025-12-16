@@ -78,7 +78,123 @@
       <p>&copy; 2025 App Visitas Externas - Ceasa Espírito Santo</p>
     </footer>
 
-    <script type="module">
+    <!-- <script type="module">
+      import db from "./js/database.js";
+
+      window.addEventListener("load", async () => {
+        try {
+          //-------------------------------------------------------
+          // CONFIGURAÇÃO NOCODB
+          //-------------------------------------------------------
+
+          const API_URL =
+            "https://app.nocodb.com/api/v2/tables/mmh644yili3hqlx/records";
+          const API_KEY = "9RpEPRafKIOSny73_Bz8rvbDKtmjeBQcz8V_2z-l";
+
+          // Função utilitária para enviar ao NocoDB
+          async function enviarParaNocoDB(dados) {
+            const resposta = await fetch(API_URL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${API_KEY}`
+              },
+              body: JSON.stringify(dados),
+            });
+
+            if (!resposta.ok) {
+              throw new Error(`Erro NocoDB: ${resposta.status}`);
+            }
+
+            return await resposta.json();
+          }
+
+          //-------------------------------------------------------
+          // SYNC INTELIGENTE (VERSÃO NOCODB)
+          //-------------------------------------------------------
+
+          let syncAgendado = false;
+
+          const agendarSync = () => {
+            if (syncAgendado) return;
+            syncAgendado = true;
+
+            setTimeout(async () => {
+              syncAgendado = false;
+              await syncAgora();
+            }, 1500);
+          };
+
+          const syncAgora = async () => {
+            if (!navigator.onLine) return;
+
+            // Busca os registros não sincronizados no IndexedDB
+            const naoSync = await db.cadastro
+              .filter((c) => c.sincronizado !== 1)
+              .toArray();
+
+            if (naoSync.length === 0) return;
+
+            let contador = 0;
+
+            for (const c of naoSync) {
+              try {
+                const dados = {
+                  ...c,
+                  sincronizadoEm: new Date().toISOString(),
+                  ultima_alteracao: new Date().toISOString(),
+                };
+
+                // ENVIA AO NOCODB
+                const resposta = await enviarParaNocoDB(dados);
+
+                // Marca como sincronizado no IndexedDB
+                await db.cadastro.update(c.id, {
+                  sincronizado: 1,
+                  idRemote: resposta.id, // NocoDB retorna "id"
+                });
+
+                contador++;
+              } catch (e) {
+                console.warn("Falha ao enviar um cadastro", e);
+              }
+            }
+
+            if (contador > 0) {
+              const toast = document.createElement("div");
+              toast.textContent = `${contador} cadastro(s) enviados com sucesso!`;
+              toast.style.cssText =
+                "position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0f8;color:#000;padding:16px 32px;border-radius:12px;font-weight:bold;z-index:9999;box-shadow:0 4px 12px 30px rgba(0,0,0,0.4);";
+              document.body.appendChild(toast);
+              setTimeout(() => toast.remove(), 5000);
+            }
+          };
+
+          //-------------------------------------------------------
+          // GATILHOS DO OFFLINE
+          //-------------------------------------------------------
+
+          // 1. Tenta sincronizar imediatamente ao abrir
+          syncAgora();
+
+          // 2. Quando a internet voltar
+          window.addEventListener("online", () => {
+            console.log("Internet voltou → sincronizando...");
+            syncAgora();
+          });
+
+          // 3. Hooks do Dexie
+          db.cadastro.hook("creating", agendarSync);
+          db.cadastro.hook("updating", agendarSync);
+
+          console.log("Sincronização automática NocoDB ativada!");
+        } catch (err) {
+          console.error("Erro crítico no sync:", err);
+        }
+      });
+    </script> -->
+
+    <!-- <script type="module">
       // 1. Primeiro importa o Dexie (só assim o "db" existe)
       import db from "./js/database.js";
 
@@ -184,6 +300,6 @@
         document.getElementById("app")?.removeAttribute("hidden");
         alert("App pronto! Você está online: " + navigator.onLine);
       });
-    </script>
+    </script> -->
   </body>
 </html>
