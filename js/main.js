@@ -288,42 +288,38 @@ document
 
     // Salvar no banco de dados e impressão
     const sucesso = await addCadastro(cadastro);
+    // No seu evento de submit, dentro do bloco "if (sucesso)"
     if (sucesso) {
       console.log("Cadastro adicionado com sucesso");
 
-      // --- INÍCIO DA LÓGICA DE IMPRESSÃO ---
-
-      // 1. Preenche o cabeçalho invisível do PDF (conforme configuramos antes)
+      // 1. Prepara os dados do cabeçalho
       const dataCampo = document.getElementById("data-emissao");
       const protocoloCampo = document.getElementById("protocolo-id");
       if (dataCampo) dataCampo.textContent = new Date().toLocaleString("pt-BR");
       if (protocoloCampo) protocoloCampo.textContent = "VIS-" + Date.now();
 
-      // 2. Dispara a impressão
-      // O timeout de 500ms é uma "boa prática" para garantir que o browser
-      // renderizou o cabeçalho e as tags antes de abrir a caixa de diálogo.
+      // 2. Exibe o alerta de sucesso ANTES da impressão
+      const alerta = document.getElementById("alerta");
+      alerta.classList.add("mostrar");
+
+      // 3. Pequeno delay para o alerta aparecer e o DOM atualizar
       setTimeout(() => {
+        // Dispara a impressão
         window.print();
 
-        // --- LÓGICA DE PÓS-IMPRESSÃO ---
-        console.log("Cadastro salvo e PDF gerado!");
-
-        // Exibe o alerta de sucesso
-        const alerta = document.getElementById("alerta"); // Certifique-se de que a var 'alerta' existe
-        alerta.classList.add("mostrar");
-
-        // Limpar o formulário
-        event.target.reset();
-
-        // Aguarda 2 segundos e redireciona
-        setTimeout(() => {
-          alerta.classList.remove("mostrar");
+        // 4. A mágica para Mobile: Usamos o evento 'onafterprint' ou um timeout longo
+        // O evento onafterprint dispara quando a janela de impressão fecha
+        window.onafterprint = () => {
+          console.log("Impressão concluída ou cancelada. Redirecionando...");
           window.location.href = "index.html";
-        }, 2000);
-      }, 500);
+        };
 
-      // --- FIM DA LÓGICA DE IMPRESSÃO ---
-    } else {
-      console.error("Erro ao salvar o cadastro");
+        // Fallback: Caso o onafterprint não dispare em algum browser mobile específico
+        setTimeout(() => {
+          if (window.location.pathname.includes("tela_cadastro.html")) {
+            window.location.href = "index.html";
+          }
+        }, 3000); // 3 segundos de segurança
+      }, 800);
     }
   });
