@@ -290,37 +290,49 @@ document
     const sucesso = await addCadastro(cadastro);
     // No seu evento de submit, dentro do bloco "if (sucesso)"
     if (sucesso) {
-      console.log("Cadastro adicionado com sucesso localmente.");
+      console.log("Cadastro adicionado com sucesso.");
 
-      // 1. Prepara os dados do cabeçalho (Data e Protocolo)
-      prepararDadosImpressao(); // Use a função auxiliar que criamos
+      // 1. Preenche o cabeçalho de impressão
+      const dataCampo = document.getElementById("data-emissao");
+      const protocoloCampo = document.getElementById("protocolo-id");
+      if (dataCampo) dataCampo.textContent = new Date().toLocaleString("pt-BR");
+      if (protocoloCampo) protocoloCampo.textContent = "VIS-" + Date.now();
 
-      // 2. Muda o estado do botão para evitar cliques duplos e dar feedback
-      const btnSubmit = document.getElementById("form-visita-externa");
-      if (btnSubmit) {
-        btnSubmit.disabled = true;
-        btnSubmit.textContent = "Gerando PDF...";
-      }
+      // 2. Dispara a impressão imediatamente
+      // No Mobile, isso abrirá a interface do sistema
+      window.print();
 
-      // 3. Pequeno delay para garantir que o DOM renderizou o cabeçalho
-      setTimeout(() => {
-        // Dispara a impressão
-        window.print();
+      // 3. Após a impressão, usamos o modal para forçar a parada do usuário
+      const modal = document.getElementById("modalErro"); // Usando seu modal existente
+      const mensagem = document.getElementById("mensagemModal");
+      const titulo = modal.querySelector("h2") || mensagem; // Tenta achar o título
 
-        // 4. EM VEZ DE REDIRECIONAR AUTOMATICAMENTE:
-        // Mostramos um modal ou alteramos o alerta para o usuário sair manualmente.
-        const alerta = document.getElementById("alerta");
-        alerta.innerHTML = `
-            <p>Cadastro Salvo!</p>
-            <p style="font-size: 0.8em;">O PDF foi gerado. Clique abaixo para voltar.</p>
-            <button onclick="window.location.href='index.html'" 
-                    style="margin-top:20px; padding:10px 20px; font-size:1.2rem; background:#fff; color:#2f855a; border:none; border-radius:5px;">
-                Voltar ao Início
-            </button>
+      if (modal && mensagem) {
+        // Customizamos o modal para parecer Sucesso
+        mensagem.innerHTML = `
+            <strong style="color: #2f855a; font-size: 4rem; display: block; margin-bottom: 20px;">
+                VISITA SALVA!
+            </strong>
+            <p style="font-size: 3rem; margin-bottom: 30px;">
+                O PDF foi gerado. Verifique as notificações do seu celular.
+            </p>
+            <button id="btnVoltarInicio" style="
+                font-size: 4rem; 
+                padding: 20px 40px; 
+                background-color: #00796b; 
+                color: white; 
+                border: none; 
+                border-radius: 10px;
+                width: 100%;
+            ">OK, VOLTAR AO INÍCIO</button>
         `;
-        alerta.classList.add("mostrar");
 
-        // Removemos o window.location.href que estava aqui!
-      }, 1000);
+        modal.style.display = "flex";
+
+        // Adiciona o evento de clique ao novo botão
+        document.getElementById("btnVoltarInicio").onclick = () => {
+          window.location.href = "index.html";
+        };
+      }
     }
   });
