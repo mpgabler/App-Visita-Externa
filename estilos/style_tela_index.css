@@ -1,235 +1,280 @@
 /* estilos/style_tela_index.css */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #F5F5F5;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    
-
-
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .form-container {
-    display: flex;
-    flex-direction: column;
-    width: 90%; /* Mais fluido, adapta-se melhor a diferentes telas */
-    max-width: 500px; /* Aumentado para melhor legibilidade */
-    margin: 2rem auto;
-    padding: 1.5rem;
-    border: 1px solid #6B4E31;
-    border-radius: 8px;
-    gap: 2rem;
-    background-color: #FFFFFF;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
+  display: flex;
+  flex-direction: column;
+  width: 90%; /* Mais fluido, adapta-se melhor a diferentes telas */
+  max-width: 500px; /* Aumentado para melhor legibilidade */
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #6b4e31;
+  border-radius: 8px;
+  gap: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para destaque */
 }
 
 .direcionamento_opcoes {
-    border: 1px solid #6B4E31;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #F5F5F5;
-    display: flex;
-    flex-direction: column; /* Padronizado como coluna para melhor controle */
-    gap: 1.5rem;
-    justify-content: center;
+  border: 1px solid #6b4e31;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column; /* Padronizado como coluna para melhor controle */
+  gap: 1.5rem;
+  justify-content: center;
 }
 
-h1, h2, h3, p, label {
-    font-family: 'Roboto', sans-serif;
-    color: #6B4E31;
+h1,
+h2,
+h3,
+p,
+label {
+  font-family: "Roboto", sans-serif;
+  color: #6b4e31;
 }
 
 h1 {
-    text-align: center;
-    font-size: 1.8rem; /* Maior para destaque */
-    font-weight: 700;
-    margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.8rem; /* Maior para destaque */
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 h2 {
-    font-size: 1.4rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
 }
 
 h3 {
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: normal;
-    margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin-bottom: 1.5rem;
 }
 
 p {
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
 }
 
 label {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 a {
-    display: inline-block;
-    cursor: pointer;
-    text-decoration: none;
-    padding: 0.8rem 1.5rem;
-    width: 100%; /* Ocupa toda a largura do container */
-    max-width: 300px; /* Limite para evitar botões largos demais */
-    text-align: center;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    background-color: #2F855A;
-    color: #F5F5F5;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: background 0.2s;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  width: 100%; /* Ocupa toda a largura do container */
+  max-width: 300px; /* Limite para evitar botões largos demais */
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #2f855a;
+  color: #f5f5f5;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background 0.2s;
 }
 
 a:hover {
-    background-color: #276749;
+  background-color: #276749;
 }
 
 .rodape {
-    justify-content: center;
-    text-align: center;
-    font-size: 0.9rem;
-    padding: 1rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    color: #6B4E31;
-    
+  justify-content: center;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: #6b4e31;
 }
 
 /* Ajustes para telas */
 @media (max-width: 10000px) {
+  /* Reset e Variáveis */
+  :root {
+    --primary-green: #2d6a4f;
+    --bg-light: #f4f7f6;
+    --text-main: #333;
+    /* Variáveis de ambiente para o iPhone (Notch e Barra de Gestos) */
+    --safe-top: env(safe-area-inset-top);
+    --safe-bottom: env(safe-area-inset-bottom);
+  }
 
-    html, body {
-        
-        display: flexbox;  
-        width: auto;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        justify-content: space-evenly;
-        
-    }
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Remove o flash cinza ao tocar no iOS */
+  }
 
-    .form-container {
-        width: 100%; /* Mais espaço nas bordas */
-        max-width: none;
-        height: 100%; /* Ajusta a altura ao conteúdo */
-        display: contents;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0px 0px; /* Centraliza o container */
-        padding: 20px; /* Espaçamento interno reduzido */
-        box-sizing: border-box;
-    }
-        
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+  }
 
-    h1 {
-        font-size: 5rem; /* Tamanho menor, mas ainda legível */
-    }
+  /* Container Principal */
+  .form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: calc(var(--safe-top) + 20px) 20px 20px 20px;
+    width: 100%;
+    max-width: 500px; /* Limita largura em telas grandes/tablets */
+    margin: 0 auto;
+  }
 
-    h2 {
-        font-size: 4rem;
-    }
+  /* Tipografia Ajustada */
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-green);
+    line-height: 1.2;
+  }
 
-    h3, p, label {
-        font-size: 4rem; /* Mínimo para legibilidade */
-    }
+  h3 {
+    font-size: 1rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
 
+  .direcionamento_opcoes {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
 
-    a {
-        font-size: 4rem;
-        padding: 0.7rem 1.2rem;
-        width: auto; /* Ajusta ao conteúdo */
-        max-width: 100%; /* Evita que ultrapasse o container */
-        touch-action: manipulation; /* Melhora resposta ao toque */
-        line-height: 1.5; /* Mais espaço interno */
-    }
+  .direcionamento_opcoes h2 {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+  }
 
+  .direcionamento_opcoes p {
+    font-size: 0.9rem;
+    margin: 0 0 1.2rem 0;
+    color: #666;
+  }
 
-    .direcionamento_opcoes {
-        gap: 1rem;
-    }
+  .direcionamento_opcoes a {
+    width: 100%;
+  }
 
-    .rodape {
-        font-size: 1rem;
-        padding: 0%;
-        margin: 0%;
-        
-    }
+  /* Botões Estilo App */
+  a {
+    display: block;
+    background-color: var(--primary-green);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.1s ease;
+    touch-action: manipulation;
+  }
 
+  a:active {
+    transform: scale(0.98); /* Feedback visual de clique no iOS */
+    opacity: 0.9;
+  }
 
+  /* Rodapé Ajustado para a Barra do iPhone */
+  .rodape {
+    padding: 20px 20px calc(var(--safe-bottom) + 10px) 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+  }
 }
 
 /* Ajustes para telas muito pequenas (ex.: smartphones antigos) */
 @media (max-width: 400px) {
+  .body {
+    padding: 0.5rem; /* Espaçamento interno reduzido */
+  }
 
-    .body {
-        padding: 0.5rem; /* Espaçamento interno reduzido */
-    }
+  .form-container {
+    padding: 0.8rem;
+    margin: 0.5rem auto;
+  }
 
-    .form-container {
-        padding: 0.8rem;
-        margin: 0.5rem auto;
-    }
+  h1 {
+    font-size: 1.3rem;
+  }
 
-    h1 {
-        font-size: 1.3rem;
-    }
+  h2 {
+    font-size: 1.1rem;
+  }
 
-    h2 {
-        font-size: 1.1rem;
-    }
+  h3,
+  p,
+  label {
+    font-size: 0.9rem;
+  }
 
-    h3, p, label {
-        font-size: 0.9rem;
-    }
+  a {
+    font-size: 0.9rem;
 
-    a {
-        font-size: 0.9rem;
-        
-        padding: 0.6rem 0.9rem;
-        width: fit-content; /* Ajusta ao conteúdo */
-        max-width: 100%; /* Evita que ultrapasse o container */
-        touch-action: manipulation; /* Melhora resposta ao toque */
-        line-height: 1.5; /* Mais espaço interno */
-    }
+    padding: 0.6rem 0.9rem;
+    width: fit-content; /* Ajusta ao conteúdo */
+    max-width: 100%; /* Evita que ultrapasse o container */
+    touch-action: manipulation; /* Melhora resposta ao toque */
+    line-height: 1.5; /* Mais espaço interno */
+  }
 
-    .direcionamento_opcoes {
-        gap: 1rem;
-    }
+  .direcionamento_opcoes {
+    gap: 1rem;
+  }
 
-    .rodape{
-        font-size: 0.7rem;
-        padding: 0.5rem;
-        margin: 0.5rem 0;
-    }
+  .rodape {
+    font-size: 0.7rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+  }
 
-    p {
-        margin-bottom: 0.5rem;
-        font-size: 1rem;
-    }
-
-} 
+  p {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+}
