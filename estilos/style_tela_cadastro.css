@@ -303,122 +303,129 @@ textarea {
 @media (max-width: 10000px) {
   /* Variáveis de Harmonização */
   :root {
-      --primary-green: #2d6a4f;
-      --error-orange: #ffa500;
-      --bg-gray: #f8f9fa;
-      --safe-top: env(safe-area-inset-top, 20px);
-      --safe-bottom: env(safe-area-inset-bottom, 20px);
+    --primary-green: #2d6a4f;
+    --error-orange: #ffa500;
+    --bg-gray: #f8f9fa;
+    --safe-top: env(safe-area-inset-top, 20px);
+    --safe-bottom: env(safe-area-inset-bottom, 20px);
   }
-  
-  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
-      margin: 0;
-      font-family: -apple-system, system-ui, sans-serif;
-      background-color: var(--bg-gray);
-      padding-top: var(--safe-top);
-      padding-bottom: var(--safe-bottom);
+    margin: 0;
+    font-family: -apple-system, system-ui, sans-serif;
+    background-color: var(--bg-gray);
+    padding-top: var(--safe-top);
+    padding-bottom: var(--safe-bottom);
   }
-  
+
   /* Container do Formulário */
   .form-container {
-      width: 92%;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px 0;
+    width: 92%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 0;
   }
-  
+
   h3 {
-      font-size: 1.8rem;
-      color: var(--primary-green);
-      text-align: center;
-      margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: var(--primary-green);
+    text-align: center;
+    margin-bottom: 20px;
   }
-  
+
   /* Fieldsets estilo Card */
   fieldset {
-      border: none;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: none;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   }
-  
+
   fieldset legend {
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: var(--primary-green);
-      padding: 0 10px;
-      margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--primary-green);
+    padding: 0 10px;
+    margin-bottom: 15px;
   }
-  
+
   /* Inputs e Labels */
   label {
-      display: block;
-      font-size: 1rem;
-      font-weight: 600;
-      margin: 15px 0 5px 0;
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 15px 0 5px 0;
   }
-  
+
   input[type="text"],
   input[type="tel"],
   input[type="number"],
   textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 1rem; /* Evita zoom automático no iOS ao focar */
-      background: #fff;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem; /* Evita zoom automático no iOS ao focar */
+    background: #fff;
   }
-  
+
   /* Radios e Checkboxes Harmonizados */
-  .apresentacao__itens__radio, 
+  .apresentacao__itens__radio,
   .apresentacao__itens__checkbox {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 15px 0;
-      align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 15px 0;
+    align-items: center;
   }
-  
+
   /* Em vez de scale(5), usamos um tamanho fixo tocável */
-  input[type="radio"], 
+  input[type="radio"],
   input[type="checkbox"] {
-      width: 22px;
-      height: 22px;
-      accent-color: var(--primary-green);
-      margin-right: 8px;
+    width: 22px;
+    height: 22px;
+    accent-color: var(--primary-green);
+    margin-right: 8px;
   }
-  
+
   /* Botões */
-  .botao_salvar, #btnAlternar {
-      width: 100%;
-      background-color: var(--primary-green);
-      color: white;
-      padding: 18px;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 20px;
-      touch-action: manipulation;
+  .botao_salvar,
+  #btnAlternar {
+    width: 100%;
+    background-color: var(--primary-green);
+    color: white;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    touch-action: manipulation;
   }
-  
-  .botao_salvar:active { transform: scale(0.98); opacity: 0.9; }
-  
+
+  .botao_salvar:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+
   /* Estilo para sugestões (Autocomplete) */
   .suggestions {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      max-height: 200px;
-      overflow-y: auto;
-      position: absolute;
-      z-index: 100;
-      width: 80%;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 100;
+    width: 80%;
   }
 
   .alerta {
@@ -463,27 +470,72 @@ textarea {
   }
 
   .modal {
-    font-family: "Roboto", sans-serif;
+    /* Pilha de fontes nativas da Apple para harmonia visual */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif;
+
     position: fixed;
     z-index: 1000;
-    left: 0;
+
+    /* Garante que cubra toda a tela, incluindo áreas "fora" do viewport padrão no iOS */
     top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+
+    /* Background com desfoque (efeito Glassmorphism comum no iOS) */
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(
+      4px
+    ); /* Necessário para suporte no Safari/iOS */
+
+    /* Centralização robusta */
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* Previne que o conteúdo do modal encoste no notch ou barra inferior */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left);
+
+    /* Melhora a performance de renderização no iOS */
+    -webkit-overflow-scrolling: touch;
   }
   .modal-conteudo {
-    font-family: "Roboto", sans-serif;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Fontes nativas do iOS (San Francisco) para um visual de App real */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+
+    /* No iOS, os cantos são mais arredondados (padrão 10px a 14px) */
+    border-radius: 14px;
+
+    /* Sombras no iOS costumam ser mais suaves e espalhadas */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
     text-align: center;
-    max-width: 400px;
+
+    /* Ajuste de dimensões para Mobile */
+    width: 90%; /* Garante respiro nas laterais em iPhones pequenos */
+    max-width: 360px; /* Largura ideal para modais de alerta no iOS */
+
+    /* Espaçamento interno mais generoso */
+    padding: 24px;
+
+    /* Centralização e prevenção de áreas de corte (Notch/Home Indicator) */
+    margin: env(safe-area-inset-top) auto env(safe-area-inset-bottom) auto;
+
+    /* Evita que o usuário selecione o texto do modal acidentalmente ao tocar nos botões */
+    user-select: none;
+    -webkit-user-select: none;
+
+    /* Suaviza a renderização de fontes no Safari */
+    -webkit-font-smoothing: antialiased;
   }
+
   .fechar {
     color: #aaa;
     float: right;
@@ -491,6 +543,7 @@ textarea {
     font-weight: bold;
     cursor: pointer;
   }
+
   .fechar:hover {
     color: black;
   }
