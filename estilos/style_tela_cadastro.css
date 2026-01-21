@@ -301,176 +301,124 @@ textarea {
 
 /* Ajustes para telas */
 @media (max-width: 10000px) {
-  html,
+  /* Variáveis de Harmonização */
+  :root {
+      --primary-green: #2d6a4f;
+      --error-orange: #ffa500;
+      --bg-gray: #f8f9fa;
+      --safe-top: env(safe-area-inset-top, 20px);
+      --safe-bottom: env(safe-area-inset-bottom, 20px);
+  }
+  
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  
   body {
-    display: flexbox;
-    width: auto;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    justify-content: space-evenly;
+      margin: 0;
+      font-family: -apple-system, system-ui, sans-serif;
+      background-color: var(--bg-gray);
+      padding-top: var(--safe-top);
+      padding-bottom: var(--safe-bottom);
   }
-
+  
+  /* Container do Formulário */
   .form-container {
-    width: 100%; /* Mais espaço nas bordas */
-    max-width: none;
-    height: 100%; /* Ajusta a altura ao conteúdo */
-    display: contents;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0px 0px; /* Centraliza o container */
-    padding: 20px; /* Espaçamento interno reduzido */
-    box-sizing: border-box;
+      width: 92%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px 0;
   }
-
-  .form-container label {
-    margin-top: 50px;
-  }
-
-  h1 {
-    font-size: 6rem; /* Tamanho menor, mas ainda legível */
-  }
-
-  h2 {
-    font-size: 4rem;
-  }
-
+  
   h3 {
-    font-size: 5rem; /* Mínimo para legibilidade */
+      font-size: 1.8rem;
+      color: var(--primary-green);
+      text-align: center;
+      margin-bottom: 20px;
   }
-
-  p {
-    font-size: 4rem; /* Mínimo para legibilidade */
-  }
-
-  label {
-    font-size: 4rem; /* Mínimo para legibilidade */
-  }
-
-  textarea {
-    font-size: 4rem;
-    font-weight: 400;
-    height: 170px;
-  }
-
-  .apresentacao__itens__radio {
-    margin-top: 25px;
-  }
-
-  .apresentacao__itens__radio input {
-    transform: scale(5);
-    margin-right: 50px;
-    background-color: #00796b;
-  }
-
-  .apresentacao__itens__radio label {
-    font-size: 4rem; /* Mínimo para legibilidade */
-    margin-top: 50px;
-    text-align: left;
-  }
-
-  .apresentacao__itens__checkbox label {
-    font-size: 4rem; /* Mínimo para legibilidade */
-    text-align: left;
-  }
-
-  .apresentacao__itens__checkbox [type="checkbox"] {
-    margin: 10px;
-    transform: scale(4);
-    margin-right: 50px;
-    accent-color: #2f855a;
-  }
-
-  .apresentacao__itens__checkbox [type="text"] {
-    max-width: 100%;
-    margin-top: 30px;
-    margin-left: 0%;
-  }
-
-  .suggestions {
-    max-width: 100%;
-    width: 96%;
-    height: 100%;
-    max-height: 30%;
-    margin-top: -58%;
-  }
-
-  .suggestion-item {
-    font-size: 4rem;
-    padding: 1rem;
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .suggestion-item label {
-    font-size: 4rem;
-    padding: 1rem;
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .tag-container {
-    margin-bottom: 70px;
-  }
-
-  .tag {
-    font-size: 4rem;
-    width: 100%;
-  }
-
-  .tag button {
-    font-size: 35px;
-    font-weight: 900;
-    margin-top: 15px;
-    margin-left: 20px;
-  }
-
-  .botao_salvar {
-    font-size: 6rem;
-    font-weight: 600;
-    padding: 0.7rem 1.2rem;
-    width: 100%; /* Ajusta ao conteúdo */
-    max-width: 95%; /* Evita que ultrapasse o container */
-    touch-action: manipulation; /* Melhora resposta ao toque */
-    line-height: 1.5; /* Mais espaço interno */
-    margin-top: 70px;
-  }
-
-  a {
-    font-size: 4rem;
-    padding: 0.7rem 1.2rem;
-    width: auto; /* Ajusta ao conteúdo */
-    max-width: 100%; /* Evita que ultrapasse o container */
-    touch-action: manipulation; /* Melhora resposta ao toque */
-    line-height: 1.5; /* Mais espaço interno */
-  }
-
-  .direcionamento_opcoes {
-    gap: 1rem;
-  }
-
-  .rodape {
-    font-size: 2rem;
-    padding: 0%;
-    margin-top: 70px;
-  }
-
+  
+  /* Fieldsets estilo Card */
   fieldset {
-    margin-top: 100px;
+      border: none;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   }
-
+  
   fieldset legend {
-    font-size: 4rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--primary-green);
+      padding: 0 10px;
+      margin-bottom: 15px;
   }
-
-  input {
-    padding: 2%;
-    font-size: 4rem;
-    margin-bottom: 70px;
+  
+  /* Inputs e Labels */
+  label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 15px 0 5px 0;
   }
-
-  input[type="radio"] {
-    accent-color: #2f855a;
+  
+  input[type="text"],
+  input[type="tel"],
+  input[type="number"],
+  textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem; /* Evita zoom automático no iOS ao focar */
+      background: #fff;
+  }
+  
+  /* Radios e Checkboxes Harmonizados */
+  .apresentacao__itens__radio, 
+  .apresentacao__itens__checkbox {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 15px 0;
+      align-items: center;
+  }
+  
+  /* Em vez de scale(5), usamos um tamanho fixo tocável */
+  input[type="radio"], 
+  input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--primary-green);
+      margin-right: 8px;
+  }
+  
+  /* Botões */
+  .botao_salvar, #btnAlternar {
+      width: 100%;
+      background-color: var(--primary-green);
+      color: white;
+      padding: 18px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      touch-action: manipulation;
+  }
+  
+  .botao_salvar:active { transform: scale(0.98); opacity: 0.9; }
+  
+  /* Estilo para sugestões (Autocomplete) */
+  .suggestions {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      position: absolute;
+      z-index: 100;
+      width: 80%;
   }
 
   .alerta {
